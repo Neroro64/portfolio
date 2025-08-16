@@ -5,6 +5,20 @@
     "icon": "📁",
     "items": [
       {
+        "id": "react-dashboard",
+        "title": "React Analytics Dashboard",
+        "description": "A real-time analytics dashboard for business metrics.",
+        "type": "project",
+        "date": "2023-12-05T00:00:00.000Z",
+        "tags": [
+          "React",
+          "D3.js",
+          "Chart.js",
+          "Firebase"
+        ],
+        "content": "\nThis dashboard provides real-time analytics and business intelligence for enterprise clients.\n\n## Features\n\n- Real-time data visualization with charts and graphs\n- Customizable dashboards per user role\n- Data export capabilities (CSV, PDF)\n- User authentication and role-based access control\n- Responsive design for desktop and mobile\n\n## Technology Stack\n\n- **Frontend**: React, Redux, Chart.js, D3.js\n- **Backend**: Node.js, Express\n- **Database**: Firebase Firestore\n- **Authentication**: Firebase Auth"
+      },
+      {
         "id": "portfolio",
         "title": "Echoes of the Deep Portfolio",
         "description": "A terminal-inspired portfolio website built with Svelte and TypeScript.",
@@ -16,6 +30,20 @@
           "Bun"
         ],
         "content": "\nThis portfolio showcases my work in a Ranger-like terminal interface. It features multi-panel navigation, keyboard controls, and a retro terminal aesthetic.\n\n## Features\n\n- Terminal-inspired UI with keyboard navigation\n- File manager-like browsing experience with multi-panel interface\n- Responsive design for all screen sizes\n- Fast loading times thanks to Bun\n- Type-safe development with TypeScript\n- Interactive terminal-style interface with panel-based navigation\n\n## Technology Stack\n\n- **Frontend**: Svelte (with TypeScript)\n- **Build Tool**: Bun\n- **Styling**: CSS Modules / Tailwind CSS\n- **Routing**: SvelteKit's built-in routing\n- **Type Safety**: TypeScript"
+      },
+      {
+        "id": "nextjs-ecommerce",
+        "title": "Next.js E-commerce Platform",
+        "description": "A full-featured e-commerce solution built with Next.js and Stripe.",
+        "type": "project",
+        "date": "2023-10-15T00:00:00.000Z",
+        "tags": [
+          "Next.js",
+          "React",
+          "Stripe",
+          "Tailwind CSS"
+        ],
+        "content": "\nThis project is a comprehensive e-commerce platform built with Next.js, featuring:\n\n## Features\n\n- Product catalog with filtering and search\n- Shopping cart functionality\n- User authentication and account management\n- Payment processing with Stripe\n- Admin dashboard for product management\n- Responsive design for all devices\n\n## Technology Stack\n\n- **Frontend**: Next.js, React, Tailwind CSS\n- **Backend**: Node.js, Express\n- **Database**: MongoDB\n- **Payment Processing**: Stripe API\n- **Authentication**: NextAuth.js"
       }
     ]
   },
@@ -36,6 +64,20 @@
           "Node.js"
         ],
         "content": "\nAs a senior developer, I was responsible for architecting and implementing complex frontend solutions. My team delivered several high-impact projects on time and within budget.\n\n## Key Responsibilities\n\n- Led a team of 5 frontend developers\n- Architected scalable frontend solutions\n- Mentored junior developers\n- Collaborated with UX designers and backend engineers\n- Implemented CI/CD pipelines for frontend applications\n\n## Technologies Used\n\n- React and Redux\n- TypeScript\n- Node.js\n- Webpack and Babel\n- Jest and Testing Library"
+      },
+      {
+        "id": "full-stack-dev",
+        "title": "Full Stack Developer",
+        "description": "Developed and maintained multiple web applications for enterprise clients.",
+        "type": "experience",
+        "date": "2021-06-01T00:00:00.000Z",
+        "tags": [
+          "React",
+          "Node.js",
+          "MongoDB",
+          "AWS"
+        ],
+        "content": "\nAs a full stack developer, I was responsible for:\n\n## Key Responsibilities\n\n- Led development of multiple web applications from concept to deployment\n- Collaborated with UX designers and product managers to implement features\n- Mentored junior developers on best practices and code standards\n- Implemented CI/CD pipelines for automated testing and deployment\n- Optimized application performance and resolved production issues\n\n## Technologies Used\n\n- React and Redux\n- Node.js and Express\n- MongoDB and PostgreSQL\n- AWS services (EC2, S3, Lambda)\n- Docker and Kubernetes"
       }
     ]
   },
@@ -44,6 +86,32 @@
     "name": "Blog",
     "icon": "📝",
     "items": [
+      {
+        "id": "typescript-best-practices",
+        "title": "TypeScript Best Practices for 2023",
+        "description": "Essential TypeScript patterns and practices for modern web development.",
+        "type": "blog",
+        "date": "2023-09-20T00:00:00.000Z",
+        "tags": [
+          "TypeScript",
+          "JavaScript",
+          "Best Practices"
+        ],
+        "content": "\nIn this article, I share my insights on TypeScript best practices that have proven effective in modern web development.\n\n## Key Concepts\n\n### Type Safety First\n\nAlways prefer explicit typing over type inference when it improves readability and maintainability.\n\n### Use Utility Types\n\nLeverage built-in utility types like `Partial<T>`, `Pick<T, K>`, and `Omit<T, K>` to create more reusable code.\n\n### Strict Mode\n\nEnable strict mode in your tsconfig.json for better type checking and fewer runtime errors.\n\n## Advanced Patterns\n\n### Discriminated Unions\n\nUse discriminated unions for handling different types of events or actions in a type-safe way.\n\n### Conditional Types\n\nLeverage conditional types for creating generic utilities that adapt based on input types.\n\n### Mapped Types\n\nCreate new types by transforming existing ones using mapped types for more flexible code."
+      },
+      {
+        "id": "sveltekit-performance",
+        "title": "Optimizing SvelteKit Performance",
+        "description": "Techniques for improving the performance of SvelteKit applications.",
+        "type": "blog",
+        "date": "2023-11-10T00:00:00.000Z",
+        "tags": [
+          "Svelte",
+          "SvelteKit",
+          "Performance"
+        ],
+        "content": "\nPerformance optimization is crucial for modern web applications. Here are some techniques I've found effective for SvelteKit applications.\n\n## Bundle Optimization\n\n### Code Splitting\n\nUse SvelteKit's built-in code splitting to load only the necessary JavaScript for each page.\n\n### Tree Shaking\n\nEnsure unused code is removed during the build process by using proper import syntax.\n\n## Data Loading Strategies\n\n### Server-Side Rendering (SSR)\n\nFor content-heavy pages, use SSR to improve initial load times and SEO.\n\n### Client-Side Rendering (CSR)\n\nFor interactive applications, CSR can provide better user experience after initial load.\n\n## Caching Techniques\n\n### HTTP Caching\n\nImplement appropriate cache headers for static assets and API responses.\n\n### Service Workers\n\nUse service workers for offline capabilities and faster subsequent loads."
+      },
       {
         "id": "sveltekit-guide",
         "title": "Getting Started with SvelteKit",
