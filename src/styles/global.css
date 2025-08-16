@@ -48,8 +48,7 @@ h1 {
   border: 1px solid var(--terminal-border);
   border-radius: 4px;
   padding: 1rem;
-  min-width: 300px;
-  flex: 1;
+  min-height: 200px;
 }
 
 .panel h2 {
@@ -108,10 +107,6 @@ footer {
   }
   
   .panel {
-    min-width: 100%;
-  }
-  
-  .flex-row {
-    flex-direction: column;
+    min-height: 150px;
   }
 }
