@@ -16,6 +16,8 @@
     if (isExternalLink(item)) {
       // Open external link in new tab
       window.open(item.url, '_blank');
+      // Clear the list and preview panels when an external link is clicked
+      focusedPanel.set('nav');
     } else {
       // Handle portfolio item navigation
       selectSection(0); // This would navigate to the first section for now
