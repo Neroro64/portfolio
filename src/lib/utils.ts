@@ -94,6 +94,18 @@ export function loadContentSections(contentBasePath: string): Array<{id: string,
             title: 'Portfolio Website',
             url: 'https://alexmorgan.dev',
             icon: '🌐'
+          },
+          {
+            id: 'twitter',
+            title: 'Twitter Profile',
+            url: 'https://twitter.com/alexmorgan_dev',
+            icon: '🐦'
+          },
+          {
+            id: 'medium',
+            title: 'Medium Articles',
+            url: 'https://medium.com/@alexmorgan',
+            icon: '📰'
           }
         ]
       }
