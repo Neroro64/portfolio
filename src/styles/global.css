@@ -1,37 +1,37 @@
-/* Global styles for Echoes of the Deep - Ayu Mirage Theme */
+/* Global styles for Echoes of the Deep - Gruvbox Paper Theme */
   
-  /* Ayu Mirage color palette with deep ocean tones */
+  /* Gruvbox Paper color palette with enhanced transparency for blur effects */
   :root {
     /* Dark theme colors */
-    --gruvbox-bg: #171d23;
-    --gruvbox-fg: #d4d4d4;
-    --gruvbox-gray: #6b7580;
-    --gruvbox-red: #f26d78;
-    --gruvbox-green: #7fb95f;
-    --gruvbox-yellow: #e6c000;
-    --gruvbox-blue: #41a6d8;
-    --gruvbox-purple: #b372e0;
-    --gruvbox-aqua: #4dbfbc;
-    --gruvbox-orange: #ff903d;
+    --gruvbox-bg: #1d2021;
+    --gruvbox-fg: #ebdbb2;
+    --gruvbox-gray: #928374;
+    --gruvbox-red: #fb4934;
+    --gruvbox-green: #b8bb26;
+    --gruvbox-yellow: #fabd2f;
+    --gruvbox-blue: #83a598;
+    --gruvbox-purple: #d3869b;
+    --gruvbox-aqua: #8ec07c;
+    --gruvbox-orange: #fe8019;
     
     /* Darker variants for backgrounds */
-    --gruvbox-bg-dark: #12171d;
-    --gruvbox-bg0: #171d23;
-    --gruvbox-bg1: #202830;
-    --gruvbox-bg2: #2a343f;
-    --gruvbox-bg3: #35414e;
-    --gruvbox-bg4: #404e5d;
+    --gruvbox-bg-dark: #121415;
+    --gruvbox-bg0: #1d2021;
+    --gruvbox-bg1: #3c3836;
+    --gruvbox-bg2: #504945;
+    --gruvbox-bg3: #665c54;
+    --gruvbox-bg4: #7c6f64;
     
     /* Lighter variants for foreground */
-    --gruvbox-fg0: #ffffff;
-    --gruvbox-fg1: #d4d4d4;
-    --gruvbox-fg2: #b8b8b8;
-    --gruvbox-fg3: #9c9c9c;
-    --gruvbox-fg4: #6b7580;
+    --gruvbox-fg0: #fbf1c7;
+    --gruvbox-fg1: #ebdbb2;
+    --gruvbox-fg2: #d5c4a1;
+    --gruvbox-fg3: #bdae93;
+    --gruvbox-fg4: #a89984;
     
     /* Selection colors */
-    --gruvbox-selection: #202830;
-    --gruvbox-highlight: #2a343f;
+    --gruvbox-selection: #3c3836;
+    --gruvbox-highlight: #504945;
   }
 
 html, body {
@@ -73,7 +73,6 @@ header {
     text-align: left;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--gruvbox-bg3);
-    margin-bottom: 1rem;
     background-color: var(--gruvbox-bg0);
     /* Add blur effect */
     backdrop-filter: blur(10px);
@@ -163,7 +162,6 @@ button.selected {
 
 /* Footer styles */
 footer {
-    margin-top: 1rem;
     padding: 0.5rem;
     border-top: 1px solid var(--gruvbox-bg3);
     text-align: left;
