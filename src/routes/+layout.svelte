@@ -18,16 +18,11 @@
   
   <Navigation />
   
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="md:col-span-1">
-      <NavPanel />
-    </div>
-    <div class="md:col-span-2">
-      <ListPanel />
-    </div>
+  <div class="flex flex-col gap-4">
+    <NavPanel />
+    <ListPanel />
+    <PreviewPanel />
   </div>
-  
-  <PreviewPanel />
   
   <Footer />
 </div>
