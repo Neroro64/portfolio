@@ -21,54 +21,16 @@
     appStore.setSelectedItem(item);
   }
   
-  // Keyboard navigation for items
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp' || event.key === 'k') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select previous one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const prevIndex = (currentIndex - 1 + section.items.length) % section.items.length;
-        selectItem(section.items[prevIndex]);
-      }
-    } else if (event.key === 'ArrowDown' || event.key === 'j') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select next one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const nextIndex = (currentIndex + 1) % section.items.length;
-        selectItem(section.items[nextIndex]);
-      }
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
-      // If an item is selected, open it in preview
-      if (selectedItem) {
-        appStore.setSelectedItem(selectedItem);
-      }
-    }
-  }
-  
-  onMount(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  });
+  $: currentSectionItems = sections.find(s => s.id === currentSection)?.items || [];
 </script>
 
 <div class="panel">
   <h2>{sections.find(s => s.id === currentSection)?.name}</h2>
   <ul>
-    {#each sections.find(s => s.id === currentSection)?.items as item}
+    {#each currentSectionItems as item, i}
       <li>
         <button 
-          class="{selectedItem?.id === item.id ? 'bg-green-900' : ''}"
+          class="{selectedItem?.id === item.id ? 'selected' : ''}"
           on:click={() => selectItem(item)}
         >
           <span>{item.icon || '•'}</span> {item.title}

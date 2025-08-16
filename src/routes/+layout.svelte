@@ -4,6 +4,7 @@
   import MiddlePane from '$lib/components/MiddlePane.svelte';
   import RightPane from '$lib/components/RightPane.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import KeyboardHandler from '$lib/components/KeyboardHandler.svelte';
   
   let { children } = $props();
 </script>
@@ -14,6 +15,8 @@
 
 <div class="container">
   <Header title="Echoes of the Deep" />
+  
+  <KeyboardHandler />
   
   <div class="flex gap-4 mt-4">
     <LeftPane />

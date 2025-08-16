@@ -5,12 +5,14 @@
   let sections: any[] = [];
   let currentSection: string = '';
   let selectedItem: any = null;
+  let selectedSubItem: any = null;
   
   // Subscribe to store changes
   const unsubscribe = appStore.subscribe((state) => {
     sections = state.sections;
     currentSection = state.currentSection;
     selectedItem = state.selectedItem;
+    selectedSubItem = state.selectedSubItem;
   });
   
   onMount(() => {
@@ -21,90 +23,56 @@
     appStore.setSelectedItem(item);
   }
   
-  // Keyboard navigation for items
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp' || event.key === 'k') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select previous one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const prevIndex = (currentIndex - 1 + section.items.length) % section.items.length;
-        selectItem(section.items[prevIndex]);
-      }
-    } else if (event.key === 'ArrowDown' || event.key === 'j') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select next one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const nextIndex = (currentIndex + 1) % section.items.length;
-        selectItem(section.items[nextIndex]);
-      }
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
-      // If an item is selected, open it in preview
-      if (selectedItem) {
-        appStore.setSelectedItem(selectedItem);
-      }
-    }
+  function selectSubItem(subItem: any) {
+    appStore.setSelectedSubItem(subItem);
   }
   
-  onMount(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  });
+  $: currentSectionItems = sections.find(s => s.id === currentSection)?.items || [];
+  $: subItems = getSubItems(selectedItem);
+  
+  function getSubItems(item: any) {
+    if (!item) return [];
+    
+    if (item.type === 'project') {
+      return [
+        { id: 'files', title: 'Files', icon: '📁' },
+        { id: 'docs', title: 'Documentation', icon: '📄' }
+      ];
+    } else if (item.type === 'experience') {
+      return [
+        { id: 'metrics', title: 'Performance Metrics', icon: '📊' },
+        { id: 'team', title: 'Team Members', icon: '👥' }
+      ];
+    } else if (item.type === 'blog') {
+      return [
+        { id: 'comments', title: 'Comments', icon: '💬' },
+        { id: 'tags', title: 'Tags', icon: '🏷️' }
+      ];
+    }
+    
+    return [];
+  }
 </script>
 
 <div class="panel">
   <h2>Contents of {selectedItem?.title || sections.find(s => s.id === currentSection)?.name}</h2>
   <ul>
     {#if selectedItem}
-      {#if selectedItem.type === 'project'}
-        <li>
-          <button class="bg-green-900">
-            <span>📁</span> Files
-          </button>
-        </li>
-        <li>
-          <button>
-            <span>📄</span> Documentation
-          </button>
-        </li>
-      {:else if selectedItem.type === 'experience'}
-        <li>
-          <button>
-            <span>📊</span> Performance Metrics
-          </button>
-        </li>
-        <li>
-          <button>
-            <span>👥</span> Team Members
-          </button>
-        </li>
-      {:else if selectedItem.type === 'blog'}
-        <li>
-          <button>
-            <span>💬</span> Comments
-          </button>
-        </li>
-        <li>
-          <button>
-            <span>🏷️</span> Tags
-          </button>
-        </li>
-      {/if}
-    {:else}
-      {#each sections.find(s => s.id === currentSection)?.items as item}
+      {#each subItems as subItem, i}
         <li>
           <button 
-            class="{selectedItem?.id === item.id ? 'bg-green-900' : ''}"
+            class="{selectedSubItem?.id === subItem.id ? 'selected' : ''}"
+            on:click={() => selectSubItem(subItem)}
+          >
+            <span>{subItem.icon || '•'}</span> {subItem.title}
+          </button>
+        </li>
+      {/each}
+    {:else}
+      {#each currentSectionItems as item, i}
+        <li>
+          <button 
+            class="{selectedItem?.id === item.id ? 'selected' : ''}"
             on:click={() => selectItem(item)}
           >
             <span>{item.icon || '•'}</span> {item.title}

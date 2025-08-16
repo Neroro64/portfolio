@@ -4,11 +4,13 @@
   
   let currentSection: string = '';
   let selectedItem: any = null;
+  let selectedSubItem: any = null;
   
   // Subscribe to store changes
   const unsubscribe = appStore.subscribe((state) => {
     currentSection = state.currentSection;
     selectedItem = state.selectedItem;
+    selectedSubItem = state.selectedSubItem;
   });
   
   onMount(() => {
@@ -16,14 +18,16 @@
   });
 </script>
 
-<footer class="border p-2 mt-4 bg-black text-green-400 font-mono text-sm">
+<footer>
   <div class="flex justify-between">
     <span>
       Section: {currentSection}
     </span>
     <span>
-      {#if selectedItem}
-        Item: {selectedItem.title}
+      {#if selectedSubItem}
+        Item: {selectedItem?.title} / {selectedSubItem?.title}
+      {:else if selectedItem}
+        Item: {selectedItem?.title}
       {:else}
         Item: None
       {/if}
