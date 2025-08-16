@@ -1,10 +1,10 @@
-/* Terminal-style styling */
+/* Global styles for Echoes of the Deep */
+
 :root {
-  --terminal-bg: #0a0a0a;
+  --terminal-bg: #000;
   --terminal-text: #00ff00;
-  --terminal-border: #008800;
-  --terminal-highlight: #00aa00;
-  --terminal-accent: #00ff00;
+  --terminal-border: #00aa00;
+  --terminal-highlight: #008800;
 }
 
 body {
@@ -13,7 +13,6 @@ body {
   font-family: 'Courier New', monospace;
   margin: 0;
   padding: 0;
-  line-height: 1.4;
 }
 
 .container {
@@ -22,49 +21,97 @@ body {
   padding: 1rem;
 }
 
-/* Terminal-style borders */
+/* Terminal-style border */
 .border {
   border: 1px solid var(--terminal-border);
+  border-radius: 4px;
 }
 
-/* Terminal-style highlights */
+/* Header styles */
+header {
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--terminal-border);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--terminal-text);
+}
+
+/* Panel styles */
+.panel {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: 1rem;
+  min-width: 300px;
+  flex: 1;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--terminal-highlight);
+  font-size: 1.2rem;
+}
+
+/* List items */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: var(--terminal-text);
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: var(--terminal-highlight);
+}
+
+/* Highlight class for important text */
 .highlight {
   color: var(--terminal-highlight);
   font-weight: bold;
 }
 
-/* Scrollbar styling for terminal look */
-::-webkit-scrollbar {
-  width: 8px;
+/* Footer styles */
+footer {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--terminal-border);
+  text-align: center;
+  font-size: 0.8rem;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--terminal-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--terminal-border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--terminal-highlight);
-}
-
-/* Terminal-style buttons */
-button {
-  font-family: 'Courier New', monospace;
-  background-color: #000;
-  color: #00ff00;
-  border: 1px solid #008800;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #003300;
-}
-
-button:focus {
-  outline: 1px solid #00ff00;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .panel {
+    min-width: 100%;
+  }
+  
+  .flex-row {
+    flex-direction: column;
+  }
 }

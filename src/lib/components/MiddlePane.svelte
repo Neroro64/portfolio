@@ -62,40 +62,40 @@
   });
 </script>
 
-<div class="border p-2 mb-4 bg-black text-green-400 font-mono">
-  <h2 class="mb-2">Contents of {selectedItem?.title || sections.find(s => s.id === currentSection)?.name}</h2>
-  <ul class="space-y-1">
+<div class="panel">
+  <h2>Contents of {selectedItem?.title || sections.find(s => s.id === currentSection)?.name}</h2>
+  <ul>
     {#if selectedItem}
       {#if selectedItem.type === 'project'}
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button class="bg-green-900">
             <span>📁</span> Files
           </button>
         </li>
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button>
             <span>📄</span> Documentation
           </button>
         </li>
       {:else if selectedItem.type === 'experience'}
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button>
             <span>📊</span> Performance Metrics
           </button>
         </li>
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button>
             <span>👥</span> Team Members
           </button>
         </li>
       {:else if selectedItem.type === 'blog'}
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button>
             <span>💬</span> Comments
           </button>
         </li>
         <li>
-          <button class="w-full text-left p-1 hover:bg-green-900">
+          <button>
             <span>🏷️</span> Tags
           </button>
         </li>
@@ -104,10 +104,10 @@
       {#each sections.find(s => s.id === currentSection)?.items as item}
         <li>
           <button 
-            class="w-full text-left p-1 hover:bg-green-900"
+            class="{selectedItem?.id === item.id ? 'bg-green-900' : ''}"
             on:click={() => selectItem(item)}
           >
-            <span>•</span> {item.title}
+            <span>{item.icon || '•'}</span> {item.title}
           </button>
         </li>
       {/each}

@@ -27,4 +27,14 @@
       <li><span class="highlight">Right Pane</span> - Shows detailed preview of selected item</li>
     </ul>
   </div>
+  
+  <div class="mt-4 p-2 border bg-black text-green-400 font-mono">
+    <h2 class="highlight">Keyboard Shortcuts</h2>
+    <p>Use these keys to navigate through the interface:</p>
+    <ul class="mt-2">
+      <li><span class="highlight">j/k or Arrow Up/Down</span> - Move between items</li>
+      <li><span class="highlight">Enter</span> - Select item for preview</li>
+      <li><span class="highlight">Tab</span> - Switch between panes</li>
+    </ul>
+  </div>
 </div>

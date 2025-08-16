@@ -16,11 +16,11 @@
   });
 </script>
 
-<div class="border p-2 bg-black text-green-400 font-mono">
+<div class="panel">
   {#if selectedItem}
     <div>
-      <h2 class="text-xl mb-2">{selectedItem.title}</h2>
-      <p class="mb-3">{selectedItem.description}</p>
+      <h2>{selectedItem.title}</h2>
+      <p>{selectedItem.description}</p>
       
       {#if selectedItem.content}
         <div class="mt-4">

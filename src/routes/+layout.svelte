@@ -15,7 +15,7 @@
 <div class="container">
   <Header title="Echoes of the Deep" />
   
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-row gap-4 mt-4">
     <LeftPane />
     <MiddlePane />
     <RightPane />
