@@ -69,19 +69,25 @@ src/
 ├── routes/           # Page routes
 │   ├── +layout.svelte
 │   └── +page.svelte
-├── components/       # Reusable UI components
-│   ├── TerminalInterface.svelte  # Main TUI interface component
-│   ├── FileBrowser.svelte        # File manager-like browsing component
-│   ├── Navigation.svelte         # Navigation controls
-│   ├── Header.svelte             # Header component
-│   └── Footer.svelte             # Footer component
+├── components/       # UI components
+│   ├── Header.svelte
+│   ├── Navigation.svelte
+│   ├── NavPanel.svelte
+│   ├── ListPanel.svelte
+│   ├── PreviewPanel.svelte
+│   └── Footer.svelte
 ├── lib/              # Utility functions and helpers
+│   ├── store.ts      # Svelte writable store + persistence logic
 │   └── utils.ts      # Common utility functions
 ├── styles/           # Global styles
 │   └── global.css    # Terminal-style CSS
 └── types/            # TypeScript types
     └── index.ts      # Type definitions for portfolio items
 ```
+
+## State Management & Persistence
+
+The application uses a Svelte writable store (`src/lib/store.ts`) to hold UI state such as current navigation, selected item, and preview content. The store is hydrated from `localStorage` on app start and writes back on every change, ensuring the UI restores after page reloads.
 
 ## TUI Ranger-like UX Features
 
