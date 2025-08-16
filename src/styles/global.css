@@ -1,37 +1,37 @@
-/* Global styles for Echoes of the Deep - Gruvbox Theme */
+/* Global styles for Echoes of the Deep - Ayu Mirage Theme */
   
-  /* Gruvbox color palette - Deep Ocean Theme */
+  /* Ayu Mirage color palette with deep ocean tones */
   :root {
     /* Dark theme colors */
-    --gruvbox-bg: #0a141c;
-    --gruvbox-fg: #b8d3e6;
-    --gruvbox-gray: #5c7a92;
-    --gruvbox-red: #e67e80;
-    --gruvbox-green: #a3be8c;
-    --gruvbox-yellow: #ebcb8b;
-    --gruvbox-blue: #81a1c1;
-    --gruvbox-purple: #b48ead;
-    --gruvbox-aqua: #88c0d0;
-    --gruvbox-orange: #d08770;
+    --gruvbox-bg: #171d23;
+    --gruvbox-fg: #d4d4d4;
+    --gruvbox-gray: #6b7580;
+    --gruvbox-red: #f26d78;
+    --gruvbox-green: #7fb95f;
+    --gruvbox-yellow: #e6c000;
+    --gruvbox-blue: #41a6d8;
+    --gruvbox-purple: #b372e0;
+    --gruvbox-aqua: #4dbfbc;
+    --gruvbox-orange: #ff903d;
     
     /* Darker variants for backgrounds */
-    --gruvbox-bg-dark: #081016;
-    --gruvbox-bg0: #0a141c;
-    --gruvbox-bg1: #152533;
-    --gruvbox-bg2: #203547;
-    --gruvbox-bg3: #2b455d;
-    --gruvbox-bg4: #365572;
+    --gruvbox-bg-dark: #12171d;
+    --gruvbox-bg0: #171d23;
+    --gruvbox-bg1: #202830;
+    --gruvbox-bg2: #2a343f;
+    --gruvbox-bg3: #35414e;
+    --gruvbox-bg4: #404e5d;
     
     /* Lighter variants for foreground */
-    --gruvbox-fg0: #e0f0ff;
-    --gruvbox-fg1: #b8d3e6;
-    --gruvbox-fg2: #95b3cc;
-    --gruvbox-fg3: #7493b3;
-    --gruvbox-fg4: #5c7a92;
+    --gruvbox-fg0: #ffffff;
+    --gruvbox-fg1: #d4d4d4;
+    --gruvbox-fg2: #b8b8b8;
+    --gruvbox-fg3: #9c9c9c;
+    --gruvbox-fg4: #6b7580;
     
     /* Selection colors */
-    --gruvbox-selection: #152533;
-    --gruvbox-highlight: #203547;
+    --gruvbox-selection: #202830;
+    --gruvbox-highlight: #2a343f;
   }
 
 html, body {
