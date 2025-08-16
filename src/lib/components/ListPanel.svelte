@@ -1,10 +1,15 @@
 <script lang="ts">
   import { currentSection, currentItems, listIndex, focusedPanel } from '$lib/store';
   import { navigateToListItem } from '$lib/store';
+  import type { NavigationItem } from '$types/index';
 
   function selectListItem(index: number) {
     navigateToListItem(index);
     focusedPanel.set('list'); // Set this panel as focused
+  }
+  
+  function isExternalLink(item: NavigationItem): item is ExternalLink {
+    return (item as ExternalLink).url !== undefined;
   }
   
   function formatDate(dateString?: string): string {
@@ -28,8 +33,13 @@
           class:selected={$listIndex === i && $focusedPanel === 'list'}
           on:click={() => selectListItem(i)}
         >
-          <span class="item-title">• {item.title}</span>
-          <span class="item-date">{formatDate(item.date)}</span>
+          {#if isExternalLink(item)}
+            <span class="item-title">{item.icon} {item.title}</span>
+            <span class="item-date">External Link</span>
+          {:else}
+            <span class="item-title">• {item.title}</span>
+            <span class="item-date">{formatDate(item.date)}</span>
+          {/if}
         </button>
       </li>
     {/each}
