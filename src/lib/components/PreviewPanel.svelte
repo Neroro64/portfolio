@@ -1,6 +1,7 @@
 <script lang="ts">
   import { selectedItem, focusedPanel } from '$lib/store';
   import type { NavigationItem } from '$types/index';
+  import SvelteMarkdown from '@humanspeak/svelte-markdown';
 
   function isExternalLink(item: NavigationItem): item is ExternalLink {
     return (item as ExternalLink).url !== undefined;
@@ -19,8 +20,8 @@
     {:else}
       <h2>{$selectedItem.title}</h2>
       <p class="highlight">{$selectedItem.date}</p>
-      <p>{$selectedItem.content}</p>
-
+      <SvelteMarkdown {source} />
+      
       {#if $selectedItem.tags && $selectedItem.tags.length > 0}
         <div class="tags">
           <strong>Tags:</strong>
