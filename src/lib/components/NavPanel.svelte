@@ -62,8 +62,8 @@
   });
 </script>
 
-<div class="border p-2 mb-4">
-  <h2 class="highlight mb-2">{sections.find(s => s.id === currentSection)?.name}</h2>
+<div class="border p-2 mb-4 bg-black text-green-400 font-mono">
+  <h2 class="mb-2">{sections.find(s => s.id === currentSection)?.name}</h2>
   <ul class="space-y-1">
     {#each sections.find(s => s.id === currentSection)?.items as item}
       <li>
@@ -71,7 +71,7 @@
           class="w-full text-left p-1 hover:bg-green-900 {selectedItem?.id === item.id ? 'bg-green-900' : ''}"
           on:click={() => selectItem(item)}
         >
-          <span class="highlight">•</span> {item.title}
+          <span>•</span> {item.title}
         </button>
       </li>
     {/each}

@@ -40,14 +40,14 @@
   });
 </script>
 
-<nav class="border p-2 mb-4">
-  <div class="flex flex-wrap gap-2">
+<nav class="border p-2 mb-4 bg-black text-green-400 font-mono">
+  <div class="flex flex-wrap gap-1">
     {#each sections as section}
       <button 
-        class="px-3 py-1 border {currentSection === section.id ? 'bg-green-900' : 'bg-transparent'}"
+        class="px-3 py-1 border {currentSection === section.id ? 'bg-green-900' : 'bg-black'}"
         on:click={() => selectSection(section.id)}
       >
-        <span class="highlight">{section.icon}</span> {section.name}
+        <span>{section.icon}</span> {section.name}
       </button>
     {/each}
   </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { appStore } from '$lib/store';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   
   let currentSection: string = '';
   let selectedItem: any = null;
@@ -16,16 +16,16 @@
   });
 </script>
 
-<footer class="border p-2 mt-4">
-  <div class="flex justify-between text-sm">
+<footer class="border p-2 mt-4 bg-black text-green-400 font-mono text-sm">
+  <div class="flex justify-between">
     <span>
-      <span class="highlight">Section:</span> {currentSection}
+      Section: {currentSection}
     </span>
     <span>
       {#if selectedItem}
-        <span class="highlight">Item:</span> {selectedItem.title}
+        Item: {selectedItem.title}
       {:else}
-        <span class="highlight">Item:</span> None
+        Item: None
       {/if}
     </span>
   </div>
