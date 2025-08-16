@@ -2,24 +2,29 @@ import { writable, derived } from 'svelte/store';
 import type { NavigationSection, PortfolioItem } from '$types/index';
 
 // --- Dynamic Data Loading ---
-async function loadContent(): Promise<NavigationSection[]> {
-  try {
-    // In a real implementation, this would fetch from an API or read from filesystem
-    // For now, we'll return the same structure but with our sample content
-    return [
-      {
-        id: 'projects',
-        name: 'Projects',
-        icon: '📁',
-        items: [
-          {
-            id: 'portfolio',
-            title: 'Echoes of the Deep Portfolio',
-            description: 'A terminal-inspired portfolio website built with Svelte and TypeScript.',
-            type: 'project',
-            date: '2023-08-15',
-            tags: ['Svelte', 'TypeScript', 'Bun'],
-            content: `This portfolio showcases my work in a Ranger-like terminal interface. It features multi-panel navigation, keyboard controls, and a retro terminal aesthetic.
+let loadedSections: NavigationSection[] = [];
+
+// Try to load generated content data
+try {
+  // @ts-ignore
+  loadedSections = (await import('$lib/content-data.json')).default;
+} catch (error) {
+  console.warn('Failed to load content data, using defaults:', error);
+  // Fallback to default content
+  loadedSections = [
+    {
+      id: 'projects',
+      name: 'Projects',
+      icon: '📁',
+      items: [
+        {
+          id: 'portfolio',
+          title: 'Echoes of the Deep Portfolio',
+          description: 'A terminal-inspired portfolio website built with Svelte and TypeScript.',
+          type: 'project',
+          date: '2023-08-15',
+          tags: ['Svelte', 'TypeScript', 'Bun'],
+          content: `This portfolio showcases my work in a Ranger-like terminal interface. It features multi-panel navigation, keyboard controls, and a retro terminal aesthetic.
 
 ## Features
 
@@ -37,22 +42,22 @@ async function loadContent(): Promise<NavigationSection[]> {
 - **Styling**: CSS Modules / Tailwind CSS
 - **Routing**: SvelteKit's built-in routing
 - **Type Safety**: TypeScript`
-          }
-        ]
-      },
-      {
-        id: 'experience',
-        name: 'Experience',
-        icon: '💼',
-        items: [
-          {
-            id: 'senior-dev',
-            title: 'Senior Frontend Developer',
-            description: 'Led development of multiple web applications for enterprise clients.',
-            type: 'experience',
-            date: '2022-01-01',
-            tags: ['React', 'TypeScript', 'Node.js'],
-            content: `As a senior developer, I was responsible for architecting and implementing complex frontend solutions. My team delivered several high-impact projects on time and within budget.
+        }
+      ]
+    },
+    {
+      id: 'experience',
+      name: 'Experience',
+      icon: '💼',
+      items: [
+        {
+          id: 'senior-dev',
+          title: 'Senior Frontend Developer',
+          description: 'Led development of multiple web applications for enterprise clients.',
+          type: 'experience',
+          date: '2022-01-01',
+          tags: ['React', 'TypeScript', 'Node.js'],
+          content: `As a senior developer, I was responsible for architecting and implementing complex frontend solutions. My team delivered several high-impact projects on time and within budget.
 
 ## Key Responsibilities
 
@@ -69,22 +74,22 @@ async function loadContent(): Promise<NavigationSection[]> {
 - Node.js
 - Webpack and Babel
 - Jest and Testing Library`
-          }
-        ]
-      },
-      {
-        id: 'blog',
-        name: 'Blog',
-        icon: '📝',
-        items: [
-          {
-            id: 'sveltekit-guide',
-            title: 'Getting Started with SvelteKit',
-            description: 'A beginner-friendly guide to building applications with SvelteKit.',
-            type: 'blog',
-            date: '2023-08-10',
-            tags: ['Svelte', 'Tutorial'],
-            content: `In this article, I walk through the basics of SvelteKit and how to get started building modern web applications. We cover routing, components, and state management.
+        }
+      ]
+    },
+    {
+      id: 'blog',
+      name: 'Blog',
+      icon: '📝',
+      items: [
+        {
+          id: 'sveltekit-guide',
+          title: 'Getting Started with SvelteKit',
+          description: 'A beginner-friendly guide to building applications with SvelteKit.',
+          type: 'blog',
+          date: '2023-08-10',
+          tags: ['Svelte', 'Tutorial'],
+          content: `In this article, I walk through the basics of SvelteKit and how to get started building modern web applications. We cover routing, components, and state management.
 
 ## What is SvelteKit?
 
@@ -103,75 +108,14 @@ SvelteKit is a framework for building extremely high-performance web apps. It's 
 2. Create a new project with \`npm create svelte@latest my-app\`
 3. Install dependencies with \`npm install\`
 4. Start the development server with \`npm run dev\``
-          }
-        ]
-      }
-    ];
-  } catch (error) {
-    console.error('Failed to load content:', error);
-    return [];
-  }
+        }
+      ]
+    }
+  ];
 }
 
-// Initialize sections with loaded content
-export let sections: NavigationSection[] = [];
-
-// Load content asynchronously
-loadContent().then(loadedSections => {
-  sections = loadedSections;
-});
-
-// For SSR compatibility, we also provide a synchronous version with default content
-export const defaultSections: NavigationSection[] = [
-  {
-    id: 'projects',
-    name: 'Projects',
-    icon: '📁',
-    items: [
-      {
-        id: 'portfolio',
-        title: 'Echoes of the Deep Portfolio',
-        description: 'A terminal-inspired portfolio website built with Svelte and TypeScript.',
-        type: 'project',
-        date: '2023-08-15',
-        tags: ['Svelte', 'TypeScript', 'Bun'],
-        content: 'This portfolio showcases my work in a Ranger-like terminal interface...'
-      }
-    ]
-  },
-  {
-    id: 'experience',
-    name: 'Experience',
-    icon: '💼',
-    items: [
-      {
-        id: 'senior-dev',
-        title: 'Senior Frontend Developer',
-        description: 'Led development of multiple web applications for enterprise clients.',
-        type: 'experience',
-        date: '2022-01-01',
-        tags: ['React', 'TypeScript', 'Node.js'],
-        content: 'As a senior developer, I was responsible for architecting...'
-      }
-    ]
-  },
-  {
-    id: 'blog',
-    name: 'Blog',
-    icon: '📝',
-    items: [
-      {
-        id: 'sveltekit-guide',
-        title: 'Getting Started with SvelteKit',
-        description: 'A beginner-friendly guide to building applications with SvelteKit.',
-        type: 'blog',
-        date: '2023-08-10',
-        tags: ['Svelte', 'Tutorial'],
-        content: 'In this article, I walk through the basics of SvelteKit...'
-      }
-    ]
-  }
-];
+// Export sections for use in components
+export const sections = loadedSections;
 
 // --- Writable Stores for Core State ---
 
@@ -187,11 +131,7 @@ export const listIndex = writable(0);
 // --- Derived Stores for Computed State ---
 
 /** The current section object, derived from the navIndex */
-export const currentSection = derived(navIndex, ($navIndex) => {
-  // Use loaded sections if available, otherwise fallback to defaults
-  const activeSections = sections.length > 0 ? sections : defaultSections;
-  return activeSections[$navIndex] || activeSections[0];
-});
+export const currentSection = derived(navIndex, ($navIndex) => sections[$navIndex] || sections[0]);
 
 /** The items for the current section */
 export const currentItems = derived(currentSection, ($currentSection) => 

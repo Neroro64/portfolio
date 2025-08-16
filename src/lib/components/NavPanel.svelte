@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { navIndex, focusedPanel } from '$lib/store';
-  import { defaultSections as sections } from '$lib/store';
+  import { navIndex, focusedPanel, sections } from '$lib/store';
   import { navigateToSection } from '$lib/store';
 
   function selectSection(index: number) {

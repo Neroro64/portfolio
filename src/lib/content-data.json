@@ -1,0 +1,61 @@
+[
+  {
+    "id": "projects",
+    "name": "Projects",
+    "icon": "📁",
+    "items": [
+      {
+        "id": "portfolio",
+        "title": "Echoes of the Deep Portfolio",
+        "description": "A terminal-inspired portfolio website built with Svelte and TypeScript.",
+        "type": "project",
+        "date": "2023-08-15T00:00:00.000Z",
+        "tags": [
+          "Svelte",
+          "TypeScript",
+          "Bun"
+        ],
+        "content": "\nThis portfolio showcases my work in a Ranger-like terminal interface. It features multi-panel navigation, keyboard controls, and a retro terminal aesthetic.\n\n## Features\n\n- Terminal-inspired UI with keyboard navigation\n- File manager-like browsing experience with multi-panel interface\n- Responsive design for all screen sizes\n- Fast loading times thanks to Bun\n- Type-safe development with TypeScript\n- Interactive terminal-style interface with panel-based navigation\n\n## Technology Stack\n\n- **Frontend**: Svelte (with TypeScript)\n- **Build Tool**: Bun\n- **Styling**: CSS Modules / Tailwind CSS\n- **Routing**: SvelteKit's built-in routing\n- **Type Safety**: TypeScript"
+      }
+    ]
+  },
+  {
+    "id": "experience",
+    "name": "Experience",
+    "icon": "💼",
+    "items": [
+      {
+        "id": "senior-dev",
+        "title": "Senior Frontend Developer",
+        "description": "Led development of multiple web applications for enterprise clients.",
+        "type": "experience",
+        "date": "2022-01-01T00:00:00.000Z",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js"
+        ],
+        "content": "\nAs a senior developer, I was responsible for architecting and implementing complex frontend solutions. My team delivered several high-impact projects on time and within budget.\n\n## Key Responsibilities\n\n- Led a team of 5 frontend developers\n- Architected scalable frontend solutions\n- Mentored junior developers\n- Collaborated with UX designers and backend engineers\n- Implemented CI/CD pipelines for frontend applications\n\n## Technologies Used\n\n- React and Redux\n- TypeScript\n- Node.js\n- Webpack and Babel\n- Jest and Testing Library"
+      }
+    ]
+  },
+  {
+    "id": "blog",
+    "name": "Blog",
+    "icon": "📝",
+    "items": [
+      {
+        "id": "sveltekit-guide",
+        "title": "Getting Started with SvelteKit",
+        "description": "A beginner-friendly guide to building applications with SvelteKit.",
+        "type": "blog",
+        "date": "2023-08-10T00:00:00.000Z",
+        "tags": [
+          "Svelte",
+          "Tutorial"
+        ],
+        "content": "\nIn this article, I walk through the basics of SvelteKit and how to get started building modern web applications. We cover routing, components, and state management.\n\n## What is SvelteKit?\n\nSvelteKit is a framework for building extremely high-performance web apps. It's built on top of Svelte, which compiles your components to highly efficient vanilla JavaScript at build time.\n\n## Why SvelteKit?\n\n1. **Performance**: Svelte's compile-time approach results in smaller bundles and faster runtime\n2. **Developer Experience**: Excellent tooling and hot module replacement\n3. **Flexibility**: Works as an SPA, SSR, or static site generator\n4. **Progressive Enhancement**: Built-in support for enhanced user experiences\n\n## Getting Started\n\n1. Install Node.js (v16 or higher)\n2. Create a new project with `npm create svelte@latest my-app`\n3. Install dependencies with `npm install`\n4. Start the development server with `npm run dev`"
+      }
+    ]
+  }
+]

@@ -9,9 +9,9 @@
     focusNextPanel,
     focusPrevPanel,
     navigateToSection,
-    navigateToListItem
+    navigateToListItem,
+    sections
   } from '$lib/store';
-  import { defaultSections as sections } from '$lib/store';
 
   function handleKeyDown(e: KeyboardEvent) {
     const key = e.key;
