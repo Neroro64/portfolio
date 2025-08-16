@@ -12,12 +12,9 @@
     {#if isExternalLink($selectedItem)}
       <h2>{$selectedItem.title}</h2>
       <p>External Link: <a href={$selectedItem.url} target="_blank">{$selectedItem.url}</a></p>
-      <div class="iframe-container">
-        <iframe 
-          src={$selectedItem.url} 
-          title={$selectedItem.title}
-          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-        ></iframe>
+      <div class="iframe-message">
+        <p>This website has prevented embedding in iframes.</p>
+        <p>Please click the link above to visit the site directly.</p>
       </div>
     {:else}
       <h2>{$selectedItem.title}</h2>
@@ -62,15 +59,11 @@
     font-size: 0.8rem;
   }
   
-  .iframe-container {
+  .iframe-message {
     margin-top: 1rem;
-    height: calc(100% - 100px);
-    overflow: hidden;
-  }
-  
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--gruvbox-bg2);
+    border-radius: 4px;
   }
 </style>

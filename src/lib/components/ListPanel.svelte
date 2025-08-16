@@ -32,6 +32,7 @@
         <button
           class:selected={$listIndex === i && $focusedPanel === 'list'}
           on:click={() => selectListItem(i)}
+          aria-label={isExternalLink(item) ? `External link: ${item.title}` : `Item: ${item.title}`}
         >
           {#if isExternalLink(item)}
             <span class="item-title">{item.icon} {item.title}</span>
@@ -60,11 +61,13 @@
     border: none;
     color: inherit;
     cursor: pointer;
+    outline: none; /* Remove default focus outline */
   }
   
   li button:hover,
   li button:focus {
     background-color: rgba(255, 255, 255, 0.1);
+    outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
   }
   
   .item-title {
