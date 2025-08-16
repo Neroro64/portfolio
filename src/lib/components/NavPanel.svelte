@@ -62,13 +62,13 @@
   });
 </script>
 
-<div class="border p-2 mb-4 bg-black text-green-400 font-mono">
-  <h2 class="mb-2">{sections.find(s => s.id === currentSection)?.name}</h2>
-  <ul class="space-y-1">
+<div class="panel">
+  <h2>{sections.find(s => s.id === currentSection)?.name}</h2>
+  <ul>
     {#each sections.find(s => s.id === currentSection)?.items as item}
       <li>
         <button 
-          class="w-full text-left p-1 hover:bg-green-900 {selectedItem?.id === item.id ? 'bg-green-900' : ''}"
+          class="{selectedItem?.id === item.id ? 'selected' : ''}"
           on:click={() => selectItem(item)}
         >
           <span>•</span> {item.title}

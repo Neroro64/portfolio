@@ -19,7 +19,7 @@
 </script>
 
 <footer>
-  <div class="flex justify-between">
+  <div>
     <span>
       Section: {currentSection}
     </span>

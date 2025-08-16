@@ -14,30 +14,30 @@
   });
 </script>
 
-<div class="border p-2 bg-black text-green-400 font-mono">
+<div class="panel">
   {#if selectedItem}
     <div>
-      <h2 class="text-xl mb-2">{selectedItem.title}</h2>
-      <p class="mb-3">{selectedItem.description}</p>
+      <h2>{selectedItem.title}</h2>
+      <p>{selectedItem.description}</p>
       
       {#if selectedItem.content}
-        <div class="mt-4">
+        <div>
           <h3>Content:</h3>
-          <div class="mt-2 whitespace-pre-line">{selectedItem.content}</div>
+          <div class="whitespace-pre-line">{selectedItem.content}</div>
         </div>
       {/if}
       
-      <div class="mt-4 text-sm">
+      <div>
         {#if selectedItem.date}
           <p><span>Date:</span> {selectedItem.date}</p>
         {/if}
         
         {#if selectedItem.tags && selectedItem.tags.length > 0}
-          <div class="mt-2">
+          <div>
             <span>Tags:</span>
-            <div class="mt-1 flex flex-wrap gap-1">
+            <div>
               {#each selectedItem.tags as tag}
-                <span class="px-2 py-1 bg-green-900 text-xs">{tag}</span>
+                <span class="highlight">{tag}</span>
               {/each}
             </div>
           </div>

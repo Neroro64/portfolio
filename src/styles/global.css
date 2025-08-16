@@ -1,16 +1,42 @@
-/* Global styles for Echoes of the Deep */
+/* Global styles for Echoes of the Deep - Gruvbox Theme */
 
+/* Gruvbox color palette */
 :root {
-  --terminal-bg: #000;
-  --terminal-text: #00ff00;
-  --terminal-border: #00aa00;
-  --terminal-highlight: #008800;
-  --terminal-selected: #005500;
+  /* Dark theme colors */
+  --gruvbox-bg: #282828;
+  --gruvbox-fg: #ebdbb2;
+  --gruvbox-gray: #928374;
+  --gruvbox-red: #fb4934;
+  --gruvbox-green: #b8bb26;
+  --gruvbox-yellow: #fabd2f;
+  --gruvbox-blue: #83a598;
+  --gruvbox-purple: #d3869b;
+  --gruvbox-aqua: #8ec07c;
+  --gruvbox-orange: #fe8019;
+  
+  /* Darker variants for backgrounds */
+  --gruvbox-bg-dark: #1d2021;
+  --gruvbox-bg0: #1d2021;
+  --gruvbox-bg1: #3c3836;
+  --gruvbox-bg2: #504945;
+  --gruvbox-bg3: #665c54;
+  --gruvbox-bg4: #7c6f64;
+  
+  /* Lighter variants for foreground */
+  --gruvbox-fg0: #fbf1c7;
+  --gruvbox-fg1: #ebdbb2;
+  --gruvbox-fg2: #d5c4a1;
+  --gruvbox-fg3: #bdae93;
+  --gruvbox-fg4: #a89984;
+  
+  /* Selection colors */
+  --gruvbox-selection: #3c3836;
+  --gruvbox-highlight: #504945;
 }
 
 body {
-  background-color: var(--terminal-bg);
-  color: var(--terminal-text);
+  background-color: var(--gruvbox-bg);
+  color: var(--gruvbox-fg);
   font-family: 'Courier New', monospace;
   margin: 0;
   padding: 0;
@@ -22,31 +48,31 @@ body {
   padding: 1rem;
 }
 
-/* Terminal-style border */
+/* Border styles */
 .border {
-  border: 1px solid var(--terminal-border);
+  border: 1px solid var(--gruvbox-bg3);
 }
 
 /* Header styles */
 header {
   text-align: left;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--terminal-border);
+  border-bottom: 1px solid var(--gruvbox-bg3);
   margin-bottom: 1rem;
-  background-color: var(--terminal-bg);
+  background-color: var(--gruvbox-bg0);
 }
 
 h1 {
   font-size: 1.5rem;
   margin: 0;
-  color: var(--terminal-text);
+  color: var(--gruvbox-yellow);
 }
 
 /* Panel styles - Ranger-like columns */
 .panel {
-  background-color: var(--terminal-bg);
-  color: var(--terminal-text);
-  border: 1px solid var(--terminal-border);
+  background-color: var(--gruvbox-bg0);
+  color: var(--gruvbox-fg);
+  border: 1px solid var(--gruvbox-bg3);
   padding: 0.5rem;
   min-height: 400px;
   flex: 1;
@@ -68,9 +94,9 @@ h1 {
 .panel h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--terminal-highlight);
+  color: var(--gruvbox-blue);
   font-size: 1rem;
-  border-bottom: 1px solid var(--terminal-border);
+  border-bottom: 1px solid var(--gruvbox-bg3);
   padding-bottom: 0.25rem;
 }
 
@@ -88,7 +114,7 @@ li {
 button {
   background: transparent;
   border: none;
-  color: var(--terminal-text);
+  color: var(--gruvbox-fg);
   cursor: pointer;
   font-family: 'Courier New', monospace;
   width: 100%;
@@ -98,16 +124,17 @@ button {
 }
 
 button:hover {
-  background-color: var(--terminal-highlight);
+  background-color: var(--gruvbox-selection);
 }
 
 button.selected {
-  background-color: var(--terminal-selected);
+  background-color: var(--gruvbox-highlight);
+  color: var(--gruvbox-yellow);
 }
 
 /* Highlight class for important text */
 .highlight {
-  color: var(--terminal-highlight);
+  color: var(--gruvbox-yellow);
   font-weight: bold;
 }
 
@@ -115,9 +142,11 @@ button.selected {
 footer {
   margin-top: 1rem;
   padding: 0.5rem;
-  border-top: 1px solid var(--terminal-border);
+  border-top: 1px solid var(--gruvbox-bg3);
   text-align: left;
   font-size: 0.8rem;
+  background-color: var(--gruvbox-bg0);
+  color: var(--gruvbox-gray);
 }
 
 /* Responsive adjustments */

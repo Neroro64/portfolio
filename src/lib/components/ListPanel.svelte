@@ -18,21 +18,21 @@
   });
 </script>
 
-<div class="border p-2 mb-4 bg-black text-green-400 font-mono">
-  <h2 class="mb-2">Items in {sections.find(s => s.id === currentSection)?.name}</h2>
-  <div class="space-y-3">
+<div class="panel">
+  <h2>Items in {sections.find(s => s.id === currentSection)?.name}</h2>
+  <div>
     {#each sections.find(s => s.id === currentSection)?.items as item}
-      <div class="p-2 border">
+      <div class="border">
         <h3>{item.title}</h3>
-        <p class="text-sm mt-1">{item.description}</p>
-        <div class="mt-2 text-xs">
+        <p>{item.description}</p>
+        <div>
           {#if item.date}
             <span>{item.date}</span>
           {/if}
           {#if item.tags && item.tags.length > 0}
-            <div class="mt-1 flex flex-wrap gap-1">
+            <div>
               {#each item.tags as tag}
-                <span class="px-2 py-1 bg-green-900 text-xs">{tag}</span>
+                <span class="highlight">{tag}</span>
               {/each}
             </div>
           {/if}
