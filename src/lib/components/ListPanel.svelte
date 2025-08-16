@@ -66,4 +66,10 @@
     color: #888;
     font-size: 0.9em;
   }
+  
+  /* Ensure the selected state is properly styled */
+  li button.selected {
+    background-color: var(--gruvbox-highlight);
+    color: var(--gruvbox-yellow);
+  }
 </style>
