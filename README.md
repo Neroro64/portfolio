@@ -1,10 +1,6 @@
-# Echoes of the Deep 
+# Echoes of the Deep
 
 A digital realm forged in Svelte, TypeScript, and Bun, where the TUI ranger-like interface whispers secrets of a forgotten past.
-
-Within this forsaken landscape, travelers shall discover the remnants of my professional odyssey—scattered relics of experiences, abandoned projects, and cryptic blog posts that serve as learning documentation for those brave enough to venture forth.
-
-This cursed hub holds the keys to unlock my mastery, where each exploration reveals new depths of my craft, and every reflection offers a glimmer of hope amidst the darkness.
 
 ## Overview
 
@@ -69,7 +65,7 @@ src/
 ├── routes/           # Page routes
 │   ├── +layout.svelte
 │   └── +page.svelte
-├── components/       # UI components
+├── components/       # UI components (in lib/components)
 │   ├── Header.svelte
 │   ├── Navigation.svelte
 │   ├── NavPanel.svelte
@@ -101,7 +97,7 @@ The interface is designed with a terminal-inspired aesthetic that mimics popular
 
 ## Development Workflow
 
-1. Create new components in `src/components/`
+1. Create new components in `src/lib/components/`
 2. Add routes in `src/routes/`
 3. Use TypeScript for type safety
 4. Style with CSS modules or Tailwind CSS
