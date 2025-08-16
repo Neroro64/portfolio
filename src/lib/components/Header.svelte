@@ -12,10 +12,12 @@
   <div class="header-content">
     <div class="personal-info">
       <h1>{title}</h1>
-      <p class="name">{name}</p>
-      <p class="title">{jobTitle}</p>
-      <p class="motto">{motto}</p>
-      <p class="email"><a href={`mailto:${email}`}>{email}</a></p>
+      <p class="info-line">
+        <span class="name">{name}</span>
+        <span class="title">{jobTitle}</span>
+        <span class="motto">{motto}</span>
+        <span class="email"><a href={`mailto:${email}`}>{email}</a></span>
+      </p>
     </div>
   </div>
 </header>
@@ -35,28 +37,35 @@
     text-align: left;
   }
   
+  .info-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
   .name {
     font-size: 1.5rem;
-    margin: 0.25rem 0;
+    margin: 0;
     color: var(--gruvbox-yellow);
   }
   
   .title {
     font-size: 1.1rem;
-    margin: 0.25rem 0;
+    margin: 0;
     color: var(--gruvbox-blue);
   }
   
   .motto {
     font-size: 0.9rem;
-    margin: 0.25rem 0;
+    margin: 0;
     color: var(--gruvbox-gray);
     font-style: italic;
   }
   
   .email {
     font-size: 0.9rem;
-    margin: 0.25rem 0;
+    margin: 0;
     color: var(--gruvbox-aqua);
   }
   
