@@ -44,7 +44,7 @@ html, body {
 body {
   background-color: var(--gruvbox-bg);
   color: var(--gruvbox-fg);
-  font-family: 'Courier New', monospace;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
   /* Make the body a vertical flex container */
   display: flex;
   flex-direction: column;
