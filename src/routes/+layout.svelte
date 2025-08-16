@@ -1,9 +1,8 @@
 <script lang="ts">
   import Header from '$lib/components/Header.svelte';
-  import Navigation from '$lib/components/Navigation.svelte';
-  import NavPanel from '$lib/components/NavPanel.svelte';
-  import ListPanel from '$lib/components/ListPanel.svelte';
-  import PreviewPanel from '$lib/components/PreviewPanel.svelte';
+  import LeftPane from '$lib/components/LeftPane.svelte';
+  import MiddlePane from '$lib/components/MiddlePane.svelte';
+  import RightPane from '$lib/components/RightPane.svelte';
   import Footer from '$lib/components/Footer.svelte';
   
   let { children } = $props();
@@ -16,12 +15,10 @@
 <div class="container">
   <Header title="Echoes of the Deep" />
   
-  <Navigation />
-  
   <div class="flex flex-col gap-4">
-    <NavPanel />
-    <ListPanel />
-    <PreviewPanel />
+    <LeftPane />
+    <MiddlePane />
+    <RightPane />
   </div>
   
   <Footer />
