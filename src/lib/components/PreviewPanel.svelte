@@ -1,50 +1,44 @@
 <script lang="ts">
-  import { appStore } from '$lib/store';
-  import { onMount, onDestroy } from 'svelte';
-  
-  let selectedItem: any = null;
-  
-  // Subscribe to store changes
-  const unsubscribe = appStore.subscribe((state) => {
-    selectedItem = state.selectedItem;
-  });
-  
-  onMount(() => {
-    return () => unsubscribe();
-  });
+  import { selectedItem, focusedPanel } from '$lib/store';
 </script>
 
-<div class="panel">
-  {#if selectedItem}
-    <div>
-      <h2>{selectedItem.title}</h2>
-      <p>{selectedItem.description}</p>
-      
-      {#if selectedItem.content}
-        <div>
-          <h3>Content:</h3>
-          <div class="whitespace-pre-line">{selectedItem.content}</div>
-        </div>
-      {/if}
-      
-      <div>
-        {#if selectedItem.date}
-          <p><span>Date:</span> {selectedItem.date}</p>
-        {/if}
-        
-        {#if selectedItem.tags && selectedItem.tags.length > 0}
-          <div>
-            <span>Tags:</span>
-            <div>
-              {#each selectedItem.tags as tag}
-                <span class="highlight">{tag}</span>
-              {/each}
-            </div>
-          </div>
-        {/if}
+<div class="preview-content" class:focused={$focusedPanel === 'preview'}>
+  {#if $selectedItem}
+    <h2>{$selectedItem.title}</h2>
+    <p class="highlight">{$selectedItem.date}</p>
+    <p>{$selectedItem.content}</p>
+
+    {#if $selectedItem.tags && $selectedItem.tags.length > 0}
+      <div class="tags">
+        <strong>Tags:</strong>
+        {#each $selectedItem.tags as tag}
+          <span>{tag}</span>
+        {/each}
       </div>
-    </div>
+    {/if}
   {:else}
-    <p>Select an item to preview</p>
+    <p>Select an item to preview.</p>
   {/if}
 </div>
+
+<style>
+  .preview-content {
+    border: 1px solid transparent;
+    padding: 0.5rem;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .preview-content.focused {
+    border-color: var(--gruvbox-yellow);
+  }
+  .tags {
+    margin-top: 1rem;
+  }
+  .tags span {
+    background-color: var(--gruvbox-bg2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+</style>

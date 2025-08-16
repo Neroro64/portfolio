@@ -1,79 +1,23 @@
 <script lang="ts">
-  import { appStore } from '$lib/store';
-  import { onMount, onDestroy } from 'svelte';
-  
-  let sections: any[] = [];
-  let currentSection: string = '';
-  let selectedItem: any = null;
-  
-  // Subscribe to store changes
-  const unsubscribe = appStore.subscribe((state) => {
-    sections = state.sections;
-    currentSection = state.currentSection;
-    selectedItem = state.selectedItem;
-  });
-  
-  onMount(() => {
-    return () => unsubscribe();
-  });
-  
-  function selectItem(item: any) {
-    appStore.setSelectedItem(item);
+  import { navIndex, focusedPanel, sections, listIndex } from '$lib/store';
+
+  function selectSection(index: number) {
+    navIndex.set(index);
+    listIndex.set(0); // Reset list index when changing section
+    focusedPanel.set('nav'); // Set this panel as focused
   }
-  
-  // Keyboard navigation for items
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp' || event.key === 'k') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select previous one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const prevIndex = (currentIndex - 1 + section.items.length) % section.items.length;
-        selectItem(section.items[prevIndex]);
-      }
-    } else if (event.key === 'ArrowDown' || event.key === 'j') {
-      event.preventDefault();
-      const section = sections.find(s => s.id === currentSection);
-      if (section && section.items.length > 0) {
-        // Find current item index and select next one
-        let currentIndex = -1;
-        if (selectedItem) {
-          currentIndex = section.items.findIndex((item: any) => item.id === selectedItem.id);
-        }
-        const nextIndex = (currentIndex + 1) % section.items.length;
-        selectItem(section.items[nextIndex]);
-      }
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
-      // If an item is selected, open it in preview
-      if (selectedItem) {
-        appStore.setSelectedItem(selectedItem);
-      }
-    }
-  }
-  
-  onMount(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  });
 </script>
 
-<div class="panel">
-  <h2>{sections.find(s => s.id === currentSection)?.name}</h2>
-  <ul>
-    {#each sections.find(s => s.id === currentSection)?.items as item}
-      <li>
-        <button 
-          class="{selectedItem?.id === item.id ? 'selected' : ''}"
-          on:click={() => selectItem(item)}
-        >
-          <span>•</span> {item.title}
-        </button>
-      </li>
-    {/each}
-  </ul>
-</div>
+<h2>Sections</h2>
+<ul>
+  {#each sections as section, i}
+    <li>
+      <button
+        class:selected={$navIndex === i && $focusedPanel === 'nav'}
+        on:click={() => selectSection(i)}
+      >
+        {section.icon} {section.name}
+      </button>
+    </li>
+  {/each}
+</ul>

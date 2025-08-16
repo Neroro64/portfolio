@@ -34,18 +34,33 @@
   --gruvbox-highlight: #504945;
 }
 
+html, body {
+  overflow: hidden; /* Prevent the whole page from scrolling */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   background-color: var(--gruvbox-bg);
   color: var(--gruvbox-fg);
   font-family: 'Courier New', monospace;
-  margin: 0;
-  padding: 0;
+  /* Make the body a vertical flex container */
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  display: flex;
+  flex: 1; /* This makes the main container grow to fill available space */
+  min-height: 0; /* A flexbox fix to prevent content from overflowing */
+}
+
+.column {
+ flex: 1;
+ padding: 1rem;
+ border: 1px solid #ccc;
+ overflow-y: auto;
 }
 
 /* Border styles */
@@ -74,8 +89,8 @@ h1 {
   color: var(--gruvbox-fg);
   border: 1px solid var(--gruvbox-bg3);
   padding: 0.5rem;
-  min-height: 400px;
   flex: 1;
+  overflow-y: auto; /* Allow individual panels to scroll */
 }
 
 /* Make panels take appropriate width for Ranger layout */
