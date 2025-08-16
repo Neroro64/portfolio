@@ -95,15 +95,15 @@ h1 {
 
 /* Make panels take appropriate width for Ranger layout */
 .panel:nth-child(1) { /* Left panel */
-  flex: 0 0 20%;
+  flex: 0 0 15%;
 }
 
 .panel:nth-child(2) { /* Middle panel */
-  flex: 0 0 30%;
+  flex: 0 0 25%;
 }
 
 .panel:nth-child(3) { /* Right panel */
-  flex: 0 0 50%;
+  flex: 0 0 60%;
 }
 
 .panel h2 {
