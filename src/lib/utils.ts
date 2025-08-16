@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
-import type { PortfolioItem } from '$types/index';
+import type { PortfolioItem, ExternalLink } from '$types/index';
 import { fileURLToPath } from 'url';
 
 // Get the directory name in ES module
@@ -51,7 +51,7 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
 /**
  * Load all content sections from the content directory
  */
-export function loadContentSections(contentBasePath: string): Array<{id: string, name: string, icon: string, items: PortfolioItem[]}> {
+export function loadContentSections(contentBasePath: string): Array<{id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[]}> {
   try {
     const sections = [
       {
@@ -71,6 +71,31 @@ export function loadContentSections(contentBasePath: string): Array<{id: string,
         name: 'Blog',
         icon: '📝',
         items: scanMarkdownDirectory(path.join(contentBasePath, 'blog'))
+      },
+      {
+        id: 'links',
+        name: 'Links',
+        icon: '🔗',
+        items: [
+          {
+            id: 'github',
+            title: 'GitHub Profile',
+            url: 'https://github.com/alexmorgan',
+            icon: '🐙'
+          },
+          {
+            id: 'linkedin',
+            title: 'LinkedIn Profile',
+            url: 'https://www.linkedin.com/in/alexmorgan',
+            icon: '👔'
+          },
+          {
+            id: 'portfolio-site',
+            title: 'Portfolio Website',
+            url: 'https://alexmorgan.dev',
+            icon: '🌐'
+          }
+        ]
       }
     ];
     

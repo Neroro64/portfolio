@@ -8,9 +8,18 @@ export interface PortfolioItem {
   content?: string;
 }
 
+export interface ExternalLink {
+  id: string;
+  title: string;
+  url: string;
+  icon: string;
+}
+
+export type NavigationItem = PortfolioItem | ExternalLink;
+
 export interface NavigationSection {
   id: string;
   name: string;
   icon: string;
-  items: PortfolioItem[];
+  items: NavigationItem[];
 }
