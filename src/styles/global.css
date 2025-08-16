@@ -1,0 +1,52 @@
+/* Terminal-style styling */
+:root {
+  --terminal-bg: #0a0a0a;
+  --terminal-text: #00ff00;
+  --terminal-border: #008800;
+  --terminal-highlight: #00aa00;
+  --terminal-accent: #00ff00;
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Terminal-style borders */
+.border {
+  border: 1px solid var(--terminal-border);
+}
+
+/* Terminal-style highlights */
+.highlight {
+  color: var(--terminal-highlight);
+  font-weight: bold;
+}
+
+/* Scrollbar styling for terminal look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-highlight);
+}
