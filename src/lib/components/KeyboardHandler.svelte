@@ -7,9 +7,11 @@
     listIndex,
     currentItems,
     focusNextPanel,
-    focusPrevPanel
+    focusPrevPanel,
+    navigateToSection,
+    navigateToListItem
   } from '$lib/store';
-  import { sections } from '$lib/store';
+  import { defaultSections as sections } from '$lib/store';
 
   function handleKeyDown(e: KeyboardEvent) {
     const key = e.key;
@@ -17,8 +19,10 @@
     // --- Panel Focus (h, l, ArrowLeft, ArrowRight) ---
     if (key === 'l' || key === 'ArrowRight') {
       focusNextPanel();
+      e.preventDefault(); // Prevent page scrolling
     } else if (key === 'h' || key === 'ArrowLeft') {
       focusPrevPanel();
+      e.preventDefault(); // Prevent page scrolling
     }
 
     // --- Item Navigation (j, k, ArrowDown, ArrowUp) ---
@@ -26,24 +30,33 @@
     if (key === 'j' || key === 'ArrowDown') {
       e.preventDefault(); // Prevent page scrolling
       if (activePanel === 'nav') {
-        navIndex.update(n => {
-          const newIndex = Math.min(sections.length - 1, n + 1);
-          if (newIndex !== n) listIndex.set(0); // Reset list index on section change
-          return newIndex;
-        });
+        const currentIndex = get(navIndex);
+        const newIndex = Math.min(sections.length - 1, currentIndex + 1);
+        if (newIndex !== currentIndex) {
+          navigateToSection(newIndex);
+        }
       } else if (activePanel === 'list') {
-        listIndex.update(n => Math.min(get(currentItems).length - 1, n + 1));
+        const items = get(currentItems);
+        const currentIndex = get(listIndex);
+        const newIndex = Math.min(items.length - 1, currentIndex + 1);
+        if (newIndex !== currentIndex) {
+          navigateToListItem(newIndex);
+        }
       }
     } else if (key === 'k' || key === 'ArrowUp') {
       e.preventDefault(); // Prevent page scrolling
       if (activePanel === 'nav') {
-        navIndex.update(n => {
-          const newIndex = Math.max(0, n - 1);
-          if (newIndex !== n) listIndex.set(0); // Reset list index on section change
-          return newIndex;
-        });
+        const currentIndex = get(navIndex);
+        const newIndex = Math.max(0, currentIndex - 1);
+        if (newIndex !== currentIndex) {
+          navigateToSection(newIndex);
+        }
       } else if (activePanel === 'list') {
-        listIndex.update(n => Math.max(0, n - 1));
+        const currentIndex = get(listIndex);
+        const newIndex = Math.max(0, currentIndex - 1);
+        if (newIndex !== currentIndex) {
+          navigateToListItem(newIndex);
+        }
       }
     }
   }

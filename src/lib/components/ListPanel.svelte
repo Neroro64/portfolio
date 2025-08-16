@@ -1,8 +1,9 @@
 <script lang="ts">
   import { currentSection, currentItems, listIndex, focusedPanel } from '$lib/store';
+  import { navigateToListItem } from '$lib/store';
 
   function selectListItem(index: number) {
-    listIndex.set(index);
+    navigateToListItem(index);
     focusedPanel.set('list'); // Set this panel as focused
   }
 </script>
