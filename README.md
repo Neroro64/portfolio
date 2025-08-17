@@ -53,6 +53,9 @@ bun run dev
 # Build for production
 bun run build
 
+# Generate the list of items from the content folder
+bun run generate-content
+
 # Run tests
 bun test
 ```
