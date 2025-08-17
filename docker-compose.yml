@@ -1,0 +1,8 @@
+services:
+  portfolio:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "32768:3000"
+    environment:
+      - NODE_ENV=production

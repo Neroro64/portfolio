@@ -18,13 +18,16 @@
 
 <svelte:head>
   <title>Echoes of the Deep</title>
-  <link rel="stylesheet" href="/src/styles/global.css" />
 </svelte:head>
+
 
 <Header title="Echoes of the Deep" />
 
 <main class="container">
   {@render children()}
+  <style>
+  @import "/src/styles/global.css";
+  </style>
 </main>
 
 <Footer />
