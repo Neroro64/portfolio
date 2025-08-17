@@ -5,45 +5,47 @@
     "icon": "📁",
     "items": [
       {
-        "id": "react-dashboard",
-        "title": "React Analytics Dashboard",
-        "description": "A real-time analytics dashboard for business metrics.",
+        "id": "transfer-learning-motion-synthesis",
+        "title": "A study of transfer learning on data-driven motion synthesis frameworks",
+        "description": "This research explores transfer learning techniques to enhance the scalability and applicability of deep learning-based motion synthesis models for 3D characters in virtual environments.",
         "type": "project",
         "date": "2023-12-05T00:00:00.000Z",
         "tags": [
-          "React",
-          "D3.js",
-          "Chart.js",
-          "Firebase"
+          "PyTorch",
+          "Mixture-of-Experts",
+          "MLP",
+          "Pytorch-lightning",
+          "Ray",
+          "Unity"
         ],
-        "content": "\nThis dashboard provides real-time analytics and business intelligence for enterprise clients.\n\n## Features\n\n- Real-time data visualization with charts and graphs\n- Customizable dashboards per user role\n- Data export capabilities (CSV, PDF)\n- User authentication and role-based access control\n- Responsive design for desktop and mobile\n\n## Technology Stack\n\n- **Frontend**: React, Redux, Chart.js, D3.js\n- **Backend**: Node.js, Express\n- **Database**: Firebase Firestore\n- **Authentication**: Firebase Auth"
+        "content": "\n\n\n# Deep learning-based rig-agnostic encoding\n[Paper](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1635572&dswid=5826)\n\n[Github Repository](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding)\n\nThis is my master thesis project about studying the possibility of transfer learning for data-driven motion generation frameworks.\nAll necessary code for producing the results described in the thesis are provided here as it is. \n\n**Objective-driven motion generation model architecture**\n\n**Rig-agnostic encoding approaches**\n\n## Abstract\nVarious research has shown the potential and robustness of deep learning-based approaches to synthesise novel motions of 3D characters in virtual environments, such as video games and films.\nThe models are trained with the motion data that is bound to the respective character skeleton (rig).\nIt inflicts a limitation on the scalability and the applicability of the models since they can only learn motions from one particular rig (domain) and produce motions in that domain only.\n\nTransfer learning techniques can be used to overcome this issue and allow the models to better adapt to other domains with limited data.\nThis work presents a study of three transfer learning techniques for the proposed Objective-driven motion generation model (OMG), which is a model for procedurally generating animations conditioned on positional and rotational objectives.\nThree transfer learning approaches for achieving rig-agnostic encoding (RAE) are proposed and experimented with: Feature encoding (FE), Feature clustering (FC) and Feature selection (FS), to improve the learning of the model on new domains with limited data.\n\nAll three approaches demonstrate significant improvement in both the performance and the visual quality of the generated animations, when compared to the vanilla performance.\nThe empirical results indicate that the FE and the FC approaches yield better transferring quality than the FS approach.\nIt is inconclusive which of them performs better, but the FE approach is more computationally efficient, which makes it the more favourable choice for real-time applications.\n \n\n## Implementation and tuning\nThe created motion data are exported from Unity as JSON files, which are parsed and\nextracted to Numpy arrays and stored as bzip­2 compressed binary files.\n\nThe models are implemented in Python using Pytorch and Pytorch­Lightning. \n\nThe implementation of the models are based on [MANN][1], [NSM][2], [LMP­MoE][3], [MVAE][4] and [TRLSTM][5]\nThe implemented models are tested with a small subset of the dataset, to verify\nthe implementation. Ensuring that the reconstruction errors are optimised during\nthe training, and the models are capable of generating correct animations. The\nhyperparameters such as the number of layers, the layer sizes and the learning rates are\ntuned using Ray Tune 4 with ASHA scheduler and a grid search algorithm.\n\n## Contents\n1. [ Jupyter Notebooks ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/notebooks) - contains the notebooks for computing and plotting the results (assuming the models are trained and available).\n2. [ MLP with adversarial net ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/autoencoder/MLP_Adversarial.py) - is the default Autoencoder (3-layer MLP) + an adversarial Conv-LSGAN model for providing the adversarial error of the generated poses.\n3. [ Clustering models ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/clustering_modes) - contains four variants of AE with an extra layer between the encoder and decoder for performing the clustering on the embeddings\n4. [ Experiments ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/experiments) - contains code for training, validating and testing the various models\n5. [ func ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/func) - contains miscellanenous functions for extracting, preparing data\n6. [ motion_generation_models ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/motion_generation_models) - contains the various OMG models and MoGenNet\n\n## References\n[1]: Zhang, He, Starke, Sebastian, Komura, Taku, and Saito, Jun. “Mode­adaptive\nneural networks for quadruped motion control”. In: ACM Transactions on\nGraphics (TOG) 37.4 (2018), pp. 1–11. ISSN: 0730­0301. DOI: 10.1145/3197517.\n3201366.\n\n[2]: Starke, Sebastian, Zhang, He, Komura, Taku, and Saito, Jun. “Neural state machine\nfor character­scene interactions”. In: ACM Transactions on Graphics (TOG) 38.6\n(2019), pp. 1–14. ISSN: 0730­0301. DOI: 10.1145/3355089.3356505.\n\n[3]: Starke, Sebastian, Zhao, Yiwei, Komura, Taku, and Zaman, Kazi. “Local motion\nphases for learning multi­contact character movements”. In: ACM Transactions\non Graphics (TOG) 39.4 (2020), 54:1–54:13. ISSN: 0730­0301. DOI: 10 . 1145 /\n3386569.3392450.\n\n[4]: Ling, Hung Yu, Zinno, Fabio, Cheng, George, and Panne, Michiel Van De.\n“Character controllers using motion VAEs”. In: ACM Transactions on Graphics\n(TOG) 39.4 (2020), 40:1–40:12. ISSN: 0730­0301. DOI: 10 . 1145 / 3386569 .\n3392422.\n\n[5]: Harvey, Félix G., Yurick, Mike, Nowrouzezahrai, Derek, and Pal, Christopher.\n“Robust motion in­betweening”. In: ACM Transactions on Graphics (TOG) 39.4\n(2020), 60:1–60:12. ISSN: 0730­0301. DOI: 10.1145/3386569.3392480.\n"
       },
       {
-        "id": "portfolio",
-        "title": "Echoes of the Deep Portfolio",
-        "description": "A terminal-inspired portfolio website built with Svelte and TypeScript.",
+        "id": "mirrorception",
+        "title": "Mirrorception",
+        "description": "Mirrorception is a demo of a platform puzzle game where players seamlessly switch between the real world and its mirrored counterpart by stepping into reflective surfaces.",
         "type": "project",
-        "date": "2023-08-15T00:00:00.000Z",
+        "date": "2020-04-13T00:00:00.000Z",
         "tags": [
-          "Svelte",
-          "TypeScript",
-          "Bun"
+          "Unity",
+          "C#",
+          "Blender"
         ],
-        "content": "\nThis portfolio showcases my work in a Ranger-like terminal interface. It features multi-panel navigation, keyboard controls, and a retro terminal aesthetic.\n\n## Features\n\n- Terminal-inspired UI with keyboard navigation\n- File manager-like browsing experience with multi-panel interface\n- Responsive design for all screen sizes\n- Fast loading times thanks to Bun\n- Type-safe development with TypeScript\n- Interactive terminal-style interface with panel-based navigation\n\n## Technology Stack\n\n- **Frontend**: Svelte (with TypeScript)\n- **Build Tool**: Bun\n- **Styling**: CSS Modules / Tailwind CSS\n- **Routing**: SvelteKit's built-in routing\n- **Type Safety**: TypeScript"
+        "content": "\nMirrorception is a demo of a platform puzzle game, where players must utilize the mirrored version of the world to solve puzzles that would be impossible in the real world. By entering reflective surfaces, players can access alternate dimensions where gravity, object interactions, and spatial relationships behave differently.\n\n[Github repository](https://github.com/Neroro64/Mirrorception)\n\n## Implementation details\n\nThis project was developed in Unity using C#, with most assets created from scratch including 3D models and animations using Blender.\nThe implementation features:\n\n- Custom character controller with mirror-switching mechanics\n- Seamless transition between mirrored and real worlds\n- Interactive environments with reflective surfaces\n- Mirror physics simulation that affects object behavior\n- Puzzle design that requires understanding of mirror properties\n\n## Tech stack\n\n- **Game Engine**: Unity 2022.3 LTS\n- **Programming Language**: C#\n- **3D Modeling & Animation**: Blender\n\n"
       },
       {
-        "id": "nextjs-ecommerce",
-        "title": "Next.js E-commerce Platform",
-        "description": "A full-featured e-commerce solution built with Next.js and Stripe.",
+        "id": "hamils-cube",
+        "title": "Hamils Cube",
+        "description": "A puzzle-solving mobile game that combines the concept of Rubik's cube and Hamiltonian path, made in Unity.",
         "type": "project",
-        "date": "2023-10-15T00:00:00.000Z",
+        "date": "2023-12-05T00:00:00.000Z",
         "tags": [
-          "Next.js",
-          "React",
-          "Stripe",
-          "Tailwind CSS"
+          "Unity",
+          "C#",
+          "Blender",
+          "Android"
         ],
-        "content": "\nThis project is a comprehensive e-commerce platform built with Next.js, featuring:\n\n## Features\n\n- Product catalog with filtering and search\n- Shopping cart functionality\n- User authentication and account management\n- Payment processing with Stripe\n- Admin dashboard for product management\n- Responsive design for all devices\n\n## Technology Stack\n\n- **Frontend**: Next.js, React, Tailwind CSS\n- **Backend**: Node.js, Express\n- **Database**: MongoDB\n- **Payment Processing**: Stripe API\n- **Authentication**: NextAuth.js"
+        "content": "\nA puzzle-solving Android mobile game that combines the concept of Rubik's cube and Hamiltonian path, made in Unity.\n\n## Description\n\nThe game challenges players to solve increasingly complex puzzles by manipulating a 3D grid system where each rotation affects multiple elements simultaneously. The core mechanic revolves around finding the most efficient sequence of moves to reach the target configuration, similar to solving a Rubik's cube but with added complexity from Hamiltonian path constraints that guide optimal solutions.\n\n[Github Repository](https://github.com/Neroro64/Hamil-s-Cube)\n\n## Features\n\n- Puzzle-solving mechanics based on Rubik's cube concepts combined with Hamiltonian path exploration gameplay\n- Mobile-friendly interface\n- Progressive difficulty levels\n\n## Implementation details\n\nDeveloped using Unity with C# scripting, with mesh and animations created in Blender.\n\nThe implementation includes:\n- Custom 3D puzzle grid system with rotation mechanics\n- Touch-based controls optimized for mobile devices\n\n## Tech stack\n\n- **Game Engine**: Unity 2022.3 LTS\n- **Programming Language**: C#\n- **3D Modeling & Animation**: Blender\n- **Version Control**: Git/GitHub\n- **Mobile Platform**: Android/iOS (Unity's cross-platform capabilities)\n\n"
       }
     ]
   },
@@ -53,31 +55,20 @@
     "icon": "💼",
     "items": [
       {
-        "id": "senior-dev",
-        "title": "Senior Frontend Developer",
-        "description": "Led development of multiple web applications for enterprise clients.",
+        "id": "software-engineer",
+        "title": "Software Engineer at DICE",
+        "description": "Software engineer at DICE developing solutions for addressing integration and stability challenges, from multiple parallel trunk-based dev-lines.",
         "type": "experience",
-        "date": "2022-01-01T00:00:00.000Z",
+        "date": "2021-08-04T00:00:00.000Z",
         "tags": [
-          "React",
-          "TypeScript",
-          "Node.js"
+          "Release engineering",
+          "DICE",
+          "C++",
+          "C#",
+          "CI/CD",
+          "Automation"
         ],
-        "content": "\nAs a senior developer, I was responsible for architecting and implementing complex frontend solutions. My team delivered several high-impact projects on time and within budget.\n\n## Key Responsibilities\n\n- Led a team of 5 frontend developers\n- Architected scalable frontend solutions\n- Mentored junior developers\n- Collaborated with UX designers and backend engineers\n- Implemented CI/CD pipelines for frontend applications\n\n## Technologies Used\n\n- React and Redux\n- TypeScript\n- Node.js\n- Webpack and Babel\n- Jest and Testing Library"
-      },
-      {
-        "id": "full-stack-dev",
-        "title": "Full Stack Developer",
-        "description": "Developed and maintained multiple web applications for enterprise clients.",
-        "type": "experience",
-        "date": "2021-06-01T00:00:00.000Z",
-        "tags": [
-          "React",
-          "Node.js",
-          "MongoDB",
-          "AWS"
-        ],
-        "content": "\nAs a full stack developer, I was responsible for:\n\n## Key Responsibilities\n\n- Led development of multiple web applications from concept to deployment\n- Collaborated with UX designers and product managers to implement features\n- Mentored junior developers on best practices and code standards\n- Implemented CI/CD pipelines for automated testing and deployment\n- Optimized application performance and resolved production issues\n\n## Technologies Used\n\n- React and Redux\n- Node.js and Express\n- MongoDB and PostgreSQL\n- AWS services (EC2, S3, Lambda)\n- Docker and Kubernetes"
+        "content": "\n## Role Description\n\nI'm software engineer at DICE developing solutions for addressing integration and stability challenges, from multiple parallel trunk-based dev-lines.\nWIP...\n\n## Achievements\n\n- WIP...\n\n## Example of Challenges\n\n- WIP...\n"
       }
     ]
   },
@@ -87,42 +78,16 @@
     "icon": "📝",
     "items": [
       {
-        "id": "typescript-best-practices",
-        "title": "TypeScript Best Practices for 2023",
-        "description": "Essential TypeScript patterns and practices for modern web development.",
+        "id": "dependency-injection",
+        "title": "Summary of 'Dependency Injection Principles, Practices, and Patterns' from  Steven van Deursen and Mark Seemann",
+        "description": "Notes from Dependency Injection Principles, Practices, and Patterns.",
         "type": "blog",
-        "date": "2023-09-20T00:00:00.000Z",
+        "date": "2025-08-18T00:00:00.000Z",
         "tags": [
-          "TypeScript",
-          "JavaScript",
-          "Best Practices"
+          "software-design",
+          "DI"
         ],
-        "content": "\nIn this article, I share my insights on TypeScript best practices that have proven effective in modern web development.\n\n## Key Concepts\n\n### Type Safety First\n\nAlways prefer explicit typing over type inference when it improves readability and maintainability.\n\n### Use Utility Types\n\nLeverage built-in utility types like `Partial<T>`, `Pick<T, K>`, and `Omit<T, K>` to create more reusable code.\n\n### Strict Mode\n\nEnable strict mode in your tsconfig.json for better type checking and fewer runtime errors.\n\n## Advanced Patterns\n\n### Discriminated Unions\n\nUse discriminated unions for handling different types of events or actions in a type-safe way.\n\n### Conditional Types\n\nLeverage conditional types for creating generic utilities that adapt based on input types.\n\n### Mapped Types\n\nCreate new types by transforming existing ones using mapped types for more flexible code."
-      },
-      {
-        "id": "sveltekit-performance",
-        "title": "Optimizing SvelteKit Performance",
-        "description": "Techniques for improving the performance of SvelteKit applications.",
-        "type": "blog",
-        "date": "2023-11-10T00:00:00.000Z",
-        "tags": [
-          "Svelte",
-          "SvelteKit",
-          "Performance"
-        ],
-        "content": "\nPerformance optimization is crucial for modern web applications. Here are some techniques I've found effective for SvelteKit applications.\n\n## Bundle Optimization\n\n### Code Splitting\n\nUse SvelteKit's built-in code splitting to load only the necessary JavaScript for each page.\n\n### Tree Shaking\n\nEnsure unused code is removed during the build process by using proper import syntax.\n\n## Data Loading Strategies\n\n### Server-Side Rendering (SSR)\n\nFor content-heavy pages, use SSR to improve initial load times and SEO.\n\n### Client-Side Rendering (CSR)\n\nFor interactive applications, CSR can provide better user experience after initial load.\n\n## Caching Techniques\n\n### HTTP Caching\n\nImplement appropriate cache headers for static assets and API responses.\n\n### Service Workers\n\nUse service workers for offline capabilities and faster subsequent loads."
-      },
-      {
-        "id": "sveltekit-guide",
-        "title": "Getting Started with SvelteKit",
-        "description": "A beginner-friendly guide to building applications with SvelteKit.",
-        "type": "blog",
-        "date": "2023-08-10T00:00:00.000Z",
-        "tags": [
-          "Svelte",
-          "Tutorial"
-        ],
-        "content": "\nIn this article, I walk through the basics of SvelteKit and how to get started building modern web applications. We cover routing, components, and state management.\n\n## What is SvelteKit?\n\nSvelteKit is a framework for building extremely high-performance web apps. It's built on top of Svelte, which compiles your components to highly efficient vanilla JavaScript at build time.\n\n## Why SvelteKit?\n\n1. **Performance**: Svelte's compile-time approach results in smaller bundles and faster runtime\n2. **Developer Experience**: Excellent tooling and hot module replacement\n3. **Flexibility**: Works as an SPA, SSR, or static site generator\n4. **Progressive Enhancement**: Built-in support for enhanced user experiences\n\n## Getting Started\n\n1. Install Node.js (v16 or higher)\n2. Create a new project with `npm create svelte@latest my-app`\n3. Install dependencies with `npm install`\n4. Start the development server with `npm run dev`"
+        "content": "\n# Dependency Injection\n\n## Overview\n\nAn important element of DI is to break up various responsibilities into separate classes. One responsibility that we take away from classes is the task of creating instances of *Dependencies*.\n\n## Object Composition\n\nTo harvest the benefits of extensibility, testability, late binding and parallel development, you must be able to compose classes into applications.\n\n*Object composition* is often the primary motivation for introducing DI into an application. Many refer to DI as **inversion of control** (IOC).\n\n### Composition Root\n\n> Where we should compose object graphs.\n\n**WARNING**: Using a DI container outside the composition root leads to the service locator anti-pattern.\n\nThe composition root acts as third party that connects consumers with their services. \n\nIn an application, the composition root should be the sole place that knows about the structure of the constructed object graphs. Application code not only relinquishes control over its dependencies, it also relinquishes knowledge about its dependencies. \n\n**NOTE**: Only the composition root should have a reference to the DI Container and it should only be referenced from the composition root.\n\n*Constructor injection* is the most generally applicable DI pattern available. \n\n**Dependencies** should hardly ever be optional.\n\n*Null object pattern* allows a consumer's dependency to always be available, even in the absence of any real implementation.\n\n*Method injection*. In cases where a dependency can vary with each method call, or the consumer of such a dependency can vary on each call, you can supply a dependency via a method parameter.\n\n*Property injection* When a class has a good local default, but you still want to leave it open for extensibility, you can expose a writable property that allows a client to supply a different implementation of the class's dependency than the default.\n\n### DI Container\n\nA DI Container is a software library that provides DI functionality and automates many of the tasks involved in object composition, interception and lifetime management. \n\n```csharp\npublic void Register<T>()\npublic T Resolve<T>(T type);\n```\n\n## Object Lifetime\n\nA class that has surrendered control of its dependencies gives up more than the power to select particular implementations of an *Abstraction*, but also the power to control when instances are created and when they go out of scope.\n\n## Interception\n\nWhen we delegate control over dependencies to a third party, we also provide the power to modify them before we pass them on to the classes consuming them.\n\n> = Decorator design pattern\n\n## SOLID Principles\n\n1. **Single Responsibility Principle**\n   - SRP states that every class should have a single reason to change.\n2. **Open/Closed Principle**\n   - OCP prescribes an application design that prevents you from having to make sweeping changes throughout the code base.\n   - A class should be open for extension but closed for modification.\n3. **Liskov Substitution Principle**\n   - Allows you to replace the originally intended implementation with another implementation of the same *abstraction*.\n4. **Interface Segregation Principle (ISP)**\n   - ISP promotes the use of fine-grained abstractions, rather than wide abstractions. \n   - Any time a consumer depends on an abstraction where some of its members are unused, the ISP is violated.\n5. **Dependency Inversion Principle (DIP)**\n   - The principle states that you should program against abstractions, and that the consuming layer should be in control of the shape of a consumed abstraction.\n\n## Configuring DI\n\n| Type                  | Description                                                                              | Advantages                                                                                                                                | Disadvantages                                                                   |\n| --------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |\n| Configuration files   | Mappings are specified in configuration files (typically in XML or JSON format)          | - Supports replacement without recompilation                                                                                              | - No compile-time checks<br>- Verbose and brittle                               |\n| CONFIGURATION AS CODE | Code explicitly determines mappings                                                      | - Compile-time checks<br>- High degree of control                                                                                         | - No support for replacement without recompilation                              |\n| AUTO-REGISTRATION     | Rules are used to locate suitable components using reflection and to build the mappings. | - Supports replacement without recompilation<br>- Less effort required<br>- Helps enforce conventions to make a code base more consistent | - No compile-time checks<br>- Less control<br>- May seem more abstract at first |\n\n## Anti-patterns\n\n**Definition**: An anti-pattern is a commonly occurring solution to a problem which generates decidedly negative consequences.\n\n| Anti-pattern      | Description                                                                 |\n| ------------------| ----------------------------------------------------------------------------|\n| CONTROL FREAK       | As opposed to INVERSION OF CONTROL, DEPENDENCIES are controlled directly.   |\n| SERVICE LOCATOR     | An implicit service can serve DEPENDENCIES to consumers, but it isn't guaranteed to do so. |\n| AMBIENT CONTEXT     | Makes a single DEPENDENCY available through a static accessor.              |\n| CONSTRAINED CONSTRUCTION | Constructors are assumed to have a particular signature.               |\n\n## Dependency Lifetime\n\n**Definition**: A Lifestyle is a formalized way of describing the intended lifetime of a dependency.\n\n| Name        | Description                                                                 |\n|-------------|-----------------------------------------------------------------------------|\n| SINGLETON   | A single instance is perpetually reused.                                    |\n| TRANSIENT   | New instances are always served.                                            |\n| SCOPED      | At most, one instance of each type is served per an implicitly or explicitly defined scope. |\n\n### Singleton Lifestyle\n\nWithin the scope of a single composer, there'll only be one instance of a component with the singleton lifestyle. Each and every time a consumer requests the component, the same instance is served.\n\nThe difference between this and Singleton design pattern is that the latter provides a global point of access to its instance, which is similar to the ambient context anti-pattern.\n\n### Transient Lifestyle\n\nThe transient lifestyle involves returning a new instance every time it's requested. \n\n### Scoped Lifestyle\n\nThe scoped dependencies behave like singleton dependencies within a single, well-defined scope or request but aren't shared across scopes.\n\nThe scoped lifestyle makes sense for long-running applications that are tasked with processing operations that need to run with some degree of isolation.\n"
       }
     ]
   },
@@ -134,32 +99,14 @@
       {
         "id": "github",
         "title": "GitHub Profile",
-        "url": "https://github.com/alexmorgan",
+        "url": "https://github.com/Neroro64",
         "icon": "🐙"
       },
       {
         "id": "linkedin",
         "title": "LinkedIn Profile",
-        "url": "https://www.linkedin.com/in/alexmorgan",
+        "url": "www.linkedin.com/in/nuo-chen",
         "icon": "👔"
-      },
-      {
-        "id": "portfolio-site",
-        "title": "Portfolio Website",
-        "url": "https://alexmorgan.dev",
-        "icon": "🌐"
-      },
-      {
-        "id": "twitter",
-        "title": "Twitter Profile",
-        "url": "https://twitter.com/alexmorgan_dev",
-        "icon": "🐦"
-      },
-      {
-        "id": "medium",
-        "title": "Medium Articles",
-        "url": "https://medium.com/@alexmorgan",
-        "icon": "📰"
       }
     ]
   }

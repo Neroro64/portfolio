@@ -114,33 +114,15 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
           {
             id: 'github',
             title: 'GitHub Profile',
-            url: 'https://github.com/alexmorgan',
+            url: 'https://github.com/Neroro64',
             icon: '🐙'
           },
           {
             id: 'linkedin',
             title: 'LinkedIn Profile',
-            url: 'https://www.linkedin.com/in/alexmorgan',
+            url: 'www.linkedin.com/in/nuo-chen',
             icon: '👔'
           },
-          {
-            id: 'portfolio-site',
-            title: 'Portfolio Website',
-            url: 'https://alexmorgan.dev',
-            icon: '🌐'
-          },
-          {
-            id: 'twitter',
-            title: 'Twitter Profile',
-            url: 'https://twitter.com/alexmorgan_dev',
-            icon: '🐦'
-          },
-          {
-            id: 'medium',
-            title: 'Medium Articles',
-            url: 'https://medium.com/@alexmorgan',
-            icon: '📰'
-          }
         ] as ExternalLink[]
       }
     ];
