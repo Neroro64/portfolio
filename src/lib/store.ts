@@ -77,7 +77,7 @@ export const currentSection = derived(navIndex, ($navIndex) => sections[$navInde
  * This derived store returns all items (portfolio items or external links)
  * that belong to the currently selected section.
  */
-export const currentItems = derived(currentSection, ($currentSection) => 
+export const currentItems = derived(currentSection, ($currentSection) =>
   $currentSection ? $currentSection.items : []
 );
 

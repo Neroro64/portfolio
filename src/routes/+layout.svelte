@@ -1,14 +1,14 @@
 <script lang="ts">
   /**
    * Main layout component for the application.
-   * 
+   *
    * This component defines the overall structure of the page, including:
    * - The header with site information
    * - The main content area
    * - The footer with debugging information
    * - The keyboard handler for navigation
    */
-  
+
   import Header from "$lib/components/Header.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import KeyboardHandler from "$lib/components/KeyboardHandler.svelte";

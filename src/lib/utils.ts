@@ -10,11 +10,6 @@ import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import type { PortfolioItem, ExternalLink } from '$types/index';
-import { fileURLToPath } from 'url';
-
-// Get the directory name in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 /**
  * Read and parse a markdown file with frontmatter.
@@ -29,14 +24,14 @@ export function readMarkdownFile(filePath: string): PortfolioItem {
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
-    
+
     return {
       id: path.basename(filePath, path.extname(filePath)),
-      title: data.title || '',
-      description: data.description || '',
-      type: data.type || 'project',
-      date: data.date || '',
-      tags: data.tags || [],
+      title: data['title'] || '',
+      description: data['description'] || '',
+      type: data['type'] || 'project',
+      date: data['date'] || '',
+      tags: data['tags'] || [],
       content: content || ''
     };
   } catch (error) {
@@ -70,10 +65,10 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
       console.warn(`Directory ${dirPath} does not exist`);
       return [];
     }
-    
+
     // Use glob to find all markdown files in the directory
     const markdownFiles = glob.sync(path.join(dirPath, '**/*.md'));
-    
+
     return markdownFiles.map(filePath => readMarkdownFile(filePath));
   } catch (error) {
     console.error(`Error scanning directory ${dirPath}:`, error);
@@ -90,7 +85,7 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
  * @param contentBasePath - The base path to the content directory
  * @returns An array of NavigationSection objects
  */
-export function loadContentSections(contentBasePath: string): Array<{id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[]}> {
+export function loadContentSections(contentBasePath: string): Array<{ id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[] }> {
   try {
     const sections = [
       {
@@ -149,7 +144,7 @@ export function loadContentSections(contentBasePath: string): Array<{id: string,
         ] as ExternalLink[]
       }
     ];
-    
+
     return sections;
   } catch (error) {
     console.error('Error loading content sections:', error);
