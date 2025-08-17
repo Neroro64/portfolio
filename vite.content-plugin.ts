@@ -4,18 +4,18 @@ import path from 'path';
 import matter from 'gray-matter';
 
 export function contentPlugin() {
-  let config;
+  let config: { root: string; };
 
   return {
     name: 'content-plugin',
     
-    configResolved(resolvedConfig) {
+    configResolved(resolvedConfig: any) {
       config = resolvedConfig;
     },
 
     async buildStart() {
       // Only run this in build mode, not in dev mode
-      if (process.env.NODE_ENV === 'production') {
+      if (process.env['NODE_ENV'] === 'production') {
         const contentPath = path.resolve(config.root, 'content');
         const outputPath = path.resolve(config.root, 'src/lib/content-data.json');
         
@@ -31,7 +31,7 @@ export function contentPlugin() {
   };
 }
 
-async function loadContentSections(contentBasePath) {
+async function loadContentSections(contentBasePath: string) {
   try {
     const sections = [
       {
@@ -61,7 +61,7 @@ async function loadContentSections(contentBasePath) {
   }
 }
 
-function scanMarkdownDirectory(dirPath) {
+function scanMarkdownDirectory(dirPath: string) {
   try {
     // Use glob to find all markdown files in the directory
     const markdownFiles = glob.sync(path.join(dirPath, '**/*.md'));
@@ -73,17 +73,17 @@ function scanMarkdownDirectory(dirPath) {
   }
 }
 
-function readMarkdownFile(filePath) {
+function readMarkdownFile(filePath: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
   
   return {
     id: path.basename(filePath, path.extname(filePath)),
-    title: data.title || '',
-    description: data.description || '',
-    type: data.type || 'project',
-    date: data.date || '',
-    tags: data.tags || [],
+    title: data['title'] || '',
+    description: data['description'] || '',
+    type: data['type'] || 'project',
+    date: data['date'] || '',
+    tags: data['tags'] || [],
     content: content || ''
   };
 }
