@@ -3,6 +3,15 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+/**
+ * Custom Vite plugin for processing markdown content files
+ * 
+ * This plugin scans the content directory and converts markdown files into
+ * JSON data that can be used by the application at build time.
+ * 
+ * The plugin only runs during production builds to generate content-data.json
+ * which is then used by the application at runtime.
+ */
 export function contentPlugin() {
   let config: { root: string; };
 
@@ -31,6 +40,14 @@ export function contentPlugin() {
   };
 }
 
+/**
+ * Load content sections from the content directory
+ * 
+ * This function organizes content into sections based on directory structure:
+ * - projects/
+ * - experience/ 
+ * - blog/
+ */
 async function loadContentSections(contentBasePath: string) {
   try {
     const sections = [
@@ -61,6 +78,12 @@ async function loadContentSections(contentBasePath: string) {
   }
 }
 
+/**
+ * Scan a directory for markdown files and process them
+ * 
+ * This function uses glob to find all .md files in the specified directory
+ * and converts them into structured data objects.
+ */
 function scanMarkdownDirectory(dirPath: string) {
   try {
     // Use glob to find all markdown files in the directory
@@ -73,6 +96,12 @@ function scanMarkdownDirectory(dirPath: string) {
   }
 }
 
+/**
+ * Read and parse a markdown file
+ * 
+ * This function reads a markdown file and extracts frontmatter data along with
+ * the content, returning a structured object for use in the application.
+ */
 function readMarkdownFile(filePath: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);

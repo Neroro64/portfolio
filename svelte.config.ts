@@ -1,6 +1,14 @@
 import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
+/**
+ * SvelteKit configuration for the Echoes of the Deep project
+ * 
+ * This configuration sets up the SvelteKit application with:
+ * - Vite preprocessing for Svelte files
+ * - Node.js adapter for server-side rendering
+ * - Custom alias for TypeScript types
+ */
 const config: import('@sveltejs/kit').Config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors

@@ -1,29 +1,123 @@
 {
+  /**
+   * TypeScript configuration for the Echoes of the Deep project
+   * 
+   * This configuration extends the SvelteKit default tsconfig and includes
+   * additional compiler options for strict type checking and modern JavaScript features.
+   */
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
+    /**
+     * Allow JavaScript files to be included in the compilation
+     * Disabled for stricter type checking
+     */
     "allowJs": false,
+    
+    /**
+     * Enable interoperability with CommonJS modules
+     */
     "esModuleInterop": true,
+    
+    /**
+     * Ensure consistent casing in file names
+     */
     "forceConsistentCasingInFileNames": true,
+    
+    /**
+     * Allow importing JSON modules
+     */
     "resolveJsonModule": true,
+    
+    /**
+     * Skip type checking of declaration files
+     */
     "skipLibCheck": true,
+    
+    /**
+     * Generate source map files for debugging
+     */
     "sourceMap": true,
+    
+    /**
+     * Enable all strict type checking options
+     */
     "strict": true,
+    
+    /**
+     * Specify module resolution strategy
+     */
     "moduleResolution": "bundler",
+    
+    /**
+     * Specify the library to include in the compilation
+     */
     "lib": [
       "ESNext"
     ],
+    
+    /**
+     * Specify the target ECMAScript version
+     */
     "target": "ESNext",
+    
+    /**
+     * Specify module format
+     */
     "module": "Preserve",
+    
+    /**
+     * Enable automatic module detection
+     */
     "moduleDetection": "force",
+    
+    /**
+     * Configure JSX processing
+     */
     "jsx": "react-jsx",
+    
+    /**
+     * Allow importing TypeScript extensions
+     */
     "allowImportingTsExtensions": true,
+    
+    /**
+     * Use verbatim module syntax
+     */
     "verbatimModuleSyntax": true,
+    
+    /**
+     * Do not emit JavaScript files
+     */
     "noEmit": true,
+    
+    /**
+     * Report errors for fallthrough cases in switch statements
+     */
     "noFallthroughCasesInSwitch": true,
+    
+    /**
+     * Enable strict checking of indexed access
+     */
     "noUncheckedIndexedAccess": true,
+    
+    /**
+     * Report errors on explicit overrides
+     */
     "noImplicitOverride": true,
+    
+    /**
+     * Report errors for unused local variables
+     */
     "noUnusedLocals": true,
+    
+    /**
+     * Report errors for unused parameters
+     */
     "noUnusedParameters": true,
+    
+    /**
+     * Report errors when accessing properties through index signatures
+     */
     "noPropertyAccessFromIndexSignature": true
   }
 }
