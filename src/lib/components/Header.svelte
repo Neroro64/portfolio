@@ -25,6 +25,13 @@
 <style>
   header {
     padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gruvbox-bg3);
+    background-color: var(--gruvbox-bg0);
+    /* Add blur effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    background-color: rgba(29, 32, 33, 0.7); /* Semi-transparent background to show blur effect */
   }
   
   .header-content {

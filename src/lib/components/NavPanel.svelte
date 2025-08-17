@@ -35,6 +35,7 @@
     cursor: pointer;
     outline: none; /* Remove default focus outline */
     font-family: 'Courier New', monospace;
+    border-bottom: 1px solid var(--gruvbox-bg3);
   }
   
   li button:hover,
