@@ -1,7 +1,7 @@
 <script lang="ts">
   import { currentSection, currentItems, listIndex, focusedPanel } from '$lib/store';
   import { navigateToListItem } from '$lib/store';
-  import type { NavigationItem } from '$types/index';
+  import type { NavigationItem, ExternalLink } from '$types/index';
 
   function selectListItem(index: number) {
     navigateToListItem(index);
@@ -62,6 +62,7 @@
     color: inherit;
     cursor: pointer;
     outline: none; /* Remove default focus outline */
+    font-family: 'Courier New', monospace;
   }
   
   li button:hover,

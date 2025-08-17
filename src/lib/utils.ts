@@ -13,18 +13,32 @@ const __dirname = path.dirname(__filename);
  * Read and parse a markdown file with frontmatter
  */
 export function readMarkdownFile(filePath: string): PortfolioItem {
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-  
-  return {
-    id: path.basename(filePath, path.extname(filePath)),
-    title: data.title || '',
-    description: data.description || '',
-    type: data.type || 'project',
-    date: data.date || '',
-    tags: data.tags || [],
-    content: content || ''
-  };
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(fileContent);
+    
+    return {
+      id: path.basename(filePath, path.extname(filePath)),
+      title: data.title || '',
+      description: data.description || '',
+      type: data.type || 'project',
+      date: data.date || '',
+      tags: data.tags || [],
+      content: content || ''
+    };
+  } catch (error) {
+    console.error(`Error reading markdown file ${filePath}:`, error);
+    // Return a default object to prevent crashes
+    return {
+      id: path.basename(filePath, path.extname(filePath)),
+      title: 'Error',
+      description: 'Failed to load content',
+      type: 'project',
+      date: '',
+      tags: [],
+      content: 'An error occurred while loading this content.'
+    };
+  }
 }
 
 /**
@@ -107,7 +121,7 @@ export function loadContentSections(contentBasePath: string): Array<{id: string,
             url: 'https://medium.com/@alexmorgan',
             icon: '📰'
           }
-        ]
+        ] as ExternalLink[]
       }
     ];
     

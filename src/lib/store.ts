@@ -6,8 +6,9 @@ let loadedSections: NavigationSection[] = [];
 
 // Try to load generated content data
 try {
-  // @ts-ignore
-  loadedSections = (await import('$lib/content-data.json')).default;
+  // Import the content data directly (this will be replaced by the build process)
+  const contentData = await import('$lib/content-data.json');
+  loadedSections = contentData.default;
 } catch (error) {
   console.warn('Failed to load content data, using defaults:', error);
   // Fallback to default content
