@@ -4,116 +4,73 @@ A digital realm forged in Svelte, TypeScript, and Bun, where the TUI ranger-like
 
 ## Overview
 
-This is a portfolio website with a terminal-inspired UI that mimics Ranger-like experience.
+A TUI (Text User Interface) inspired portfolio site that mimics Ranger-like file manager navigation. Features a multi-panel layout for browsing content with keyboard navigation support.
 
-The interface features a multi-panel layout for browsing content with keyboard navigation support.
+## Architecture
 
-## Features
-
-- Terminal-inspired UI with keyboard navigation
-- File manager-like browsing experience with multi-panel interface
-- Responsive design for all screen sizes
-- Fast loading times thanks to Bun
-- Type-safe development with TypeScript
-- Interactive terminal-style interface with panel-based navigation
-
-## Technology Stack
-
-- **Frontend**: Svelte (with TypeScript)
-- **Build Tool**: Bun
+- **Framework**: Svelte 5 (TypeScript)
+- **Build Tool**: Bun + Vite
+- **Routing**: SvelteKit
 - **Styling**: CSS Modules / Tailwind CSS
-- **Routing**: SvelteKit's built-in routing
-- **Type Safety**: TypeScript
-
-## Getting Started
-
-### Prerequisites
-
-- [Bun](https://bun.sh/) (v1.0 or higher)
-- [Node.js](https://nodejs.org/) (v16 or higher) - for some build tools and dependencies
-- [TypeScript](https://www.typescriptlang.org/) (v4 or higher) - for type safety
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd portfolio
-
-# Install dependencies
-bun install
-```
-
-### Development
-
-```bash
-# Start development server
-bun run dev
-
-# Build for production
-bun run build
-
-# Generate the list of items from the content folder
-bun run generate-content
-
-# Run tests
-bun test
-```
+- **Content Management**: Markdown files in `/content` directory, processed by `generate-content.ts`
 
 ## Project Structure
 
 ```
 src/
-├── app.html          # Main HTML template
-├── routes/           # Page routes
-│   ├── +layout.svelte
-│   └── +page.svelte
-├── components/       # UI components (in lib/components)
-│   ├── Header.svelte
-│   ├── Navigation.svelte
-│   ├── NavPanel.svelte
-│   ├── ListPanel.svelte
-│   ├── PreviewPanel.svelte
-│   └── Footer.svelte
+├── routes/           # Page routes (+layout.svelte, +page.svelte)
+├── components/       # UI components (NavPanel, ListPanel, PreviewPanel, etc.)
 ├── lib/              # Utility functions and helpers
 │   ├── store.ts      # Svelte writable store + persistence logic
-│   └── utils.ts      # Common utility functions
-├── styles/           # Global styles
-│   └── global.css    # Terminal-style CSS
-└── types/            # TypeScript types
-    └── index.ts      # Type definitions for portfolio items
+│   ├── utils.ts      # Content loading and utility functions
+│   └── content-data.json  # Generated content data
+├── styles/           # Global styles (terminal-style CSS)
+└── types/            # TypeScript type definitions
+
+content/              # Markdown content files organized by category
 ```
-
-## State Management & Persistence
-
-The application uses a Svelte writable store (`src/lib/store.ts`) to hold UI state such as current navigation, selected item, and preview content. The store is hydrated from `localStorage` on app start and writes back on every change, ensuring the UI restores after page reloads.
-
-## TUI Ranger-like UX Features
-
-The interface is designed with a terminal-inspired aesthetic that mimics popular file managers like Ranger:
-
-- Mouse and Keyboard navigation (hjkl or arrow keys)
-- Quick access to different sections
-- File/folder browsing experience
-- Minimalist design focused on content
-- Multi-panel interface for enhanced information display
 
 ## Development Workflow
 
-1. Create new components in `src/lib/components/`
-2. Add routes in `src/routes/`
-3. Use TypeScript for type safety
-4. Style with CSS modules or Tailwind CSS
-5. Run `bun run dev` to start the development server
+### Prerequisites
+- Bun v1.0+
+- Node.js v16+ (for build tools)
+- TypeScript v5+
 
-## Contributing
+### Setup
+```bash
+bun install
+```
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Commands
+```bash
+# Development server
+bun run dev
 
-## License
+# Build for production
+bun run build
 
-This project is licensed under the MIT License.
+# Generate content data from markdown files
+bun run generate-content
+
+# Run type checking
+bun run check
+
+# Run tests (if configured)
+bun test
+```
+
+## Content Management
+
+Content is managed in the `/content` directory with subdirectories for different categories:
+- `blog/` - Blog posts
+- `experience/` - Professional experience
+- `projects/` - Portfolio projects
+
+The `generate-content.ts` script processes these markdown files and generates `src/lib/content-data.json` for runtime consumption.
+
+## Navigation
+
+- Keyboard navigation: hjkl or arrow keys
+- Mouse support for panel interaction
+- Multi-panel interface for enhanced information display
