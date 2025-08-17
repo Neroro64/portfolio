@@ -44,6 +44,27 @@
   }
 
   /**
+   * Sort items by date, newest first.
+   *
+   * @param items - The array of items to sort
+   * @returns A new sorted array of items
+   */
+  function sortItemsByDate(items: NavigationItem[]): NavigationItem[] {
+    return [...items].sort((a, b) => {
+      // Handle external links which don't have dates
+      if (isExternalLink(a) || isExternalLink(b)) {
+        return 0;
+      }
+
+      const dateA = new Date((a as any).date);
+      const dateB = new Date((b as any).date);
+
+      // Sort by date, newest first
+      return dateB.getTime() - dateA.getTime();
+    });
+  }
+
+  /**
    * Format a date string into a readable format.
    *
    * This function takes a date string and formats it to a more user-friendly display.
@@ -66,7 +87,7 @@
 <h2>{$currentSection?.name ?? "SectionName"}</h2>
 <ul>
   {#if $currentItems && $currentItems.length > 0}
-    {#each $currentItems as item, i}
+    {#each sortItemsByDate($currentItems) as item, i}
       <li>
         <button
           class:selected={$listIndex === i && $focusedPanel === "list"}
