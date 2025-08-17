@@ -1,4 +1,4 @@
-import { writable, derived } from 'svelte/store';
+import { onMount } from 'svelte';
 import type { NavigationSection, PortfolioItem } from '$types/index';
 
 // --- Dynamic Data Loading ---
@@ -118,60 +118,53 @@ SvelteKit is a framework for building extremely high-performance web apps. It's 
 // Export sections for use in components
 export const sections = loadedSections;
 
-// --- Writable Stores for Core State ---
+// --- State Management using Svelte 5 Runes ---
 
 /** The currently focused panel ('nav', 'list', or 'preview') */
-export const focusedPanel = writable<'nav' | 'list' | 'preview'>('nav');
+export let focusedPanel = $state<'nav' | 'list' | 'preview'>('nav');
 
 /** The index of the selected section in the nav panel */
-export const navIndex = writable(0);
+export let navIndex = $state(0);
 
 /** The index of the selected item in the list panel */
-export const listIndex = writable(0);
+export let listIndex = $state(0);
 
-// --- Derived Stores for Computed State ---
+// --- Derived State using Svelte 5 Runes ---
 
 /** The current section object, derived from the navIndex */
-export const currentSection = derived(navIndex, ($navIndex) => sections[$navIndex] || sections[0]);
+export const currentSection = $derived(sections[navIndex] || sections[0]);
 
 /** The items for the current section */
-export const currentItems = derived(currentSection, ($currentSection) => 
-  $currentSection ? $currentSection.items : []
-);
+export const currentItems = $derived(currentSection ? currentSection.items : []);
 
 /** The currently selected portfolio item, derived from the listIndex */
-export const selectedItem = derived(
-  [currentItems, listIndex],
-  ([$currentItems, $listIndex]) => ($currentItems && $currentItems[$listIndex]) || null
+export const selectedItem = $derived(
+  currentItems && currentItems[listIndex] || null
 );
 
 // --- Store Actions ---
 
 /** Move focus to the next panel (nav -> list -> preview) */
 export function focusNextPanel() {
-  focusedPanel.update(current => {
-    if (current === 'nav') return 'list';
-    if (current === 'list') return 'preview';
-    return 'preview';
-  });
+  if (focusedPanel === 'nav') focusedPanel = 'list';
+  else if (focusedPanel === 'list') focusedPanel = 'preview';
+  else focusedPanel = 'preview';
 }
 
 /** Move focus to the previous panel (preview -> list -> nav) */
 export function focusPrevPanel() {
-  focusedPanel.update(current => {
-    if (current === 'preview') return 'list';
-    if (current === 'list') return 'nav';
-    return 'nav';
-  });
+  if (focusedPanel === 'preview') focusedPanel = 'list';
+  else if (focusedPanel === 'list') focusedPanel = 'nav';
+  else focusedPanel = 'nav';
 }
 
 /** Navigate to a specific section */
 export function navigateToSection(index: number) {
-  navIndex.set(index);
-  listIndex.set(0); // Reset list index when changing section
+  navIndex = index;
+  listIndex = 0; // Reset list index when changing section
 }
 
 /** Navigate to a specific item in the current section */
 export function navigateToListItem(index: number) {
-  listIndex.set(index);
+  listIndex = index;
 }
