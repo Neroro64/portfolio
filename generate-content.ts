@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { loadContentSections } from './src/lib/utils.ts';
+import { loadContentSections } from './src/lib/utils.js';
 
 // Get the directory name in ES module
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +15,6 @@ try {
   const sections = loadContentSections(contentPath);
   fs.writeFileSync(outputPath, JSON.stringify(sections, null, 2));
   console.log('Content data generated successfully');
-} catch (error) {
+} catch (error: any) {
   console.error('Error generating content data:', error);
 }
