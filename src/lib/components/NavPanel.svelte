@@ -1,7 +1,25 @@
 <script lang="ts">
+  /**
+   * Component for displaying navigation sections.
+   * 
+   * This component renders a list of navigation sections (Projects, Experience, Blog, etc.)
+   * that allow users to switch between different content categories.
+   * 
+   * It uses the `sections` store to get the available sections and `navIndex` to track
+   * which section is currently selected.
+   */
+  
   import { navIndex, focusedPanel, sections } from '$lib/store';
   import { navigateToSection } from '$lib/store';
 
+  /**
+   * Function to select a navigation section.
+   * 
+   * This function updates the navigation index and sets focus back to the nav panel
+   * when a section is selected.
+   * 
+   * @param index - The index of the section to select
+   */
   function selectSection(index: number) {
     navigateToSection(index);
     focusedPanel.set('nav'); // Set this panel as focused

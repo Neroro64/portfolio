@@ -1,4 +1,12 @@
 <script lang="ts">
+  /**
+   * Component for navigation between content sections.
+   * 
+   * This component provides a navigation bar that allows users to switch
+   * between different content sections (Projects, Experience, Blog, etc.).
+   * It also handles keyboard navigation using arrow keys or h/l keys.
+   */
+  
   import { appStore } from '$lib/store';
   import { onMount, onDestroy } from 'svelte';
   
@@ -15,11 +23,26 @@
     return () => unsubscribe();
   });
   
+  /**
+   * Select a navigation section.
+   * 
+   * This function updates the store to set the currently selected section.
+   * 
+   * @param sectionId - The ID of the section to select
+   */
   function selectSection(sectionId: string) {
     appStore.setCurrentSection(sectionId);
   }
   
-  // Keyboard navigation
+  /**
+   * Handle keyboard events for navigation.
+   * 
+   * This function processes arrow key presses to navigate between sections.
+   * Left arrow or 'h' moves to the previous section, right arrow or 'l'
+   * moves to the next section.
+   * 
+   * @param event - The KeyboardEvent object
+   */
   function handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'h') {
       event.preventDefault();
@@ -34,6 +57,7 @@
     }
   }
   
+  // Set up keyboard event listener
   onMount(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);

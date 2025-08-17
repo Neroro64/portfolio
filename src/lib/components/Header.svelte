@@ -1,4 +1,12 @@
 <script lang="ts">
+  /**
+   * Component for displaying the site header.
+   * 
+   * This component renders the main header of the portfolio site, including
+   * the site title and personal information such as name, job title, motto,
+   * and email address.
+   */
+  
   let { title = 'Echoes of the Deep' } = $props();
   
   // Personal information

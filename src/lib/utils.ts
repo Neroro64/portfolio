@@ -1,3 +1,10 @@
+/**
+ * Utility functions for handling content loading and processing.
+ * 
+ * This module provides functions for reading markdown files, scanning directories,
+ * and organizing content into navigation sections for the portfolio site.
+ */
+
 import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
@@ -10,7 +17,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Read and parse a markdown file with frontmatter
+ * Read and parse a markdown file with frontmatter.
+ * 
+ * This function reads a markdown file, extracts its frontmatter (metadata),
+ * and returns it as a PortfolioItem object.
+ * 
+ * @param filePath - The path to the markdown file
+ * @returns A PortfolioItem object containing the parsed content
  */
 export function readMarkdownFile(filePath: string): PortfolioItem {
   try {
@@ -42,7 +55,13 @@ export function readMarkdownFile(filePath: string): PortfolioItem {
 }
 
 /**
- * Scan a directory for markdown files and convert them to PortfolioItems
+ * Scan a directory for markdown files and convert them to PortfolioItems.
+ * 
+ * This function finds all markdown files in a given directory and converts
+ * each one into a PortfolioItem using the readMarkdownFile function.
+ * 
+ * @param dirPath - The path to the directory to scan
+ * @returns An array of PortfolioItem objects
  */
 export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
   try {
@@ -63,7 +82,13 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
 }
 
 /**
- * Load all content sections from the content directory
+ * Load all content sections from the content directory.
+ * 
+ * This function scans the content directory and organizes its contents
+ * into navigation sections with their respective items.
+ * 
+ * @param contentBasePath - The base path to the content directory
+ * @returns An array of NavigationSection objects
  */
 export function loadContentSections(contentBasePath: string): Array<{id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[]}> {
   try {

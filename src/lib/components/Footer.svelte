@@ -1,4 +1,12 @@
 <script lang="ts">
+  /**
+   * Component for displaying the site footer.
+   * 
+   * This component renders a simple footer that shows information about
+   * the currently selected section and item. It's useful for debugging
+   * and understanding which content is being displayed.
+   */
+  
   import { currentSection, selectedItem } from '$lib/store';
 </script>
 

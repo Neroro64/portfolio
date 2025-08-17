@@ -1,4 +1,12 @@
 <script lang="ts">
+  /**
+   * Component for handling keyboard navigation.
+   * 
+   * This component listens for keyboard events and handles navigation between panels
+   * and items using keyboard shortcuts. It provides a TUI-like experience for users
+   * who prefer keyboard navigation over mouse interaction.
+   */
+  
   import { onMount } from 'svelte';
   import { get } from 'svelte/store';
   import {
@@ -13,6 +21,16 @@
     sections
   } from '$lib/store';
 
+  /**
+   * Handle keyboard events for navigation.
+   * 
+   * This function processes key presses and updates the application state accordingly.
+   * It handles:
+   * - Panel switching (h/l or arrow keys)
+   * - Item navigation (j/k or arrow keys)
+   * 
+   * @param e - The KeyboardEvent object
+   */
   function handleKeyDown(e: KeyboardEvent) {
     const key = e.key;
 
@@ -61,6 +79,7 @@
     }
   }
 
+  // Set up event listener when component mounts
   onMount(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {

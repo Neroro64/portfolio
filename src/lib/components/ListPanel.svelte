@@ -1,17 +1,51 @@
 <script lang="ts">
+  /**
+   * Component for displaying a list of items within the selected section.
+   * 
+   * This component renders a list of portfolio items (projects, experience, blog posts)
+   * or external links that belong to the currently selected navigation section.
+   * 
+   * It uses the `currentSection` and `currentItems` stores to determine what to display
+   * and `listIndex` to track which item is currently selected.
+   */
+  
   import { currentSection, currentItems, listIndex, focusedPanel } from '$lib/store';
   import { navigateToListItem } from '$lib/store';
   import type { NavigationItem, ExternalLink } from '$types/index';
 
+  /**
+   * Function to select a list item.
+   * 
+   * This function updates the list index and sets focus back to the list panel
+   * when an item is selected.
+   * 
+   * @param index - The index of the item to select
+   */
   function selectListItem(index: number) {
     navigateToListItem(index);
     focusedPanel.set('list'); // Set this panel as focused
   }
   
+  /**
+   * Type guard function to check if an item is an external link.
+   * 
+   * This function helps TypeScript distinguish between PortfolioItem and ExternalLink types.
+   * 
+   * @param item - The navigation item to check
+   * @returns True if the item is an ExternalLink, false otherwise
+   */
   function isExternalLink(item: NavigationItem): item is ExternalLink {
     return (item as ExternalLink).url !== undefined;
   }
   
+  /**
+   * Format a date string into a readable format.
+   * 
+   * This function takes a date string and formats it to a more user-friendly display.
+   * 
+   * @param dateString - The date string to format
+   * @returns A formatted date string or empty string if no date provided
+   */
   function formatDate(dateString?: string): string {
     if (!dateString) return '';
     

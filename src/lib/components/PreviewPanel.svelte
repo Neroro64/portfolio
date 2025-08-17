@@ -1,13 +1,39 @@
 <script lang="ts">
+  /**
+   * Component for previewing selected items.
+   * 
+   * This component displays the detailed content of a selected item from the list panel.
+   * It can show either markdown content (for projects, experience, blog posts) or
+   * external link information.
+   * 
+   * It uses the `selectedItem` store to determine what to display and `focusedPanel`
+   * to track focus state for styling purposes.
+   */
+  
   import { selectedItem, focusedPanel } from '$lib/store';
   import type { NavigationItem, PortfolioItem, ExternalLink } from '$types/index';
   import SvelteMarkdown from '@humanspeak/svelte-markdown';
 
+  /**
+   * Type guard function to check if an item is an external link.
+   * 
+   * This function helps TypeScript distinguish between PortfolioItem and ExternalLink types.
+   * 
+   * @param item - The navigation item to check
+   * @returns True if the item is an ExternalLink, false otherwise
+   */
   function isExternalLink(item: NavigationItem): item is ExternalLink {
     return (item as ExternalLink).url !== undefined;
   }
   
   // Define source for markdown rendering
+  /**
+   * Reactive statement that sets the markdown source to display.
+   * 
+   * This reactive statement ensures that when a portfolio item is selected,
+   * its content is used for markdown rendering. For external links, it uses
+   * an empty string since they don't have markdown content.
+   */
   $: source = ($selectedItem as PortfolioItem)?.content || '';
 </script>
 
