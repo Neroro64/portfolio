@@ -10,10 +10,11 @@
   let { title = "Echoes of the Deep" } = $props();
 
   // Personal information
-  const name = "Alex Morgan";
-  const email = "alex.morgan@example.com";
-  const jobTitle = "Senior Frontend Developer";
-  const motto = "Crafting digital experiences with code and creativity";
+const name = "Nuo Chen";
+const jobTitle = "Software engineer";
+const email = "me@nuoc.dev";
+const description = "This species is typically found in professional settings where reliability and ownership are paramount.";
+const motto = "Every challenge is an opportunity to grow stronger."
 </script>
 
 <header>
@@ -22,9 +23,14 @@
       <h1>{title}</h1>
       <p class="info-line">
         <span class="name">{name}</span>
+        <span class="email"><a href={`mailto:${email}`}>{email}</a></span>
         <span class="title">{jobTitle}</span>
         <span class="motto">{motto}</span>
-        <span class="email"><a href={`mailto:${email}`}>{email}</a></span>
+      </p>
+      <p class="info-line">
+        <span class="description">{description}</span>
+      </p>
+      <p class="info-line">
       </p>
     </div>
   </div>
@@ -60,7 +66,7 @@
   .info-line {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 
@@ -74,6 +80,12 @@
     font-size: 1.1rem;
     margin: 0;
     color: var(--gruvbox-blue);
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin: 0;
+    font-style: italic;
   }
 
   .motto {
