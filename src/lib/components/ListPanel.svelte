@@ -24,7 +24,7 @@
   }
 </script>
 
-<h2>{$currentSection.name}</h2>
+<h2>{$currentSection?.name ?? "SectionName"}</h2>
 <ul>
   {#if $currentItems && $currentItems.length > 0}
     {#each $currentItems as item, i}

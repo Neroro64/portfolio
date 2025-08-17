@@ -6,7 +6,7 @@
   let currentSection: string = '';
   
   // Subscribe to store changes
-  const unsubscribe = appStore.subscribe((state) => {
+  const unsubscribe = appStore.subscribe((state: any) => {
     sections = state.sections;
     currentSection = state.currentSection;
   });

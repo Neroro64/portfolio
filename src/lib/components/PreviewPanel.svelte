@@ -1,6 +1,6 @@
 <script lang="ts">
   import { selectedItem, focusedPanel } from '$lib/store';
-  import type { NavigationItem, ExternalLink } from '$types/index';
+  import type { NavigationItem, PortfolioItem, ExternalLink } from '$types/index';
   import SvelteMarkdown from '@humanspeak/svelte-markdown';
 
   function isExternalLink(item: NavigationItem): item is ExternalLink {
@@ -8,7 +8,7 @@
   }
   
   // Define source for markdown rendering
-  $: source = $selectedItem?.content || '';
+  $: source = ($selectedItem as PortfolioItem)?.content || '';
 </script>
 
 <div class="preview-content" class:focused={$focusedPanel === 'preview'}>
