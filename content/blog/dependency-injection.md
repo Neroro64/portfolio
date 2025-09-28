@@ -8,17 +8,17 @@ type: blog
 
 # Dependency Injection
 
-## Overview
+### Overview
 
 An important element of DI is to break up various responsibilities into separate classes. One responsibility that we take away from classes is the task of creating instances of *Dependencies*.
 
-## Object Composition
+### Object Composition
 
 To harvest the benefits of extensibility, testability, late binding and parallel development, you must be able to compose classes into applications.
 
 *Object composition* is often the primary motivation for introducing DI into an application. Many refer to DI as **inversion of control** (IOC).
 
-### Composition Root
+#### Composition Root
 
 > Where we should compose object graphs.
 
@@ -40,7 +40,7 @@ In an application, the composition root should be the sole place that knows abou
 
 *Property injection* When a class has a good local default, but you still want to leave it open for extensibility, you can expose a writable property that allows a client to supply a different implementation of the class's dependency than the default.
 
-### DI Container
+#### DI Container
 
 A DI Container is a software library that provides DI functionality and automates many of the tasks involved in object composition, interception and lifetime management. 
 
@@ -49,17 +49,17 @@ public void Register<T>()
 public T Resolve<T>(T type);
 ```
 
-## Object Lifetime
+### Object Lifetime
 
 A class that has surrendered control of its dependencies gives up more than the power to select particular implementations of an *Abstraction*, but also the power to control when instances are created and when they go out of scope.
 
-## Interception
+### Interception
 
 When we delegate control over dependencies to a third party, we also provide the power to modify them before we pass them on to the classes consuming them.
 
 > = Decorator design pattern
 
-## SOLID Principles
+### SOLID Principles
 
 1. **Single Responsibility Principle**
    - SRP states that every class should have a single reason to change.
@@ -74,7 +74,7 @@ When we delegate control over dependencies to a third party, we also provide the
 5. **Dependency Inversion Principle (DIP)**
    - The principle states that you should program against abstractions, and that the consuming layer should be in control of the shape of a consumed abstraction.
 
-## Configuring DI
+### Configuring DI
 
 | Type                  | Description                                                                              | Advantages                                                                                                                                | Disadvantages                                                                   |
 | --------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -82,7 +82,7 @@ When we delegate control over dependencies to a third party, we also provide the
 | CONFIGURATION AS CODE | Code explicitly determines mappings                                                      | - Compile-time checks<br>- High degree of control                                                                                         | - No support for replacement without recompilation                              |
 | AUTO-REGISTRATION     | Rules are used to locate suitable components using reflection and to build the mappings. | - Supports replacement without recompilation<br>- Less effort required<br>- Helps enforce conventions to make a code base more consistent | - No compile-time checks<br>- Less control<br>- May seem more abstract at first |
 
-## Anti-patterns
+### Anti-patterns
 
 **Definition**: An anti-pattern is a commonly occurring solution to a problem which generates decidedly negative consequences.
 
@@ -93,7 +93,7 @@ When we delegate control over dependencies to a third party, we also provide the
 | AMBIENT CONTEXT     | Makes a single DEPENDENCY available through a static accessor.              |
 | CONSTRAINED CONSTRUCTION | Constructors are assumed to have a particular signature.               |
 
-## Dependency Lifetime
+### Dependency Lifetime
 
 **Definition**: A Lifestyle is a formalized way of describing the intended lifetime of a dependency.
 
@@ -103,17 +103,17 @@ When we delegate control over dependencies to a third party, we also provide the
 | TRANSIENT   | New instances are always served.                                            |
 | SCOPED      | At most, one instance of each type is served per an implicitly or explicitly defined scope. |
 
-### Singleton Lifestyle
+#### Singleton Lifestyle
 
 Within the scope of a single composer, there'll only be one instance of a component with the singleton lifestyle. Each and every time a consumer requests the component, the same instance is served.
 
 The difference between this and Singleton design pattern is that the latter provides a global point of access to its instance, which is similar to the ambient context anti-pattern.
 
-### Transient Lifestyle
+#### Transient Lifestyle
 
 The transient lifestyle involves returning a new instance every time it's requested. 
 
-### Scoped Lifestyle
+#### Scoped Lifestyle
 
 The scoped dependencies behave like singleton dependencies within a single, well-defined scope or request but aren't shared across scopes.
 

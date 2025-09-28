@@ -10,7 +10,7 @@ Mirrorception is a demo of a platform puzzle game, where players must utilize th
 
 [Github repository](https://github.com/Neroro64/Mirrorception)
 
-## Implementation details
+### Implementation details
 
 This project was developed in Unity using C#, with most assets created from scratch including 3D models and animations using Blender.
 The implementation features:
@@ -21,7 +21,7 @@ The implementation features:
 - Mirror physics simulation that affects object behavior
 - Puzzle design that requires understanding of mirror properties
 
-## Tech stack
+### Tech stack
 
 - **Game Engine**: Unity 2022.3 LTS
 - **Programming Language**: C#

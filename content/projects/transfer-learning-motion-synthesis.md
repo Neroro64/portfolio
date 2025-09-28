@@ -20,7 +20,7 @@ All necessary code for producing the results described in the thesis are provide
 
 **Rig-agnostic encoding approaches**
 
-## Abstract
+### Abstract
 Various research has shown the potential and robustness of deep learning-based approaches to synthesise novel motions of 3D characters in virtual environments, such as video games and films.
 The models are trained with the motion data that is bound to the respective character skeleton (rig).
 It inflicts a limitation on the scalability and the applicability of the models since they can only learn motions from one particular rig (domain) and produce motions in that domain only.
@@ -34,7 +34,7 @@ The empirical results indicate that the FE and the FC approaches yield better tr
 It is inconclusive which of them performs better, but the FE approach is more computationally efficient, which makes it the more favourable choice for real-time applications.
  
 
-## Implementation and tuning
+### Implementation and tuning
 The created motion data are exported from Unity as JSON files, which are parsed and
 extracted to Numpy arrays and stored as bzip­2 compressed binary files.
 
@@ -47,7 +47,7 @@ the training, and the models are capable of generating correct animations. The
 hyperparameters such as the number of layers, the layer sizes and the learning rates are
 tuned using Ray Tune 4 with ASHA scheduler and a grid search algorithm.
 
-## Contents
+### Contents
 1. [ Jupyter Notebooks ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/notebooks) - contains the notebooks for computing and plotting the results (assuming the models are trained and available).
 2. [ MLP with adversarial net ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/autoencoder/MLP_Adversarial.py) - is the default Autoencoder (3-layer MLP) + an adversarial Conv-LSGAN model for providing the adversarial error of the generated poses.
 3. [ Clustering models ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/clustering_modes) - contains four variants of AE with an extra layer between the encoder and decoder for performing the clustering on the embeddings
@@ -55,7 +55,7 @@ tuned using Ray Tune 4 with ASHA scheduler and a grid search algorithm.
 5. [ func ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/func) - contains miscellanenous functions for extracting, preparing data
 6. [ motion_generation_models ](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding/blob/main/src/motion_generation_models) - contains the various OMG models and MoGenNet
 
-## References
+### References
 [1]: Zhang, He, Starke, Sebastian, Komura, Taku, and Saito, Jun. “Mode­adaptive
 neural networks for quadruped motion control”. In: ACM Transactions on
 Graphics (TOG) 37.4 (2018), pp. 1–11. ISSN: 0730­0301. DOI: 10.1145/3197517.
