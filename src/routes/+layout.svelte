@@ -9,7 +9,6 @@
    * - The keyboard handler for navigation
    */
 
-  import Header from "$lib/components/Header.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import KeyboardHandler from "$lib/components/KeyboardHandler.svelte";
 
@@ -20,8 +19,6 @@
   <title>Echoes of the Deep</title>
 </svelte:head>
 
-
-<Header title="Echoes of the Deep" />
 
 <main class="container">
   {@render children()}
