@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Generate content data
 RUN bun run generate-content.ts
