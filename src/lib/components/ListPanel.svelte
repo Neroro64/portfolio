@@ -26,9 +26,9 @@
    *
    * @param index - The index of the item to select
    */
-  function selectListItem(index: number) {
-    navigateToListItem(index);
-    focusedPanel.set("list"); // Set this panel as focused
+  function selectListItem(sortedIndex: number) {
+    navigateToListItem(sortedIndex);
+    focusedPanel.set("list");
   }
 
   /**
@@ -41,27 +41,6 @@
    */
   function isExternalLink(item: NavigationItem): item is ExternalLink {
     return (item as ExternalLink).url !== undefined;
-  }
-
-  /**
-   * Sort items by date, newest first.
-   *
-   * @param items - The array of items to sort
-   * @returns A new sorted array of items
-   */
-  function sortItemsByDate(items: NavigationItem[]): NavigationItem[] {
-    return [...items].sort((a, b) => {
-      // Handle external links which don't have dates
-      if (isExternalLink(a) || isExternalLink(b)) {
-        return 0;
-      }
-
-      const dateA = new Date((a as any).date);
-      const dateB = new Date((b as any).date);
-
-      // Sort by date, newest first
-      return dateB.getTime() - dateA.getTime();
-    });
   }
 
   /**
@@ -87,7 +66,7 @@
 <h2>{$currentSection?.name ?? "SectionName"}</h2>
 <ul>
   {#if $currentItems && $currentItems.length > 0}
-    {#each sortItemsByDate($currentItems) as item, i}
+    {#each $currentItems as item, i}
       <li>
         <button
           class:selected={$listIndex === i && $focusedPanel === "list"}
@@ -124,7 +103,7 @@
     color: inherit;
     cursor: pointer;
     outline: none; /* Remove default focus outline */
-    font-family: "Courier New", monospace;
+    font-family: var(--mono-font);
     border-bottom: 1px solid var(--gruvbox-bg3);
   }
 

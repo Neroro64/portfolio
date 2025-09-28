@@ -38,7 +38,18 @@
    * its content is used for markdown rendering. For external links, it uses
    * an empty string since they don't have markdown content.
    */
+
+  // Update source to use marked instead of raw markdown
   $: source = ($selectedItem as PortfolioItem)?.content || "";
+
+  // Format date to local date
+  $: formatted =
+    $selectedItem &&
+    new Date(($selectedItem as any).date).toLocaleDateString("en-CA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
 </script>
 
 <div class="preview-content" class:focused={$focusedPanel === "preview"}>
@@ -55,13 +66,8 @@
         <p>Please click the link above to visit the site directly.</p>
       </div>
     {:else}
-      <h2>{$selectedItem.title}</h2>
-      <p class="highlight">{$selectedItem.date}</p>
-      <div class="markdown-content">
-        <SvelteMarkdown {source} />
-      </div>
-
       {#if $selectedItem.tags && $selectedItem.tags.length > 0}
+        <h2>{$selectedItem.title}</h2>
         <div class="tags">
           <strong>Tags:</strong>
           {#each $selectedItem.tags as tag}
@@ -69,6 +75,10 @@
           {/each}
         </div>
       {/if}
+      <p class="highlight">{formatted}</p>
+      <div class="markdown-content">
+        <SvelteMarkdown {source} />
+      </div>
     {/if}
   {:else}
     <p>Select an item to preview.</p>
@@ -76,11 +86,82 @@
 </div>
 
 <style>
+  /* Global scope for this component's CSS */
+  :global(.markdown-content) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for all text */
+    line-height: 1.7;
+    color: var(--gruvbox-fg);
+  }
+
+  /* Target headings */
+  :global(.markdown-content h1),
+  :global(.markdown-content h2),
+  :global(.markdown-content h3),
+  :global(.markdown-content h4),
+  :global(.markdown-content h5) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    color: var(--gruvbox-bg-dark); /* Add background color for headers */
+    background-color: var(--gruvbox-fg2); /* Add background color for headers */
+    padding: 0em 0.2em; /* Add padding around text */
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  /* Target paragraphs */
+  :global(.markdown-content p) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    margin-bottom: 1em;
+  }
+
+  /* Style links */
+  :global(.markdown-content a) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    color: var(--gruvbox-aqua);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gruvbox-aqua);
+  }
+
+  :global(.markdown-content a:hover) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    border-bottom-style: dotted;
+  }
+
+  /* Style blockquotes */
+  :global(.markdown-content blockquote) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    border-left: 4px solid var(--gruvbox-gray);
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--gruvbox-gray);
+  }
+
+  /* Style code blocks */
+  :global(.markdown-content pre) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    background-color: var(--gruvbox-bg2);
+    border-radius: 4px;
+    overflow-x: auto; /* Handle long lines of code */
+  }
+
+  :global(.markdown-content code) {
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    font-size: 0.9em;
+  }
+
+  /* Handle inline code differently from code blocks */
+  :global(.markdown-content p > code) {
+    background-color: var(--gruvbox-bg2);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+  }
+
   .preview-content {
     border: 1px solid transparent;
-    padding: 0.5rem;
     height: 100%;
     box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: auto;
   }
 
   .preview-content.focused {
@@ -110,7 +191,6 @@
   .markdown-content {
     color: var(--gruvbox-fg);
     background-color: var(--gruvbox-bg0);
-    padding: 1rem;
     line-height: 1.6;
   }
 </style>

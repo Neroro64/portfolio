@@ -32,6 +32,8 @@
     /* Selection colors */
     --gruvbox-selection: #3c3836;
     --gruvbox-highlight: #504945;
+
+    --mono-font: 'IBM Plex Mono', 'Hack', 'Courier New', monospace;
   }
 
 html, body {
@@ -39,15 +41,15 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: "Iosevka Term Slab", monospace; /* Use Iosevka Term Slab for inline code */
 }
 
 body {
-  background-color: var(--gruvbox-bg);
+  background-color: var(--gruvbox-bg-dark);
   color: var(--gruvbox-fg);
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-  /* Make the body a vertical flex container */
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
 }
 
 .container {
@@ -58,16 +60,11 @@ body {
 
 /* Panel styles - Ranger-like columns */
 .panel {
-    background-color: var(--gruvbox-bg0);
-    color: var(--gruvbox-fg);
-    border: 1px solid var(--gruvbox-bg3);
+    border: 1px solid var(--gruvbox-bg2);
     padding: 0.5rem;
     flex: 1;
     overflow-y: auto; /* Allow individual panels to scroll */
-    /* Add blur effect */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-    background-color: rgba(29, 32, 33, 0.7); /* Semi-transparent background to show blur effect */
+    background-color: var(--gruvbox-bg);
   }
 
 /* Make panels take appropriate width for Ranger layout */
@@ -86,10 +83,11 @@ body {
 .panel h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--gruvbox-blue);
-  font-size: 1rem;
-  border-bottom: 1px solid var(--gruvbox-bg3);
-  padding-bottom: 0.25rem;
+  padding: 0.3rem;
+  font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+  font-size: 1.25rem;
+  color: var(--gruvbox-bg-dark); /* Add background color for headers */
+  background-color: var(--gruvbox-fg2); /* Add background color for headers */
 }
 
 /* List items */
@@ -121,12 +119,12 @@ button:hover {
 
 button.selected {
   background-color: var(--gruvbox-highlight);
-  color: var(--gruvbox-yellow);
+  color: var(--gruvbox-orange);
 }
 
 /* Highlight class for important text */
 .highlight {
-  color: var(--gruvbox-yellow);
+  color: var(--gruvbox-blue);
   font-weight: bold;
 }
 

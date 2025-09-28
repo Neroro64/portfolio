@@ -53,7 +53,7 @@
     color: inherit;
     cursor: pointer;
     outline: none; /* Remove default focus outline */
-    font-family: "Courier New", monospace;
+    font-family: var(--mono-font);
     border-bottom: 1px solid var(--gruvbox-bg3);
   }
 

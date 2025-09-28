@@ -69,7 +69,13 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
     // Use glob to find all markdown files in the directory
     const markdownFiles = glob.sync(path.join(dirPath, '**/*.md'));
 
-    return markdownFiles.map(filePath => readMarkdownFile(filePath));
+      const items = markdownFiles.map(filePath => readMarkdownFile(filePath));
+
+      return items.sort((a, b) => {
+        const timeA = a.date ? new Date(a.date).getTime() : 0;
+        const timeB = b.date ? new Date(b.date).getTime() : 0;
+        return timeB - timeA;
+      });
   } catch (error) {
     console.error(`Error scanning directory ${dirPath}:`, error);
     return [];
@@ -89,16 +95,16 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
   try {
     const sections = [
       {
-        id: 'projects',
-        name: 'Projects',
-        icon: '📁',
-        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
-      },
-      {
         id: 'experience',
         name: 'Experience',
         icon: '💼',
         items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
+      },
+      {
+        id: 'projects',
+        name: 'Projects',
+        icon: '📁',
+        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
       },
       {
         id: 'blog',
@@ -111,6 +117,18 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
         name: 'Links',
         icon: '🔗',
         items: [
+          {
+            id: 'gallery',
+            title: 'Photo Gallery',
+            url: 'https://gallery.nuoc.dev',
+            icon: '📷'
+          },
+          {
+            id: 'notes',
+            title: 'Personal documentation',
+            url: 'https://notes.nuoc.dev',
+            icon: '📝'
+          },
           {
             id: 'github',
             title: 'GitHub Profile',
