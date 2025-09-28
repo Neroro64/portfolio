@@ -61,7 +61,7 @@ body {
 /* Panel styles - Ranger-like columns */
 .panel {
     border: 1px solid var(--gruvbox-bg2);
-    padding: 0.5rem;
+    padding: 1rem;
     flex: 1;
     overflow-y: auto; /* Allow individual panels to scroll */
     background-color: var(--gruvbox-bg);
@@ -78,6 +78,19 @@ body {
 
 .panel:nth-child(3) { /* Right panel */
   flex: 0 0 60%;
+  flex-grow: 1;        /* allow it to expand */
+/* Shrink other panels when Preview has focus */
+body.focus-preview .panel:nth-child(1), body.focus-preview .panel:nth-child(2) {
+  flex: 0 0 25%;          /* narrower fixed width */
+  transition: all .2s ease;
+}
+
+/* Allow the preview panel to grow a bit more */
+body.focus-preview .panel:nth-child(3) {
+  flex-grow: 1.5;
+}
+  flex-shrink: 0;      /* keep its content from shrinking too much */
+  flex-basis: 0%;      /* ignore any hard‑coded width */
 }
 
 .panel h2 {

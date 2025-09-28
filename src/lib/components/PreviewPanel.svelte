@@ -110,6 +110,7 @@
   /* Target paragraphs */
   :global(.markdown-content p) {
     font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    overflow-wrap: break-word; /* wrap long words */
     margin-bottom: 1em;
   }
 
@@ -160,7 +161,10 @@
     border: 1px solid transparent;
     height: 100%;
     box-sizing: border-box;
-    overflow-x: auto;
+    /* Prevent unwanted horizontal scrollbars; allow wrapping */
+    overflow-x: hidden;
+    /* Allow long words to wrap gracefully */
+    overflow-wrap: anywhere;
     overflow-y: auto;
   }
 
