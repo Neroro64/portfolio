@@ -65,21 +65,24 @@ body {
     flex: 1;
     overflow-y: auto; /* Allow individual panels to scroll */
     background-color: var(--gruvbox-bg);
+    min-width: 0; /* Prevent flex items from overflowing */
+    min-height: 0; /* Allow flex items to shrink below their content size */
 }
 
 /* Make panels take appropriate width for Ranger layout */
 .panel:nth-child(1) { /* Left panel */
   flex: 0 0 10%;
+  min-width: 0; /* Prevent flex item from overflowing */
 }
 
 .panel:nth-child(2) { /* Middle panel */
   flex: 0 0 20%;
+  min-width: 0; /* Prevent flex item from overflowing */
 }
 
 .panel:nth-child(3) { /* Right panel */
-  flex-grow: 1;        /* allow it to expand */
-  flex-shrink: 0;      /* keep its content from shrinking too much */
-  flex-basis: 0%;      /* ignore any hard‑coded width */
+  flex: 1;        /* allow it to expand to fill remaining space */
+  min-width: 0;   /* Prevent flex item from overflowing */
 }
 
 .panel h2 {

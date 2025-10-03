@@ -30,6 +30,8 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    width: 100%; /* Ensure container fills available width */
+    min-width: 0; /* Ensure flex container doesn't overflow */
     transition: all 0.3s ease;
   }
   

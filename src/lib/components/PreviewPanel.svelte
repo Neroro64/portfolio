@@ -107,12 +107,14 @@
   <div class="content-wrapper">
     {#if $selectedItem}
       {#if isExternalLink($selectedItem)}
-        <h2>{$selectedItem.title}</h2>
-        <p>
-          External Link: <a href={$selectedItem.url} target="_blank"
-            >{$selectedItem.url}</a
-          >
-        </p>
+        <div class="markdown-content">
+          <h2>{$selectedItem.title}</h2>
+          <p>
+            External Link: <a href={$selectedItem.url} target="_blank"
+              >{$selectedItem.url}</a
+            >
+          </p>
+        </div>
       {:else}
         {#if $selectedItem.tags && $selectedItem.tags.length > 0}
           <h2>{$selectedItem.title}</h2>
@@ -209,6 +211,7 @@
   .preview-content {
     border: 1px solid transparent;
     height: 100%;
+    width: 100%; /* Ensure it fills its flex container */
     box-sizing: border-box;
     /* Prevent unwanted horizontal scrollbars; allow wrapping */
     overflow-x: hidden;
@@ -218,6 +221,7 @@
     transition: all 0.3s ease;
     z-index: 10;
     position: relative;
+    min-width: 0; /* Prevent flex item from overflowing */
   }
 
   .preview-content.focused {
