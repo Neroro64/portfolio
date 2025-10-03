@@ -221,10 +221,10 @@
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%);
-    width: calc(100% - 2rem) !important;
-    height: calc(100% - 2rem) !important;
-    max-width: 1200px;
-    max-height: 800px;
+    width: calc(100% - 1rem) !important;
+    height: calc(100% - 1rem) !important;
+    max-width: 1400px;
+    max-height: 900px;
     background-color: var(--gruvbox-bg);
     z-index: 1000;
     border: 1px solid var(--gruvbox-yellow);
