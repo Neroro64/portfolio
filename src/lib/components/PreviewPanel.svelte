@@ -109,6 +109,9 @@
       {#if isExternalLink($selectedItem)}
         <div class="markdown-content">
           <h2>{$selectedItem.title}</h2>
+          {#if $selectedItem.description}
+            <p class="description">{$selectedItem.description}</p>
+          {/if}
           <p>
             External Link: <a href={$selectedItem.url} target="_blank"
               >{$selectedItem.url}</a

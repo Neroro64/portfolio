@@ -68,6 +68,11 @@ export interface ExternalLink {
   url: string;
 
   /**
+   * Short description of the link (optional)
+   */
+  description?: string;
+
+  /**
    * Icon to display next to the link
    */
   icon: string;
