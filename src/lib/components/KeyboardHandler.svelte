@@ -20,7 +20,9 @@
     navigateToListItem,
     sections,
     isPreviewExpanded,
-    setPreviewExpanded
+    setPreviewExpanded,
+    selectedItem,
+    togglePreviewExpanded
   } from "$lib/store";
 
   /**
@@ -36,6 +38,7 @@
    */
   function handleKeyDown(e: KeyboardEvent) {
     const key = e.key;
+    const activePanel = get(focusedPanel);
 
     // --- Escape key to close expanded preview ---
     if (key === "Escape" && get(isPreviewExpanded)) {
@@ -46,15 +49,23 @@
 
     // --- Panel Focus (h, l, ArrowLeft, ArrowRight) ---
     if (key === "l" || key === "ArrowRight") {
-      focusNextPanel();
-      e.preventDefault(); // Prevent page scrolling
+      // If the preview panel is focused, toggle expansion instead of moving to next panel
+      if (activePanel === "preview") {
+        // Only toggle if there's an item selected
+        if (get(selectedItem)) {
+          togglePreviewExpanded();
+        }
+        e.preventDefault();
+      } else {
+        focusNextPanel();
+        e.preventDefault(); // Prevent page scrolling
+      }
     } else if (key === "h" || key === "ArrowLeft") {
       focusPrevPanel();
       e.preventDefault(); // Prevent page scrolling
     }
 
     // --- Item Navigation (j, k, ArrowDown, ArrowUp) ---
-    const activePanel = get(focusedPanel);
     if (key === "j" || key === "ArrowDown") {
       e.preventDefault(); // Prevent page scrolling
       if (activePanel === "nav") {
@@ -71,6 +82,14 @@
           navigateToListItem(newIndex);
         }
       }
+      // Allow navigation in preview panel by scrolling content
+      else if (activePanel === "preview") {
+        // Scroll down in preview panel
+        const previewPanel = document.querySelector('.preview-content');
+        if (previewPanel) {
+          previewPanel.scrollTop += 30;
+        }
+      }
     } else if (key === "k" || key === "ArrowUp") {
       e.preventDefault(); // Prevent page scrolling
       if (activePanel === "nav") {
@@ -84,6 +103,14 @@
         const newIndex = Math.max(0, currentIndex - 1);
         if (newIndex !== currentIndex) {
           navigateToListItem(newIndex);
+        }
+      }
+      // Allow navigation in preview panel by scrolling content
+      else if (activePanel === "preview") {
+        // Scroll up in preview panel
+        const previewPanel = document.querySelector('.preview-content');
+        if (previewPanel) {
+          previewPanel.scrollTop -= 30;
         }
       }
     }
