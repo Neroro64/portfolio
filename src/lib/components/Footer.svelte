@@ -11,7 +11,7 @@
 </script>
 
 <footer>
-  Section: {$currentSection?.name || "None"} | Item: {$selectedItem?.title ||
+  Navigation: hjkl or arrow keys | Section: {$currentSection?.name || "None"} | Item: {$selectedItem?.title ||
     "None"}
 </footer>
 
