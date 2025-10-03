@@ -10,7 +10,7 @@
    * to track focus state for styling purposes.
    */
 
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { selectedItem, focusedPanel, isPreviewExpanded, setPreviewExpanded, togglePreviewExpanded } from "$lib/store";
   import type {
     NavigationItem,
@@ -101,10 +101,6 @@
             >{$selectedItem.url}</a
           >
         </p>
-        <div class="iframe-message">
-          <p>This website has prevented embedding in iframes.</p>
-          <p>Please click the link above to visit the site directly.</p>
-        </div>
       {:else}
         {#if $selectedItem.tags && $selectedItem.tags.length > 0}
           <h2>{$selectedItem.title}</h2>
@@ -248,13 +244,7 @@
     font-size: 0.8rem;
   }
 
-  .iframe-message {
-    margin-top: 1rem;
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--gruvbox-bg2);
-    border-radius: 4px;
-  }
+
 
   .markdown-content {
     color: var(--gruvbox-fg);
