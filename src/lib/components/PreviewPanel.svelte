@@ -78,13 +78,25 @@
   class:expanded={$isPreviewExpanded}
   on:click={() => {
     if ($focusedPanel === "preview" && $selectedItem) {
-      togglePreviewExpanded();
+      // Check if the selected item is an external link
+      if ('url' in $selectedItem && $selectedItem.url) {
+        // Open external link in new tab instead of expanding preview
+        window.open($selectedItem.url, "_blank");
+      } else {
+        togglePreviewExpanded();
+      }
     }
   }}
   on:keydown={(e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       if ($focusedPanel === "preview" && $selectedItem) {
-        togglePreviewExpanded();
+        // Check if the selected item is an external link
+        if ('url' in $selectedItem && $selectedItem.url) {
+          // Open external link in new tab instead of expanding preview
+          window.open($selectedItem.url, "_blank");
+        } else {
+          togglePreviewExpanded();
+        }
       }
     }
   }}
