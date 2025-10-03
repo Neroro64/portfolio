@@ -10,7 +10,8 @@
    * to track focus state for styling purposes.
    */
 
-  import { selectedItem, focusedPanel } from "$lib/store";
+  import { onMount, onDestroy } from "svelte";
+  import { selectedItem, focusedPanel, isPreviewExpanded, setPreviewExpanded, togglePreviewExpanded } from "$lib/store";
   import type {
     NavigationItem,
     PortfolioItem,
@@ -50,39 +51,79 @@
       month: "2-digit",
       day: "2-digit",
     });
+
+  // Handle click outside to close expanded preview
+  $: if ($focusedPanel !== 'preview' && $isPreviewExpanded) {
+    setPreviewExpanded(false);
+  }
+
+  // Handle Escape key
+  function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape' && $isPreviewExpanded) {
+      setPreviewExpanded(false);
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeydown);
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  });
 </script>
 
-<div class="preview-content" class:focused={$focusedPanel === "preview"}>
-  {#if $selectedItem}
-    {#if isExternalLink($selectedItem)}
-      <h2>{$selectedItem.title}</h2>
-      <p>
-        External Link: <a href={$selectedItem.url} target="_blank"
-          >{$selectedItem.url}</a
-        >
-      </p>
-      <div class="iframe-message">
-        <p>This website has prevented embedding in iframes.</p>
-        <p>Please click the link above to visit the site directly.</p>
-      </div>
-    {:else}
-      {#if $selectedItem.tags && $selectedItem.tags.length > 0}
+<div 
+  class="preview-content" 
+  class:focused={$focusedPanel === "preview"} 
+  class:expanded={$isPreviewExpanded}
+  on:click={() => {
+    if ($focusedPanel === "preview" && $selectedItem) {
+      togglePreviewExpanded();
+    }
+  }}
+  on:keydown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      if ($focusedPanel === "preview" && $selectedItem) {
+        togglePreviewExpanded();
+      }
+    }
+  }}
+  role="button"
+  tabindex="0"
+  aria-label="Preview Panel"
+>
+  <div class="content-wrapper">
+    {#if $selectedItem}
+      {#if isExternalLink($selectedItem)}
         <h2>{$selectedItem.title}</h2>
-        <div class="tags">
-          <strong>Tags:</strong>
-          {#each $selectedItem.tags as tag}
-            <span>{tag}</span>
-          {/each}
+        <p>
+          External Link: <a href={$selectedItem.url} target="_blank"
+            >{$selectedItem.url}</a
+          >
+        </p>
+        <div class="iframe-message">
+          <p>This website has prevented embedding in iframes.</p>
+          <p>Please click the link above to visit the site directly.</p>
+        </div>
+      {:else}
+        {#if $selectedItem.tags && $selectedItem.tags.length > 0}
+          <h2>{$selectedItem.title}</h2>
+          <div class="tags">
+            <strong>Tags:</strong>
+            {#each $selectedItem.tags as tag}
+              <span>{tag}</span>
+            {/each}
+          </div>
+        {/if}
+        <p class="highlight">{formatted}</p>
+        <div class="markdown-content">
+          <SvelteMarkdown {source} />
         </div>
       {/if}
-      <p class="highlight">{formatted}</p>
-      <div class="markdown-content">
-        <SvelteMarkdown {source} />
-      </div>
+    {:else}
+      <p>Select an item to preview.</p>
     {/if}
-  {:else}
-    <p>Select an item to preview.</p>
-  {/if}
+  </div>
 </div>
 
 <style>
@@ -166,10 +207,33 @@
     /* Allow long words to wrap gracefully */
     overflow-wrap: anywhere;
     overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 10;
+    position: relative;
   }
 
   .preview-content.focused {
     border-color: var(--gruvbox-yellow);
+  }
+
+  .preview-content.expanded {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2rem) !important;
+    height: calc(100% - 2rem) !important;
+    max-width: 1200px;
+    max-height: 800px;
+    background-color: var(--gruvbox-bg);
+    z-index: 1000;
+    border: 1px solid var(--gruvbox-yellow);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .content-wrapper {
+    padding: 1rem;
+    height: 100%;
   }
 
   .tags {

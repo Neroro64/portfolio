@@ -60,6 +60,14 @@ export const navIndex = writable(0);
  */
 export const listIndex = writable(0);
 
+/**
+ * Whether the preview panel is currently expanded.
+ * 
+ * This store tracks whether the preview panel is expanded or in normal view.
+ * It's used to control the layout when the preview panel is focused.
+ */
+export const isPreviewExpanded = writable(false);
+
 // --- Derived Stores for Computed State ---
 
 /**
@@ -145,4 +153,24 @@ export function navigateToSection(index: number) {
  */
 export function navigateToListItem(index: number) {
   listIndex.set(index);
+}
+
+/**
+ * Toggle the preview panel expanded state.
+ * 
+ * This function toggles whether the preview panel is expanded or not.
+ */
+export function togglePreviewExpanded() {
+  isPreviewExpanded.update(current => !current);
+}
+
+/**
+ * Set the preview panel expanded state.
+ * 
+ * This function sets whether the preview panel is expanded or not.
+ * 
+ * @param expanded - Whether the preview panel should be expanded
+ */
+export function setPreviewExpanded(expanded: boolean) {
+  isPreviewExpanded.set(expanded);
 }

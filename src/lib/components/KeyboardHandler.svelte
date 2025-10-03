@@ -19,6 +19,8 @@
     navigateToSection,
     navigateToListItem,
     sections,
+    isPreviewExpanded,
+    setPreviewExpanded
   } from "$lib/store";
 
   /**
@@ -28,11 +30,19 @@
    * It handles:
    * - Panel switching (h/l or arrow keys)
    * - Item navigation (j/k or arrow keys)
+   * - Escape key to close expanded preview
    *
    * @param e - The KeyboardEvent object
    */
   function handleKeyDown(e: KeyboardEvent) {
     const key = e.key;
+
+    // --- Escape key to close expanded preview ---
+    if (key === "Escape" && get(isPreviewExpanded)) {
+      setPreviewExpanded(false);
+      e.preventDefault();
+      return;
+    }
 
     // --- Panel Focus (h, l, ArrowLeft, ArrowRight) ---
     if (key === "l" || key === "ArrowRight") {
