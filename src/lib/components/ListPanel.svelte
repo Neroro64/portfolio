@@ -109,9 +109,9 @@
 
 li button:hover,
 li button:focus {
-  background-color: var(--gruvbox-bg2);
-  outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
-}
+    background-color: var(--gruvbox-bg2);
+    /* Remove outline to match hover */
+  }
 
 
 
@@ -127,8 +127,8 @@ li button:focus {
   }
 
   /* Ensure the selected state is properly styled */
-  li button.selected {
-    background-color: var(--gruvbox-highlight);
-    color: var(--gruvbox-yellow);
-  }
+    li button.selected {
+      background-color: var(--gruvbox-bg2);
+      color: var(--gruvbox-fg);
+    }
 </style>
