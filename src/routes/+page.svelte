@@ -35,8 +35,7 @@ import PreviewPanel from "$lib/components/PreviewPanel.svelte";
     transition: all 0.3s ease;
   }
   
-  .panel-container.preview-expanded .panel:not(:last-child) {
-    opacity: 0.3;
+.panel-container.preview-expanded .panel:not(:last-child) {
     pointer-events: none;
   }
   
@@ -52,7 +51,7 @@ import PreviewPanel from "$lib/components/PreviewPanel.svelte";
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--gruvbox-bg);
     z-index: 999;
     backdrop-filter: blur(2px);
   }

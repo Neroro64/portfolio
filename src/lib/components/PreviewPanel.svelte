@@ -168,7 +168,7 @@
   :global(.markdown-content h4),
   :global(.markdown-content h5) {
     font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
-    color: var(--gruvbox-bg-dark); /* Add background color for headers */
+    color: var(--gruvbox-bg-dark); /* Darker text for contrast */
     background-color: var(--gruvbox-fg2); /* Add background color for headers */
     padding: 0em 0.2em; /* Add padding around text */
     margin-top: 2em;
@@ -250,13 +250,13 @@
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%);
-    width: calc(100% - 1rem) !important;
-    height: calc(100% - 1rem) !important;
+    width: 80vw !important;
+    height: 80vh !important;
     max-width: 1400px;
     max-height: 900px;
     background-color: var(--gruvbox-bg);
     z-index: 1000;
-    border: 1px solid var(--gruvbox-yellow);
+    border: 1px solid transparent;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
 
