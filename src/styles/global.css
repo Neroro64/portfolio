@@ -92,14 +92,14 @@ body {
 }
 
 .panel h2 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  padding: 0.3rem;
-  font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
-  font-size: 1.25rem;
-  color: var(--gruvbox-bg-dark); /* Add background color for headers */
-  background-color: var(--gruvbox-fg2); /* Add background color for headers */
-}
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
+    font-size: 1.25rem;
+    color: var(--gruvbox-fg);
+    background-color: var(--gruvbox-bg);
+  }
 
 /* List items */
 ul {
