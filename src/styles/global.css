@@ -44,7 +44,7 @@ html, body {
 }
 
 body {
-  background-color: var(--gruvbox-bg-dark);
+  background-color: var(--gruvbox-bg2);
   color: var(--gruvbox-fg);
   display: flex;
   flex-direction: column;
@@ -125,13 +125,17 @@ button {
 }
 
 button:hover {
-  background-color: var(--gruvbox-selection);
-}
+    background-color: var(--gruvbox-selection);
+  }
 
-button.selected {
-  background-color: var(--gruvbox-highlight);
-  color: var(--gruvbox-orange);
-}
+  button:focus-visible {
+    background-color: var(--gruvbox-selection);
+  }
+
+  button.selected {
+    background-color: var(--gruvbox-highlight);
+    color: var(--gruvbox-orange);
+  }
 
 /* Highlight class for important text */
 .highlight {

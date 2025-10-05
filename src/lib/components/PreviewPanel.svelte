@@ -77,16 +77,16 @@
   class:focused={$focusedPanel === "preview"} 
   class:expanded={$isPreviewExpanded}
   on:click={() => {
-    if ($focusedPanel === "preview" && $selectedItem) {
-      // Check if the selected item is an external link
-      if ('url' in $selectedItem && $selectedItem.url) {
-        // Open external link in new tab instead of expanding preview
-        window.open($selectedItem.url, "_blank");
-      } else {
-        togglePreviewExpanded();
+    if ($selectedItem) {
+        // Check if the selected item is an external link
+        if ('url' in $selectedItem && $selectedItem.url) {
+          // Open external link in new tab instead of expanding preview
+          window.open($selectedItem.url, "_blank");
+        } else {
+          togglePreviewExpanded();
+        }
       }
-    }
-  }}
+    }}
   on:keydown={(e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       if ($focusedPanel === "preview" && $selectedItem) {
@@ -154,134 +154,100 @@
 </div>
 
 <style>
-  /* Global scope for this component's CSS */
+  /* Global markdown styles */
   :global(.markdown-content) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for all text */
+    font-family: var(--mono-font);
     line-height: 1.7;
     color: var(--gruvbox-fg);
   }
 
-  /* Target headings */
+  /* Headings with dark text on panel background */
   :global(.markdown-content h1),
   :global(.markdown-content h2),
   :global(.markdown-content h3),
   :global(.markdown-content h4),
   :global(.markdown-content h5) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
-    color: var(--gruvbox-bg-dark); /* Darker text for contrast */
-    background-color: var(--gruvbox-fg2); /* Add background color for headers */
-    padding: 0em 0.2em; /* Add padding around text */
-    margin-top: 2em;
-    margin-bottom: 1em;
+    font-family: var(--mono-font);
+    color: var(--gruvbox-bg2); /* dark text */
+    background-color: var(--gruvbox-fg); /* light header bg */
+    padding: 0em 0.2em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
-  /* Target paragraphs */
   :global(.markdown-content p) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
-    overflow-wrap: break-word; /* wrap long words */
-    margin-bottom: 1em;
+    font-family: var(--mono-font);
+    overflow-wrap: break-word;
+    margin-bottom: 1rem;
   }
 
-  /* Style links */
   :global(.markdown-content a) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
     color: var(--gruvbox-aqua);
     text-decoration: none;
     border-bottom: 2px solid var(--gruvbox-aqua);
   }
 
   :global(.markdown-content a:hover) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
     border-bottom-style: dotted;
   }
 
-  /* Style blockquotes */
   :global(.markdown-content blockquote) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
     border-left: 4px solid var(--gruvbox-gray);
-    padding-left: 1em;
+    padding-left: 1rem;
     margin-left: 0;
     font-style: italic;
     color: var(--gruvbox-gray);
   }
 
-  /* Style code blocks */
   :global(.markdown-content pre) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
     background-color: var(--gruvbox-bg2);
     border-radius: 4px;
-    overflow-x: auto; /* Handle long lines of code */
+    overflow-x: auto;
   }
 
   :global(.markdown-content code) {
-    font-family: var(--mono-font); /* Use Iosevka Term Slab for inline code */
-    font-size: 0.9em;
+    font-size: 0.9rem;
   }
 
-  /* Handle inline code differently from code blocks */
   :global(.markdown-content p > code) {
     background-color: var(--gruvbox-bg2);
-    padding: 0.2em 0.4em;
+    padding: 0.2rem 0.4rem;
     border-radius: 3px;
   }
 
+  /* Preview panel base */
   .preview-content {
-    border: 1px solid transparent;
-    height: 100%;
-    width: 100%; /* Ensure it fills its flex container */
-    box-sizing: border-box;
-    /* Prevent unwanted horizontal scrollbars; allow wrapping */
-    overflow-x: hidden;
-    /* Allow long words to wrap gracefully */
-    overflow-wrap: anywhere;
-    overflow-y: auto;
-    transition: all 0.3s ease;
-    z-index: 10;
     position: relative;
-    min-width: 0; /* Prevent flex item from overflowing */
-  }
-
-  .preview-content.focused {
-    border-color: var(--gruvbox-yellow);
-  }
-
-  .preview-content.expanded {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%);
-    width: 80vw !important;
-    height: 80vh !important;
-    max-width: 1400px;
-    max-height: 900px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
     background-color: var(--gruvbox-bg);
-    z-index: 1000;
-    border: 1px solid transparent;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  }
-
-  .content-wrapper {
-    padding: 1rem;
-    height: 100%;
-  }
-
-  .tags {
-    margin-top: 1rem;
-  }
-
-  .tags span {
-    background-color: var(--gruvbox-bg2);
-    padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    margin-right: 0.5rem;
-    font-size: 0.8rem;
+    transition: transform 0.35s ease, opacity 0.3s ease, width 0.35s ease, height 0.35s ease;
+    cursor: pointer;
   }
 
+  /* Focused state matches hover */
+  .preview-content.focused {
+    background-color: var(--gruvbox-bg);
+  }
 
+  /* Expanded zen mode */
+  .preview-content.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.05);
+    width: 70vw; /* slightly smaller */
+    height: 80vh;
+    z-index: 1000;
+    border: none;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    padding: 1rem;
+  }
 
-  .markdown-content {
-    color: var(--gruvbox-fg);
-    background-color: var(--gruvbox-bg0);
-    line-height: 1.6;
+  .preview-content:not(.expanded) {
+    transform: translate(0,0) scale(1);
   }
 </style>

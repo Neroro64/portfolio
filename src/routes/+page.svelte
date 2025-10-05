@@ -1,5 +1,5 @@
 <script lang="ts">
-import { isPreviewExpanded, focusedPanel } from "$lib/store";
+import { isPreviewExpanded, focusedPanel, setPreviewExpanded } from "$lib/store";
 import NavPanel from "$lib/components/NavPanel.svelte";
 import ListPanel from "$lib/components/ListPanel.svelte";
 import PreviewPanel from "$lib/components/PreviewPanel.svelte";
