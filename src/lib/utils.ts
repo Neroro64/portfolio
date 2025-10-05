@@ -93,61 +93,47 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
  */
 export function loadContentSections(contentBasePath: string): Array<{ id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[] }> {
   try {
-    const sections = [
+const sections = [
+  {
+    id: 'projects',
+    name: 'Projects',
+    icon: '📁',
+    items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
+  },
+  {
+    id: 'experience',
+    name: 'Experience',
+    icon: '💼',
+    items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
+  },
+  {
+    id: 'blog',
+    name: 'Blog',
+    icon: '📝',
+    items: scanMarkdownDirectory(path.join(contentBasePath, 'blog'))
+  },
+  {
+    id: 'links',
+    name: 'Links',
+    icon: '🔗',
+    items: [
       {
-        id: 'experience',
-        name: 'Experience',
-        icon: '💼',
-        items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
+        id: 'github',
+        title: 'GitHub Profile',
+        description: 'My GitHub profile with various projects and contributions.',
+        url: 'https://github.com/Neroro64',
+        icon: '🐙'
       },
       {
-        id: 'projects',
-        name: 'Projects',
-        icon: '📁',
-        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
-      },
-      {
-        id: 'blog',
-        name: 'Blog',
-        icon: '📝',
-        items: scanMarkdownDirectory(path.join(contentBasePath, 'blog'))
-      },
-      {
-        id: 'links',
-        name: 'Links',
-        icon: '🔗',
-        items: [
-          {
-            id: 'gallery',
-            title: 'Photo Gallery',
-            description: 'A collection of my photography and visual work.',
-            url: 'https://gallery.nuoc.dev',
-            icon: '📷'
-          },
-          {
-            id: 'notes',
-            title: 'Personal documentation',
-            description: 'My personal notes and documentation site.',
-            url: 'https://notes.nuoc.dev',
-            icon: '📝'
-          },
-          {
-            id: 'github',
-            title: 'GitHub Profile',
-            description: 'My GitHub profile with various projects and contributions.',
-            url: 'https://github.com/Neroro64',
-            icon: '🐙'
-          },
-          {
-            id: 'linkedin',
-            title: 'LinkedIn Profile',
-            description: 'Professional networking profile with my work experience.',
-            url: 'www.linkedin.com/in/nuo-chen',
-            icon: '👔'
-          },
-        ] as ExternalLink[]
+        id: 'linkedin',
+        title: 'LinkedIn Profile',
+        description: 'Professional networking profile with my work experience.',
+        url: 'www.linkedin.com/in/nuo-chen',
+        icon: '👔'
       }
-    ];
+    ] as ExternalLink[]
+  }
+];
 
     return sections;
   } catch (error) {

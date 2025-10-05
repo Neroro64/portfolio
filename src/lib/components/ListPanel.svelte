@@ -107,11 +107,14 @@
     border-bottom: 1px solid var(--gruvbox-bg3);
   }
 
-  li button:hover,
-  li button:focus {
-    background-color: rgba(255, 255, 255, 0.1);
-    outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
-  }
+li button:hover,
+li button:focus {
+  background-color: var(--gruvbox-bg2);
+  outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
+}
+
+
+
 
   .item-title {
     flex-grow: 1;
@@ -119,7 +122,7 @@
 
   .item-date {
     margin-left: 1rem;
-    color: #888;
+    color: var(--gruvbox-fg4);
     font-size: 0.9em;
   }
 

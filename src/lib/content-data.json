@@ -1,42 +1,5 @@
 [
   {
-    "id": "experience",
-    "name": "Experience",
-    "icon": "💼",
-    "items": [
-      {
-        "id": "software-engineer",
-        "title": "Software Engineer at DICE",
-        "description": "This species is typically found in professional settings where reliability and ownership are paramount.",
-        "type": "experience",
-        "date": "2021-08-04T00:00:00.000Z",
-        "tags": [
-          "Release engineering",
-          "DICE",
-          "C++",
-          "C#",
-          "CI/CD",
-          "Automation"
-        ],
-        "content": "\n### About Me\n**Nuo Chen, me@nuoc.dev**\n\nI am a passionate software engineer focused on building reliable, maintainable systems.\n\n\n### Role Description\n\nI'm software engineer at DICE developing solutions for addressing integration and stability challenges, from multiple parallel trunk-based dev-lines.\nWIP...\n\n### Achievements\n\n- WIP...\n\n### Example of Challenges\n\n- WIP...\n"
-      },
-      {
-        "id": "postgraduate",
-        "title": "Postgraduate Student at KTH Royal Institute of Technology",
-        "description": "Studied Computer Science with a specialization in Machine Learning at KTH Royal Institute of Technology (Sweden) and completed a master thesis on procedural animation generation using Mixture‑of‑Experts networks and transfer learning techniques.",
-        "type": "experience",
-        "date": "2018-08-20T00:00:00.000Z",
-        "tags": [
-          "KTH",
-          "NTU",
-          "Computer Science",
-          "Machine Learning"
-        ],
-        "content": "\n### About Me\n**Nuo Chen, me@nuoc.dev**\n\nI pursued my Masters at KTH Royal Institute of Technology in Sweden, focusing on computer science and machine learning.\n\n### Exchange Program at NTU Singapore\n\nStudied fundamentals of machine learning and probability while immersing myself in a diverse cultural environment that broadened my research perspective.\n\n### Research Focus – Master Thesis\nMy thesis investigated *Procedural Animation Generation via Mixture‑of‑Experts (MoE) Networks* that can transfer learned motion patterns between character rigs when only limited target data is available.\n\nKey contributions include:\n- Design of an MoE architecture conditioned on positional and rotational objectives for generating skeletal motions.\n- Integration of several transfer‑learning strategies (feature‑encoding, feature‑clustering, feature‑selection) to adapt the MoE model across diverse rig domains.\n- Implementation in PyTorch Lightning with a modular training pipeline, automated hyper‑parameter tuning using Ray Tune, and reproducible experiment scripts.\n- Empirical evaluation on multiple datasets showing significant improvements over baseline MLP/LSTM baselines in both quantitative metrics (reconstruction error) and qualitative animation quality.\n\n[Paper](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1635572&dswid=5826) | [Github Repository](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding)\n\n"
-      }
-    ]
-  },
-  {
     "id": "projects",
     "name": "Projects",
     "icon": "📁",
@@ -87,6 +50,43 @@
     ]
   },
   {
+    "id": "experience",
+    "name": "Experience",
+    "icon": "💼",
+    "items": [
+      {
+        "id": "software-engineer",
+        "title": "Software Engineer at DICE",
+        "description": "This species is typically found in professional settings where reliability and ownership are paramount.",
+        "type": "experience",
+        "date": "2021-08-04T00:00:00.000Z",
+        "tags": [
+          "Release engineering",
+          "DICE",
+          "C++",
+          "C#",
+          "CI/CD",
+          "Automation"
+        ],
+        "content": "\n### About Me\n**Nuo Chen, me@nuoc.dev**\n\nI am a passionate software engineer focused on building reliable, maintainable systems.\n\n\n### Role Description\n\nI'm software engineer at DICE developing solutions for addressing integration and stability challenges, from multiple parallel trunk-based dev-lines.\nWIP...\n\n### Achievements\n\n- WIP...\n\n### Example of Challenges\n\n- WIP...\n"
+      },
+      {
+        "id": "postgraduate",
+        "title": "Postgraduate Student at KTH Royal Institute of Technology",
+        "description": "Studied Computer Science with a specialization in Machine Learning at KTH Royal Institute of Technology (Sweden) and completed a master thesis on procedural animation generation using Mixture‑of‑Experts networks and transfer learning techniques.",
+        "type": "experience",
+        "date": "2018-08-20T00:00:00.000Z",
+        "tags": [
+          "KTH",
+          "NTU",
+          "Computer Science",
+          "Machine Learning"
+        ],
+        "content": "\n### About Me\n**Nuo Chen, me@nuoc.dev**\n\nI pursued my Masters at KTH Royal Institute of Technology in Sweden, focusing on computer science and machine learning.\n\n### Exchange Program at NTU Singapore\n\nStudied fundamentals of machine learning and probability while immersing myself in a diverse cultural environment that broadened my research perspective.\n\n### Research Focus – Master Thesis\nMy thesis investigated *Procedural Animation Generation via Mixture‑of‑Experts (MoE) Networks* that can transfer learned motion patterns between character rigs when only limited target data is available.\n\nKey contributions include:\n- Design of an MoE architecture conditioned on positional and rotational objectives for generating skeletal motions.\n- Integration of several transfer‑learning strategies (feature‑encoding, feature‑clustering, feature‑selection) to adapt the MoE model across diverse rig domains.\n- Implementation in PyTorch Lightning with a modular training pipeline, automated hyper‑parameter tuning using Ray Tune, and reproducible experiment scripts.\n- Empirical evaluation on multiple datasets showing significant improvements over baseline MLP/LSTM baselines in both quantitative metrics (reconstruction error) and qualitative animation quality.\n\n[Paper](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1635572&dswid=5826) | [Github Repository](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding)\n\n"
+      }
+    ]
+  },
+  {
     "id": "blog",
     "name": "Blog",
     "icon": "📝",
@@ -110,20 +110,6 @@
     "name": "Links",
     "icon": "🔗",
     "items": [
-      {
-        "id": "gallery",
-        "title": "Photo Gallery",
-        "description": "A collection of my photography and visual work.",
-        "url": "https://gallery.nuoc.dev",
-        "icon": "📷"
-      },
-      {
-        "id": "notes",
-        "title": "Personal documentation",
-        "description": "My personal notes and documentation site.",
-        "url": "https://notes.nuoc.dev",
-        "icon": "📝"
-      },
       {
         "id": "github",
         "title": "GitHub Profile",
