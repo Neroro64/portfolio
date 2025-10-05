@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { isPreviewExpanded } from "$lib/store";
-  import NavPanel from "$lib/components/NavPanel.svelte";
-  import ListPanel from "$lib/components/ListPanel.svelte";
-  import PreviewPanel from "$lib/components/PreviewPanel.svelte";
+import { isPreviewExpanded, focusedPanel } from "$lib/store";
+import NavPanel from "$lib/components/NavPanel.svelte";
+import ListPanel from "$lib/components/ListPanel.svelte";
+import PreviewPanel from "$lib/components/PreviewPanel.svelte";
 </script>
 
 <div class="panel-container" class:preview-expanded={$isPreviewExpanded}>
-  <div class="panel"><NavPanel /></div>
-  <div class="panel"><ListPanel /></div>
-  <div class="panel preview"><PreviewPanel /></div>
+<div class="panel" class:focused={$focusedPanel === 'nav'}><NavPanel /></div>
+   <div class="panel" class:focused={$focusedPanel === 'list'}><ListPanel /></div>
+   <div class="panel preview" class:focused={$focusedPanel === 'preview'}><PreviewPanel /></div>
 </div>
 
 {#if $isPreviewExpanded}
