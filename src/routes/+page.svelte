@@ -11,19 +11,19 @@ import PreviewPanel from "$lib/components/PreviewPanel.svelte";
    <div class="panel preview" class:focused={$focusedPanel === 'preview'}><PreviewPanel /></div>
 </div>
 
-{#if $isPreviewExpanded}
-  <div class="backdrop" 
-       on:click={() => {}} 
-       role="button" 
-       tabindex="0"
-       aria-label="Close expanded preview"
-       on:keydown={(e) => {
-         if (e.key === 'Enter' || e.key === ' ') {
-           // Click handler would be here, but we want to close the preview
-           // which is handled by the click outside logic in PreviewPanel
-         }
-       }}></div>
-{/if}
+ {#if $isPreviewExpanded}
+   <div class="backdrop"
+        on:click={() => setPreviewExpanded(false)}
+        on:touchstart={() => setPreviewExpanded(false)}
+        role="button"
+        tabindex="0"
+        aria-label="Close expanded preview"
+        on:keydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setPreviewExpanded(false);
+          }
+        }}></div>
+ {/if}
 
 <style>
   .panel-container {

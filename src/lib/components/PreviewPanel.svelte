@@ -100,20 +100,21 @@
       }
     }
   }}
-  on:touchstart={(e) => {
-    if ($focusedPanel === "preview" && $selectedItem) {
-      // Prevent default touch behavior to avoid scrolling when touching preview panel
-      e.preventDefault();
-      
-      // Check if the selected item is an external link
-      if ('url' in $selectedItem && $selectedItem.url) {
-        // Open external link in new tab instead of expanding preview
-        window.open($selectedItem.url, "_blank");
-      } else {
-        togglePreviewExpanded();
-      }
-    }
-  }}
+   on:touchstart={(e) => {
+     focusedPanel.set('preview');
+     if ($focusedPanel === "preview" && $selectedItem) {
+       // Prevent default touch behavior to avoid scrolling when touching preview panel
+       e.preventDefault();
+
+       // Check if the selected item is an external link
+       if ('url' in $selectedItem && $selectedItem.url) {
+         // Open external link in new tab instead of expanding preview
+         window.open($selectedItem.url, "_blank");
+       } else {
+         togglePreviewExpanded();
+       }
+     }
+   }}
   role="button"
   tabindex="0"
   aria-label="Preview Panel"
