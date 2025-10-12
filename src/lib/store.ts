@@ -166,11 +166,36 @@ export function togglePreviewExpanded() {
 
 /**
  * Set the preview panel expanded state.
- * 
+ *
  * This function sets whether the preview panel is expanded or not.
- * 
+ *
  * @param expanded - Whether the preview panel should be expanded
  */
 export function setPreviewExpanded(expanded: boolean) {
   isPreviewExpanded.set(expanded);
+}
+
+// --- App Store for Navigation Component ---
+
+/**
+ * Combined store for the Navigation component.
+ * Provides sections array and currentSection id.
+ */
+export const appStore = derived(
+  [navIndex],
+  ([$navIndex]) => ({
+    sections,
+    currentSection: sections[$navIndex]?.id || '',
+  })
+);
+
+/**
+ * Set the current section by id.
+ * @param sectionId - The id of the section to set as current
+ */
+export function setCurrentSection(sectionId: string) {
+  const index = sections.findIndex(s => s.id === sectionId);
+  if (index !== -1) {
+    navigateToSection(index);
+  }
 }
