@@ -11,7 +11,13 @@
    */
 
   import { onMount } from "svelte";
-  import { selectedItem, focusedPanel, isPreviewExpanded, setPreviewExpanded, togglePreviewExpanded } from "$lib/store";
+  import {
+    selectedItem,
+    focusedPanel,
+    isPreviewExpanded,
+    setPreviewExpanded,
+    togglePreviewExpanded,
+  } from "$lib/store";
   import type {
     NavigationItem,
     PortfolioItem,
@@ -53,46 +59,46 @@
     });
 
   // Handle click outside to close expanded preview
-  $: if ($focusedPanel !== 'preview' && $isPreviewExpanded) {
+  $: if ($focusedPanel !== "preview" && $isPreviewExpanded) {
     setPreviewExpanded(false);
   }
 
   // Handle Escape key
   function handleKeydown(e: KeyboardEvent) {
-    if (e.key === 'Escape' && $isPreviewExpanded) {
+    if (e.key === "Escape" && $isPreviewExpanded) {
       setPreviewExpanded(false);
     }
   }
 
   onMount(() => {
-    window.addEventListener('keydown', handleKeydown);
+    window.addEventListener("keydown", handleKeydown);
     return () => {
-      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener("keydown", handleKeydown);
     };
   });
 </script>
 
-<div 
-  class="preview-content" 
-  class:focused={$focusedPanel === "preview"} 
+<div
+  class="preview-content"
+  class:focused={$focusedPanel === "preview"}
   class:expanded={$isPreviewExpanded}
   on:click={() => {
-    focusedPanel.set('preview'); // Ensure preview panel is focused on click
+    focusedPanel.set("preview"); // Ensure preview panel is focused on click
     if ($selectedItem) {
-        // Check if the selected item is an external link
-        if ('url' in $selectedItem && $selectedItem.url) {
-          // Open external link in new tab instead of expanding preview
-          window.open($selectedItem.url, "_blank");
-        } else {
-          togglePreviewExpanded();
-        }
+      // Check if the selected item is an external link
+      if ("url" in $selectedItem && $selectedItem.url) {
+        // Open external link in new tab instead of expanding preview
+        window.open($selectedItem.url, "_blank");
+      } else {
+        togglePreviewExpanded();
       }
-    }}
+    }
+  }}
   on:keydown={(e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       if ($focusedPanel === "preview" && $selectedItem) {
         // Check if the selected item is an external link
-        if ('url' in $selectedItem && $selectedItem.url) {
+        if ("url" in $selectedItem && $selectedItem.url) {
           // Open external link in new tab instead of expanding preview
           window.open($selectedItem.url, "_blank");
         } else {
@@ -101,21 +107,21 @@
       }
     }
   }}
-   on:touchstart={(e) => {
-     focusedPanel.set('preview');
-     if ($focusedPanel === "preview" && $selectedItem) {
-       // Prevent default touch behavior to avoid scrolling when touching preview panel
-       e.preventDefault();
+  on:touchstart={(e) => {
+    focusedPanel.set("preview");
+    if ($focusedPanel === "preview" && $selectedItem && !$isPreviewExpanded) {
+      // Prevent default touch behavior to avoid scrolling when touching preview panel
+      e.preventDefault();
 
-       // Check if the selected item is an external link
-       if ('url' in $selectedItem && $selectedItem.url) {
-         // Open external link in new tab instead of expanding preview
-         window.open($selectedItem.url, "_blank");
-       } else {
-         togglePreviewExpanded();
-       }
-     }
-   }}
+      // Check if the selected item is an external link
+      if ("url" in $selectedItem && $selectedItem.url) {
+        // Open external link in new tab instead of expanding preview
+        window.open($selectedItem.url, "_blank");
+      } else {
+        togglePreviewExpanded();
+      }
+    }
+  }}
   role="button"
   tabindex="0"
   aria-label="Preview Panel"
@@ -225,7 +231,11 @@
     padding: 0.5rem;
     background-color: var(--gruvbox-bg);
     border-radius: 4px;
-    transition: transform 0.35s ease, opacity 0.3s ease, width 0.35s ease, height 0.35s ease;
+    transition:
+      transform 0.35s ease,
+      opacity 0.3s ease,
+      width 0.35s ease,
+      height 0.35s ease;
     cursor: pointer;
   }
 
@@ -244,12 +254,13 @@
     height: 80vh;
     z-index: 1000;
     border: none;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     padding: 1rem;
+    overflow-y: auto; /* allow scrolling in expanded mode */
   }
 
   .preview-content:not(.expanded) {
-    transform: translate(0,0) scale(1);
+    transform: translate(0, 0) scale(1);
   }
 </style>
