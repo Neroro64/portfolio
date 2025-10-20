@@ -21,8 +21,7 @@
     sections,
     isPreviewExpanded,
     setPreviewExpanded,
-    selectedItem,
-    togglePreviewExpanded,
+    selectedItem
   } from "$lib/store";
   import type { NavigationItem, ExternalLink } from "$types/index";
 
@@ -73,7 +72,7 @@
             window.open(item.url, "_blank");
             e.preventDefault();
           } else {
-            togglePreviewExpanded();
+            setPreviewExpanded(true);
           }
         }
         e.preventDefault();
@@ -166,7 +165,7 @@
           window.open(item.url, "_blank");
           e.preventDefault();
         } else {
-          togglePreviewExpanded();
+          setPreviewExpanded(true);
         }
       }
     }

@@ -16,8 +16,7 @@
     focusedPanel,
     isPreviewExpanded,
     setPreviewExpanded,
-    togglePreviewExpanded,
-    focusPrevPanel,
+    focusPrevPanel
   } from "$lib/store";
 
   let touchStartX: number = 0;
@@ -94,7 +93,7 @@
         // Open external link in new tab instead of expanding preview
         window.open($selectedItem.url, "_blank");
       } else {
-        togglePreviewExpanded();
+        setPreviewExpanded(true);
       }
     }
   }}
@@ -106,7 +105,7 @@
           // Open external link in new tab instead of expanding preview
           window.open($selectedItem.url, "_blank");
         } else {
-          togglePreviewExpanded();
+          setPreviewExpanded(true);
         }
       }
     }
