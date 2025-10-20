@@ -6,7 +6,6 @@ import {
   navIndex,
   listIndex,
   currentItems,
-  sections,
   isPreviewExpanded,
   setPreviewExpanded,
   selectedItem,

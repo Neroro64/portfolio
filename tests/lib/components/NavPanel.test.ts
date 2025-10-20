@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/svelte';
 import NavPanel from '../../../src/lib/components/NavPanel.svelte';
-import { navIndex, focusedPanel, sections, navigateToSection } from '../../../src/lib/store';
+import { navIndex, focusedPanel, navigateToSection } from '../../../src/lib/store';
 
 // Mock the store
 vi.mock('../../../src/lib/store', () => ({

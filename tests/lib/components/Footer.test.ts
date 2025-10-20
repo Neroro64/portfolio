@@ -3,8 +3,6 @@ import { render, screen } from '@testing-library/svelte';
 import Footer from '../../../src/lib/components/Footer.svelte';
 import { currentSection, selectedItem } from '../../../src/lib/store';
 
-declare const window: any;
-
 // Mock the store
 vi.mock('../../../src/lib/store', () => ({
   currentSection: {
