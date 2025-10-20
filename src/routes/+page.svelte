@@ -41,8 +41,9 @@ import PreviewPanel from "$lib/components/PreviewPanel.svelte";
   
   @media (max-width: 768px) {
     .panel-container { flex-direction: column; }
-    /* Keep preview visible but allow scrolling */
-    .panel { flex: 1; overflow-y: auto; }
+    /* Show only focused panel on mobile */
+    .panel { display: none; }
+    .panel.focused { display: flex; flex: 1; overflow-y: auto; }
   }
   
   .backdrop {
