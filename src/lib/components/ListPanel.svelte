@@ -74,7 +74,7 @@
   }}
   on:touchend={(e) => {
     const endX = e.changedTouches?.[0]?.clientX ?? 0;
-    if (touchStartX - endX < -50 && $focusedPanel === "list") {
+    if (touchStartX - endX < -100 && $focusedPanel === "list") {
       focusPrevPanel();
     }
   }}

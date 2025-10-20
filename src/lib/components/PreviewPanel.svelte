@@ -116,12 +116,12 @@
     focusedPanel.set("preview");
     if (!$isPreviewExpanded) {
       e.preventDefault();
-      togglePreviewExpanded();
+      setPreviewExpanded(true);
     }
   }}
   on:touchend={(e) => {
     const endX = e.changedTouches?.[0]?.clientX ?? 0;
-    if (touchStartX - endX < -50 && $isPreviewExpanded) {
+    if (touchStartX - endX < -100 && $isPreviewExpanded) {
       focusPrevPanel();
       setPreviewExpanded(false);
     }
