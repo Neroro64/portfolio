@@ -33,11 +33,11 @@
       <button
         class:selected={$navIndex === i && $focusedPanel === "nav"}
         on:click={() => {
-          selectSection(i)
+          selectSection(i);
         }}
         on:touchstart={(e) => {
           e.preventDefault();
-          selectSection(i)
+          selectSection(i);
         }}
       >
         {section.icon}
@@ -63,11 +63,11 @@
     border-bottom: 1px solid var(--gruvbox-bg3);
   }
 
-li button:hover,
-   li button:focus {
-     background-color: var(--gruvbox-bg2);
-     outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
-   }
+  li button:hover,
+  li button:focus {
+    background-color: var(--gruvbox-bg2);
+    outline: 1px solid var(--gruvbox-yellow); /* Add custom focus indicator */
+  }
 
   /* Ensure the selected state is properly styled */
   li button.selected {

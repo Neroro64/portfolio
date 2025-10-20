@@ -22,7 +22,7 @@
     isPreviewExpanded,
     setPreviewExpanded,
     selectedItem,
-    togglePreviewExpanded
+    togglePreviewExpanded,
   } from "$lib/store";
   import type { NavigationItem, ExternalLink } from "$types/index";
 
@@ -77,7 +77,7 @@
           }
         }
         e.preventDefault();
-      } 
+      }
       // If the list panel is focused and the selected item is an external link, open it
       else if (activePanel === "list" && get(selectedItem)) {
         const item = get(selectedItem);
@@ -118,7 +118,7 @@
       // Allow navigation in preview panel by scrolling content
       else if (activePanel === "preview") {
         // Scroll down in preview panel
-        const previewPanel = document.querySelector('.preview-content');
+        const previewPanel = document.querySelector(".preview-content");
         if (previewPanel) {
           previewPanel.scrollTop += 30;
         }
@@ -141,7 +141,7 @@
       // Allow navigation in preview panel by scrolling content
       else if (activePanel === "preview") {
         // Scroll up in preview panel
-        const previewPanel = document.querySelector('.preview-content');
+        const previewPanel = document.querySelector(".preview-content");
         if (previewPanel) {
           previewPanel.scrollTop -= 30;
         }
