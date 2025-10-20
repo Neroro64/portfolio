@@ -22,7 +22,7 @@
    */
   function selectSection(index: number) {
     navigateToSection(index);
-    focusedPanel.set("nav"); // Set this panel as focused
+    focusedPanel.set("list"); // Set this panel as focused
   }
 </script>
 
@@ -32,7 +32,12 @@
     <li>
       <button
         class:selected={$navIndex === i && $focusedPanel === "nav"}
-        on:click={() => selectSection(i)}
+        on:click={() => {
+          selectSection(i)
+        }}
+        on:touchstart={() => {
+          selectSection(i)
+        }}
       >
         {section.icon}
         {section.name}

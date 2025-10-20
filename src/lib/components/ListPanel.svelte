@@ -9,13 +9,13 @@
    * and `listIndex` to track which item is currently selected.
    */
 
-  import {
-    currentSection,
-    currentItems,
-    listIndex,
-    focusedPanel,
-  } from "$lib/store";
-  import { navigateToListItem } from "$lib/store";
+import {
+     currentSection,
+     currentItems,
+     listIndex,
+     focusedPanel,
+   } from "$lib/store";
+ import { navigateToListItem } from "$lib/store";
   import type { NavigationItem, ExternalLink } from "$types/index";
 
   /**
@@ -28,7 +28,7 @@
    */
   function selectListItem(sortedIndex: number) {
     navigateToListItem(sortedIndex);
-    focusedPanel.set("list");
+    focusedPanel.set("preview");
   }
 
   /**

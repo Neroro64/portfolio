@@ -77,6 +77,7 @@
   class:focused={$focusedPanel === "preview"} 
   class:expanded={$isPreviewExpanded}
   on:click={() => {
+    focusedPanel.set('preview'); // Ensure preview panel is focused on click
     if ($selectedItem) {
         // Check if the selected item is an external link
         if ('url' in $selectedItem && $selectedItem.url) {

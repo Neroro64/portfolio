@@ -66,6 +66,6 @@ describe('NavPanel', () => {
     const experienceButton = screen.getByRole('button', { name: /Experience/ });
     await fireEvent.click(experienceButton);
     expect(navigateToSection).toHaveBeenCalledWith(1);
-    expect(focusedPanel.set).toHaveBeenCalledWith('nav');
+    expect(focusedPanel.set).toHaveBeenCalledWith('list');
   });
 });

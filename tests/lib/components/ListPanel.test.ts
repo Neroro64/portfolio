@@ -94,7 +94,7 @@ describe('ListPanel', () => {
     const button = screen.getByRole('button', { name: /Project 2/ });
     await fireEvent.click(button);
     expect(navigateToListItem).toHaveBeenCalledWith(1);
-    expect(focusedPanel.set).toHaveBeenCalledWith('list');
+    expect(focusedPanel.set).toHaveBeenCalledWith('preview');
   });
 
   it('renders external links differently', () => {
