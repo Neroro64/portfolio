@@ -22,7 +22,7 @@
    */
   function selectSection(index: number) {
     navigateToSection(index);
-    focusedPanel.set("list"); // Set this panel as focused
+    focusedPanel.set("list"); // Set the next panel as focused (no auto-select preview)
   }
 </script>
 
@@ -35,7 +35,8 @@
         on:click={() => {
           selectSection(i)
         }}
-        on:touchstart={() => {
+        on:touchstart={(e) => {
+          e.preventDefault();
           selectSection(i)
         }}
       >

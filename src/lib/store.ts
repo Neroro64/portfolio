@@ -140,7 +140,7 @@ export function focusPrevPanel() {
  */
 export function navigateToSection(index: number) {
   navIndex.set(index);
-  listIndex.set(0); // Reset list index when changing section
+  listIndex.set(-1); // Reset list index when changing section (no item selected initially)
 }
 
 /**
