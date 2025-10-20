@@ -9,14 +9,17 @@
    * and `listIndex` to track which item is currently selected.
    */
 
-import {
-     currentSection,
-     currentItems,
-     listIndex,
-     focusedPanel,
-   } from "$lib/store";
- import { navigateToListItem } from "$lib/store";
+  import {
+    currentSection,
+    currentItems,
+    listIndex,
+    focusedPanel,
+    focusPrevPanel,
+  } from "$lib/store";
+  import { navigateToListItem } from "$lib/store";
   import type { NavigationItem, ExternalLink } from "$types/index";
+
+  let touchStartX = 0;
 
   /**
    * Function to select a list item.
@@ -63,32 +66,46 @@ import {
   }
 </script>
 
-<h2>{$currentSection?.name ?? "SectionName"}</h2>
-<ul>
-  {#if $currentItems && $currentItems.length > 0}
-    {#each $currentItems as item, i}
-      <li>
-        <button
-          class:selected={$listIndex === i && $focusedPanel === "list"}
-          on:click={() => selectListItem(i)}
-          aria-label={isExternalLink(item)
-            ? `External link: ${item.title}`
-            : `Item: ${item.title}`}
-        >
-          {#if isExternalLink(item)}
-            <span class="item-title">{item.icon} {item.title}</span>
-            <span class="item-date">External Link</span>
-          {:else}
-            <span class="item-title">• {item.title}</span>
-            <span class="item-date">{formatDate(item.date)}</span>
-          {/if}
-        </button>
-      </li>
-    {/each}
-  {:else}
-    <li>No items in this section.</li>
-  {/if}
-</ul>
+<div
+  class="list-panel"
+  on:touchstart={(e) => {
+    touchStartX = e.touches?.[0]?.clientX ?? 0;
+    focusedPanel.set("list");
+  }}
+  on:touchend={(e) => {
+    const endX = e.changedTouches?.[0]?.clientX ?? 0;
+    if (touchStartX - endX < -50 && $focusedPanel === "list") {
+      focusPrevPanel();
+    }
+  }}
+>
+  <h2>{$currentSection?.name ?? "SectionName"}</h2>
+  <ul>
+    {#if $currentItems && $currentItems.length > 0}
+      {#each $currentItems as item, i}
+        <li>
+          <button
+            class:selected={$listIndex === i && $focusedPanel === "list"}
+            on:click={() => selectListItem(i)}
+            aria-label={isExternalLink(item)
+              ? `External link: ${item.title}`
+              : `Item: ${item.title}`}
+          >
+            {#if isExternalLink(item)}
+              <span class="item-title">{item.icon} {item.title}</span>
+              <span class="item-date">External Link</span>
+            {:else}
+              <span class="item-title">• {item.title}</span>
+              <span class="item-date">{formatDate(item.date)}</span>
+            {/if}
+          </button>
+        </li>
+      {/each}
+    {:else}
+      <li>No items in this section.</li>
+    {/if}
+  </ul>
+</div>
 
 <style>
   li button {
@@ -107,14 +124,11 @@ import {
     border-bottom: 1px solid var(--gruvbox-bg3);
   }
 
-li button:hover,
-li button:focus {
+  li button:hover,
+  li button:focus {
     background-color: var(--gruvbox-bg2);
     /* Remove outline to match hover */
   }
-
-
-
 
   .item-title {
     flex-grow: 1;
@@ -127,8 +141,8 @@ li button:focus {
   }
 
   /* Ensure the selected state is properly styled */
-    li button.selected {
-      background-color: var(--gruvbox-bg2);
-      color: var(--gruvbox-fg);
-    }
+  li button.selected {
+    background-color: var(--gruvbox-bg2);
+    color: var(--gruvbox-fg);
+  }
 </style>

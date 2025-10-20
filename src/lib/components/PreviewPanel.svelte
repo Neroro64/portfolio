@@ -17,7 +17,11 @@
     isPreviewExpanded,
     setPreviewExpanded,
     togglePreviewExpanded,
+    focusPrevPanel,
   } from "$lib/store";
+
+  let touchStartX: number = 0;
+
   import type {
     NavigationItem,
     PortfolioItem,
@@ -108,18 +112,18 @@
     }
   }}
   on:touchstart={(e) => {
+    touchStartX = e.touches?.[0]?.clientX ?? 0;
     focusedPanel.set("preview");
-    if ($focusedPanel === "preview" && $selectedItem && !$isPreviewExpanded) {
-      // Prevent default touch behavior to avoid scrolling when touching preview panel
+    if (!$isPreviewExpanded) {
       e.preventDefault();
-
-      // Check if the selected item is an external link
-      if ("url" in $selectedItem && $selectedItem.url) {
-        // Open external link in new tab instead of expanding preview
-        window.open($selectedItem.url, "_blank");
-      } else {
-        togglePreviewExpanded();
-      }
+      togglePreviewExpanded();
+    }
+  }}
+  on:touchend={(e) => {
+    const endX = e.changedTouches?.[0]?.clientX ?? 0;
+    if (touchStartX - endX < -50 && $isPreviewExpanded) {
+      focusPrevPanel();
+      setPreviewExpanded(false);
     }
   }}
   role="button"

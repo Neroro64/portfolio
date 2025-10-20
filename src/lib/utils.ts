@@ -69,13 +69,13 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
     // Use glob to find all markdown files in the directory
     const markdownFiles = glob.sync(path.join(dirPath, '**/*.md'));
 
-      const items = markdownFiles.map(filePath => readMarkdownFile(filePath));
+    const items = markdownFiles.map(filePath => readMarkdownFile(filePath));
 
-      return items.sort((a, b) => {
-        const timeA = a.date ? new Date(a.date).getTime() : 0;
-        const timeB = b.date ? new Date(b.date).getTime() : 0;
-        return timeB - timeA;
-      });
+    return items.sort((a, b) => {
+      const timeA = a.date ? new Date(a.date).getTime() : 0;
+      const timeB = b.date ? new Date(b.date).getTime() : 0;
+      return timeB - timeA;
+    });
   } catch (error) {
     console.error(`Error scanning directory ${dirPath}:`, error);
     return [];
@@ -93,47 +93,47 @@ export function scanMarkdownDirectory(dirPath: string): PortfolioItem[] {
  */
 export function loadContentSections(contentBasePath: string): Array<{ id: string, name: string, icon: string, items: (PortfolioItem | ExternalLink)[] }> {
   try {
-const sections = [
-  {
-    id: 'projects',
-    name: 'Projects',
-    icon: '📁',
-    items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
-  },
-  {
-    id: 'experience',
-    name: 'Experience',
-    icon: '💼',
-    items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
-  },
-  {
-    id: 'blog',
-    name: 'Blog',
-    icon: '📝',
-    items: scanMarkdownDirectory(path.join(contentBasePath, 'blog'))
-  },
-  {
-    id: 'links',
-    name: 'Links',
-    icon: '🔗',
-    items: [
+    const sections = [
       {
-        id: 'github',
-        title: 'GitHub Profile',
-        description: 'My GitHub profile with various projects and contributions.',
-        url: 'https://github.com/Neroro64',
-        icon: '🐙'
+        id: 'projects',
+        name: 'Projects',
+        icon: '📁',
+        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
       },
       {
-        id: 'linkedin',
-        title: 'LinkedIn Profile',
-        description: 'Professional networking profile with my work experience.',
-        url: 'www.linkedin.com/in/nuo-chen',
-        icon: '👔'
+        id: 'experience',
+        name: 'Experience',
+        icon: '💼',
+        items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
+      },
+      {
+        id: 'blog',
+        name: 'Blog',
+        icon: '📝',
+        items: scanMarkdownDirectory(path.join(contentBasePath, 'blog'))
+      },
+      {
+        id: 'links',
+        name: 'Links',
+        icon: '🔗',
+        items: [
+          {
+            id: 'github',
+            title: 'GitHub Profile',
+            description: 'My GitHub profile with various projects and contributions.',
+            url: 'https://github.com/Neroro64',
+            icon: '🐙'
+          },
+          {
+            id: 'linkedin',
+            title: 'LinkedIn Profile',
+            description: 'Professional networking profile with my work experience.',
+            url: 'www.linkedin.com/in/nuo-chen',
+            icon: '👔'
+          }
+        ] as ExternalLink[]
       }
-    ] as ExternalLink[]
-  }
-];
+    ];
 
     return sections;
   } catch (error) {
