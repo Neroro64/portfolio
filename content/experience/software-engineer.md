@@ -18,7 +18,7 @@ permalink: content/experience/software-engineer
 ### About Me
 **Nuo Chen, me@nuoc.dev**
 
-I am a passionate software engineer focused on building reliable, maintainable systems.
+I am a passionate software engineer focused on building reliable, maintainable solutions.
 
 
 ### Role Description
