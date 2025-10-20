@@ -7,7 +7,7 @@
    * It also handles keyboard navigation using arrow keys or h/l keys.
    */
 
-  import { appStore } from "$lib/store";
+  import { appStore, setCurrentSection } from "$lib/store";
   import { onMount } from "svelte";
 
   let sections: any[] = [];
@@ -31,7 +31,7 @@
    * @param sectionId - The ID of the section to select
    */
   function selectSection(sectionId: string) {
-    appStore.setCurrentSection(sectionId);
+    setCurrentSection(sectionId);
   }
 
   /**
