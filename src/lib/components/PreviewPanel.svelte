@@ -150,7 +150,7 @@
           <div class="tags">
             <strong>Tags:</strong>
             {#each $selectedItem.tags as tag}
-              <span>{tag}</span>
+              <span>{tag},</span>
             {/each}
           </div>
         {/if}
