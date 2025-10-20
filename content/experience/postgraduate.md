@@ -1,9 +1,16 @@
 ---
 title: Postgraduate Student at KTH Royal Institute of Technology
-description: Studied Computer Science with a specialization in Machine Learning at KTH Royal Institute of Technology (Sweden) and completed a master thesis on procedural animation generation using Mixture‑of‑Experts networks and transfer learning techniques.
+description: Studied Computer Science with a specialization in Machine Learning at
+  KTH Royal Institute of Technology (Sweden) and completed a master thesis on procedural
+  animation generation using Mixture‑of‑Experts networks and transfer learning techniques.
 date: 2018-08-20
-tags: ["KTH", "NTU", "Computer Science", "Machine Learning",]
+tags:
+- KTH
+- NTU
+- Computer Science
+- Machine Learning
 type: experience
+permalink: content/experience/postgraduate
 ---
 
 ### About Me
@@ -25,4 +32,3 @@ Key contributions include:
 - Empirical evaluation on multiple datasets showing significant improvements over baseline MLP/LSTM baselines in both quantitative metrics (reconstruction error) and qualitative animation quality.
 
 [Paper](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1635572&dswid=5826) | [Github Repository](https://github.com/Neroro64/Deep-learning-based-rig-agnostic-encoding)
-

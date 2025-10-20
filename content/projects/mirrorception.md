@@ -1,9 +1,15 @@
 ---
 title: Mirrorception
-description: Mirrorception is a demo of a platform puzzle game where players seamlessly switch between the real world and its mirrored counterpart by stepping into reflective surfaces.
+description: Mirrorception is a demo of a platform puzzle game where players seamlessly
+  switch between the real world and its mirrored counterpart by stepping into reflective
+  surfaces.
 date: 2020-04-13
-tags: ["Unity", "C#", "Blender"]
+tags:
+- Unity
+- C#
+- Blender
 type: project
+permalink: content/projects/mirrorception
 ---
 
 Mirrorception is a demo of a platform puzzle game, where players must utilize the mirrored version of the world to solve puzzles that would be impossible in the real world. By entering reflective surfaces, players can access alternate dimensions where gravity, object interactions, and spatial relationships behave differently.
@@ -26,4 +32,3 @@ The implementation features:
 - **Game Engine**: Unity 2022.3 LTS
 - **Programming Language**: C#
 - **3D Modeling & Animation**: Blender
-

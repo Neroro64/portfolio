@@ -1,9 +1,13 @@
 ---
-title: Summary of 'Dependency Injection Principles, Practices, and Patterns' from  Steven van Deursen and Mark Seemann 
+title: Summary of 'Dependency Injection Principles, Practices, and Patterns' from  Steven
+  van Deursen and Mark Seemann
 description: Notes from Dependency Injection Principles, Practices, and Patterns.
 date: 2025-08-18
-tags: ["software-design", "DI"]
+tags:
+- software-design
+- DI
 type: blog
+permalink: content/blog/dependency-injection
 ---
 
 # Dependency Injection

@@ -1,12 +1,19 @@
 ---
 title: A study of transfer learning on data-driven motion synthesis frameworks
-description: This research explores transfer learning techniques to enhance the scalability and applicability of deep learning-based motion synthesis models for 3D characters in virtual environments.
+description: This research explores transfer learning techniques to enhance the scalability
+  and applicability of deep learning-based motion synthesis models for 3D characters
+  in virtual environments.
 date: 2023-12-05
-tags: ["PyTorch", "Mixture-of-Experts", "MLP", "Pytorch-lightning", "Ray", "Unity"]
+tags:
+- PyTorch
+- Mixture-of-Experts
+- MLP
+- Pytorch-lightning
+- Ray
+- Unity
 type: project
+permalink: content/projects/transfer-learning-motion-synthesis
 ---
-
-
 
 # Deep learning-based rig-agnostic encoding
 [Paper](https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1635572&dswid=5826)

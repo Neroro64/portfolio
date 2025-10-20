@@ -1,10 +1,18 @@
 ---
 title: Software Engineer at DICE
-description: This species is typically found in professional settings where reliability and ownership are paramount.
-motto: "Every challenge is an opportunity to grow stronger."
+description: This species is typically found in professional settings where reliability
+  and ownership are paramount.
+motto: Every challenge is an opportunity to grow stronger.
 date: 2021-08-04
-tags: ["Release engineering", "DICE", "C++", "C#", "CI/CD", "Automation"]
+tags:
+- Release engineering
+- DICE
+- C++
+- C#
+- CI/CD
+- Automation
 type: experience
+permalink: content/experience/software-engineer
 ---
 
 ### About Me
