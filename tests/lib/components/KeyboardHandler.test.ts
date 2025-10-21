@@ -9,7 +9,6 @@ import {
   isPreviewExpanded,
   setPreviewExpanded,
   selectedItem,
-  togglePreviewExpanded,
   focusNextPanel,
   focusPrevPanel,
   navigateToSection,
@@ -148,7 +147,7 @@ describe('KeyboardHandler', () => {
 
     render(KeyboardHandler);
     await fireEvent.keyDown(window, { key: 'l' });
-    expect(togglePreviewExpanded).toHaveBeenCalled();
+    expect(setPreviewExpanded).toHaveBeenCalledWith(true);
   });
 
   it('opens external link on l when list focused and item selected', async () => {
@@ -193,7 +192,7 @@ describe('KeyboardHandler', () => {
 
     render(KeyboardHandler);
     await fireEvent.keyDown(window, { key: 'Enter' });
-    expect(togglePreviewExpanded).toHaveBeenCalled();
+    expect(setPreviewExpanded).toHaveBeenCalledWith(true);
   });
 
   it('closes expanded preview on escape', async () => {

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/svelte';
 import PreviewPanel from '../../../src/lib/components/PreviewPanel.svelte';
-import { selectedItem, focusedPanel, isPreviewExpanded, setPreviewExpanded, togglePreviewExpanded } from '../../../src/lib/store';
+import { selectedItem, focusedPanel, isPreviewExpanded, setPreviewExpanded } from '../../../src/lib/store';
 
 declare const window: any;
 
@@ -17,8 +17,7 @@ vi.mock('../../../src/lib/store', () => ({
   selectedItem: { subscribe: vi.fn() },
   focusedPanel: { subscribe: vi.fn(), set: vi.fn() },
   isPreviewExpanded: { subscribe: vi.fn() },
-  setPreviewExpanded: vi.fn(),
-  togglePreviewExpanded: vi.fn(),
+  setPreviewExpanded: vi.fn()
 }));
 
 describe('PreviewPanel', () => {
@@ -69,8 +68,8 @@ describe('PreviewPanel', () => {
     render(PreviewPanel);
     expect(screen.getByText('Test Project')).toBeInTheDocument();
     expect(screen.getByText('Tags:')).toBeInTheDocument();
-    expect(screen.getByText('tag1')).toBeInTheDocument();
-    expect(screen.getByText('tag2')).toBeInTheDocument();
+    expect(screen.getByText('tag1|')).toBeInTheDocument();
+    expect(screen.getByText('tag2|')).toBeInTheDocument();
     expect(screen.getByText('2023-01-01')).toBeInTheDocument(); // formatted date
   });
 
@@ -122,7 +121,7 @@ describe('PreviewPanel', () => {
     render(PreviewPanel);
     const panel = screen.getByRole('button', { name: 'Preview Panel' });
     await fireEvent.click(panel);
-    expect(togglePreviewExpanded).toHaveBeenCalled();
+    expect(setPreviewExpanded).toHaveBeenCalledWith(true);
   });
 
   it('opens external link on click', async () => {
@@ -171,7 +170,7 @@ describe('PreviewPanel', () => {
     render(PreviewPanel);
     const panel = screen.getByRole('button', { name: 'Preview Panel' });
     await fireEvent.keyDown(panel, { key: 'Enter' });
-    expect(togglePreviewExpanded).toHaveBeenCalled();
+    expect(setPreviewExpanded).toHaveBeenCalledWith(true);
   });
 
   it('closes expanded preview on escape', async () => {
