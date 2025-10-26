@@ -16,7 +16,7 @@
     focusedPanel,
     isPreviewExpanded,
     setPreviewExpanded,
-    focusPrevPanel
+    focusPrevPanel,
   } from "$lib/store";
 
   let touchStartX: number = 0;
@@ -113,10 +113,7 @@
   on:touchstart={(e) => {
     touchStartX = e.touches?.[0]?.clientX ?? 0;
     focusedPanel.set("preview");
-    if (!$isPreviewExpanded) {
-      e.preventDefault();
-      setPreviewExpanded(true);
-    }
+    // No expansion on touch to avoid accidental zen mode
   }}
   on:touchend={(e) => {
     const endX = e.changedTouches?.[0]?.clientX ?? 0;
@@ -149,7 +146,7 @@
           <div class="tags">
             <strong>Tags:</strong>
             {#each $selectedItem.tags as tag}
-              <span>{tag},</span>
+              <span>{tag}|</span>
             {/each}
           </div>
         {/if}

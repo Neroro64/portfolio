@@ -148,6 +148,36 @@ describe('PreviewPanel', () => {
     expect(mockWindowOpen).toHaveBeenCalledWith('https://github.com', '_blank');
   });
 
+  it('does not expand on touch when device is touch-capable', async () => {
+    // Simulate a touch-capable environment
+    Object.defineProperty(navigator, 'maxTouchPoints', {
+      value: 1,
+      writable: true,
+    });
+
+    (selectedItem as any).subscribe.mockImplementation((callback: any) => {
+      callback({
+        id: '1',
+        title: 'Test Project',
+        content: 'Content',
+        type: 'project',
+      });
+      return vi.fn();
+    });
+    (focusedPanel as any).subscribe.mockImplementation((callback: any) => {
+      callback('preview');
+      return vi.fn();
+    });
+    (isPreviewExpanded as any).subscribe.mockImplementation((callback: any) => {
+      callback(false);
+      return vi.fn();
+    });
+
+    render(PreviewPanel);
+    const panel = screen.getByRole('button', { name: 'Preview Panel' });
+    await fireEvent.touchStart(panel, { touches: [{ clientX: 100 }] });
+    expect(setPreviewExpanded).not.toHaveBeenCalled();
+  })
   it('handles keydown enter for portfolio item', async () => {
     (selectedItem as any).subscribe.mockImplementation((callback: any) => {
       callback({
