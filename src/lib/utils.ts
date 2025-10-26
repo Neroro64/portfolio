@@ -95,16 +95,16 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
   try {
     const sections = [
       {
-        id: 'projects',
-        name: 'Projects',
-        icon: '📁',
-        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
-      },
-      {
         id: 'experience',
         name: 'Experience',
         icon: '💼',
         items: scanMarkdownDirectory(path.join(contentBasePath, 'experience'))
+      },
+      {
+        id: 'projects',
+        name: 'Projects',
+        icon: '📁',
+        items: scanMarkdownDirectory(path.join(contentBasePath, 'projects'))
       },
       {
         id: 'blog',
@@ -118,6 +118,20 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
         icon: '🔗',
         items: [
           {
+            id: 'gallery',
+            title: 'Photo Gallery',
+            description: 'A collection of my photography and visual work.',
+            url: 'https://gallery.nuoc.dev',
+            icon: '📷'
+          },
+          {
+            id: 'notes',
+            title: 'Personal documentation',
+            description: 'My personal notes and documentation site.',
+            url: 'https://notes.nuoc.dev',
+            icon: '📝'
+          },
+          {
             id: 'github',
             title: 'GitHub Profile',
             description: 'My GitHub profile with various projects and contributions.',
@@ -130,7 +144,7 @@ export function loadContentSections(contentBasePath: string): Array<{ id: string
             description: 'Professional networking profile with my work experience.',
             url: 'www.linkedin.com/in/nuo-chen',
             icon: '👔'
-          }
+          },
         ] as ExternalLink[]
       }
     ];
