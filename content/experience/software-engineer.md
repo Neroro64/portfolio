@@ -1,8 +1,7 @@
 ---
 title: Software Engineer at DICE
-description: This species is typically found in professional settings where reliability
-  and ownership are paramount.
-motto: Every challenge is an opportunity to grow stronger.
+description: Making a dent in the universe through insanely great software.
+motto: The only way to do great work is to love what you do.
 date: 2021-08-04
 tags:
 - Release engineering
@@ -18,18 +17,72 @@ permalink: content/experience/software-engineer
 ### About Me
 **Nuo Chen, me@nuoc.dev**
 
-I am a passionate software engineer focused on building reliable, maintainable solutions.
+I build things that matter. Things that solve real problems for real people. Everything starts with the user experience. Code will grow naturally from it.
+
+### The DICE Journey
+
+Four years of working on 3A games, **Battlefield 2024** and **Battlefield 6**. These aren't just games, they're experiences that touch millions of people.
+
+I joined the Platform team as a Release Engineer. I learned many things. Code base. Tests. CI pipelines. Debugging. The entire lifecycle from code to console.
+
+And then I noticed something. Something fundamental.
+
+The system was broken. Not the code, the process. Engineers were drowning in manual work. They weren't creating. They were fixing. They weren't building the future. They were maintaining the legacy.
+
+Here's also what I noticed: everyone else was building dashboards. Fancy dashboards. Beautiful dashboards. Dashboards to "help" engineers monitor the chaos. Dashboards to "assist" them in finding problems.
+
+But that's not the solution. That's just a better way to look at the problem.
+
+I saw this and I thought: *Why not just solve the problem?*
+
+Why build a dashboard when you can build a system that makes the dashboard unnecessary? Why help engineers find problems when you can make the problems go away?
+
+I wanted to automate the work entirely. Eliminate it. Remove it from their lives. So they can focus on what matters. The fun stuff. The creative stuff. The stuff that made them fall in love with building software in the first place.
+
+There has to be a better way.
+
+So I pitched something bold. Something innovative. An automation platform. Not just another dashboard, a complete reimagining of how we work. The leadership saw it. They got it. And it became **Triage Engine**.
+
+I took it from a dream to production. In a massive organization. Tech briefs. ROI Presentations. Workshops. Proof-of-concept. Design. Architecture. Roadmap building. Development. Quality assurance. Rewrites. Stakeholder syncs. Bug fixing. Performance optimizations. I did it all.
+
+It's running now. In production. Working exactly as designed.
 
 
-### Role Description
+### Triage Engine: The Story
 
-I'm software engineer at DICE developing solutions for addressing integration and stability challenges, from multiple parallel trunk-based dev-lines.
-WIP...
+**This changes everything.**
 
-### Achievements
+I started with a simple truth: Data is power. If you don't own your data, you don't own your AI solution.
 
-- WIP...
+Triage Engine isn't just automation. It's a platform. It collects data the way *we* need it. It enables everything that comes after. It learns. It grows. It gets *smarter*.
 
-### Example of Challenges
+At core, it's a .NET background service that does something remarkable: it handles "Keep Green" monitoring and investigation automatically. Engineers can focus on what they should be doing, solving problems, not finding them.
 
-- WIP...
+It watches CI pipelines. It detects failures. It gathers context. It builds hypotheses. It assigns ownership. It creates tickets. It verifies resolutions.
+
+It uses AI. It uses ML. It learns from history. Bayesian probabilistic root cause analysis. Ownership prediction.
+
+**The Timeline:**
+- **PoC:** The vision takes shape
+- **v0.1:** Foundation. Architecture. Data layer
+- **v0.2:** Scale. More users. Real-world refinements
+- **v0.3:** Stability. Now we're pushing further: self-learning, deeper AI
+
+**Under the Hood:**
+
+This isn't spaghetti code. This is architecture.
+
+Composable, stateless pipelines. Functional programming principles. Distributed services that scale beautifully. Every piece does one thing perfectly. Every piece can be tested independently. Every piece can be replaced without touching the rest. An architecture built for testability.
+
+And here's the killer feature: a *language* for defining the process.
+
+We created a way to describe exactly what matters:
+- What information is critical in each data source
+- How to distinguish real issues from noise
+- How to prioritize what matters most
+- How to define and detect flakiness
+- Where to hunt for evidence to prove hypotheses
+- How to find who owns what problem
+
+This isn't just software. It's a different way of thinking. It's simpler. It's better. It's the future.
+
